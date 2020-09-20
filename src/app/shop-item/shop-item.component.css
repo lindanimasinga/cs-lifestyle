@@ -1,0 +1,46 @@
+.shop-item-container {
+    width: 260px;
+    height: 260px;
+}
+
+.shop-item img {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.shop-item p {
+    display: flex;
+    position: absolute;
+    bottom: 32px;
+    left: 70px;
+    color: white;
+    font-weight: 400;
+    font-size: 22px;
+    z-index: 3;
+}
+
+.gradient-pink::after {
+    display: block;
+    background-image: linear-gradient(to bottom,#e9ded918,#cbc0bb6b,#cbc0bb);
+    height: 120px;
+    width: 260px;
+    content: "";
+    bottom: 32px;
+    position: absolute;
+    z-index: 2;
+}
+
+.gradient-blue::after {
+    display: block;
+    background-image: linear-gradient(to bottom,rgba(0,96,173,0),#00515440,#515440);
+    height: 120px;
+    width: 260px;
+    content: "";
+    bottom: 32px;
+    position: absolute;
+    z-index: 2;
+}

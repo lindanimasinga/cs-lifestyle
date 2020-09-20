@@ -1,0 +1,41 @@
+
+.bg-dark {
+    background-color: #515440 !important;
+    color: white !important;
+}
+
+.bg-light {
+    background-color: #cbc0bb !important;
+    color: white !important;
+}
+
+.bg-light .nav-link, mat-icon {
+    color: white;
+}
+
+nav .logo {
+    object-fit: cover;
+}
+
+.payment-logo {
+    height: 20px;
+}
+
+.navbar {
+    z-index: 4;
+}
+
+.btn {
+    font-size: 1rem;
+}
+
+footer{
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+footer h5 {
+    color: white;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

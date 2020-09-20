@@ -1,0 +1,25 @@
+.basket-item {
+    background-color: #ebebeb; 
+}
+
+.basket-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+@media(max-width: 370px) {
+    .basket-item * {
+        font-size: 14px;
+    }
+
+    .basket-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+}
+
+.remove, mat-icon {
+    color: #515440 !important;
+}
