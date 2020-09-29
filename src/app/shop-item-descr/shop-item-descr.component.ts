@@ -42,4 +42,8 @@ export class ShopItemDescrComponent implements OnInit {
     this.storageService.addToCart(this.basketItem);
   }
 
+  hasValidSeletion(): boolean {
+    return this.shopItem.mandatorySelection.find((item1) => item1.selected == null) == null;
+  }
+
 }

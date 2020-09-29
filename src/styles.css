@@ -1,20 +1,33 @@
 
+#app-root {
+ min-height: calc(100vh - 236px - 76px);
+}
+
 .bg-dark {
-    background-color: #515440 !important;
+    background-color: #ad8377 !important;
     color: white !important;
 }
 
 .bg-light {
-    background-color: #cbc0bb !important;
+    color: #ad8377 !important;
+}
+
+.bg-light .nav-link {
+    color: #ad8377 !important;
+}
+
+mat-icon {
     color: white !important;
 }
 
-.bg-light .nav-link, mat-icon {
-    color: white;
+.bg-ukheshe {
+    background-color: #f15b25;
 }
 
 nav .logo {
     object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid grey;
 }
 
 .payment-logo {
@@ -27,6 +40,7 @@ nav .logo {
 
 .btn {
     font-size: 1rem;
+    border: none;
 }
 
 footer{
@@ -35,7 +49,11 @@ footer{
 }
 
 footer h5 {
-    color: white;
+    color: #ad8377;
 }
-html, body { height: 100%; }
+
+html, body { 
+    height: 100%; 
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

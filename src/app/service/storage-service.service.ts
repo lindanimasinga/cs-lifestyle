@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BasketItem, Basket, Order } from '../model/models';
+import { BasketItem, Basket, Order, UserProfile } from '../model/models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,10 @@ export class StorageService {
   basket: Basket = {
     items : []
   }
+  
+  jwt: string;
+  userProfile: UserProfile;
+  ukhesheUser: import("/Users/lindanimasinga/gitRepos/curiousoft2/cs-clothing/cs-clothing-web/src/app/model/ukheshe-user").UkhesheUser;
   
   addToCart(basketItem: BasketItem) {
     this.basket.items.push(basketItem)

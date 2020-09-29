@@ -95,21 +95,3 @@
         </div>
     </div>
 </div>
-
-
-private String address;
-@NotBlank(message = "profile image url not valid")
-private String imageUrl;
-private int likes;
-private int servicesCompleted;
-private int badges;
-@Indexed(unique = true)
-@NotBlank(message = "profile mobile number not valid")
-private String mobileNumber;
-@NotNull(message = "role not valid")
-private ProfileRoles role;
-private int responseTimeMinutes;
-private String verificationCode;
-private Bank bank;
-private double latitude;
-private double longitude;

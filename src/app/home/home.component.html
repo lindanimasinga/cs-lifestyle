@@ -41,7 +41,7 @@
   
   <div class="container mt-5 d-flex align-items-center">
     <div class="row">
-      <app-shop-item class="col-md-4" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
+      <app-shop-item class="col-md-6 col-lg-4" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
     </div>
   </div>
   

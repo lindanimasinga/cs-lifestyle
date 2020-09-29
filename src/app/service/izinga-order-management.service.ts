@@ -29,7 +29,7 @@ export class IzingaOrderManagementService {
       "Content-type": "application/json",
     };
     return this.http
-        .patch<Order>(`${environment.izingaUrl}/order`, order, {headers: headers})
+        .patch<Order>(`${environment.izingaUrl}order/${order.id}`, order, {headers: headers})
   }
 
   getAllOrdersByMobileNumber(mobileNumber: string) : Observable<Order> {
@@ -43,5 +43,10 @@ export class IzingaOrderManagementService {
     };
     return this.http
         .post<UserProfile>(`${environment.izingaUrl}/user`, userProfile, {headers: headers});
+  }
+
+  getCustomerByPhoneNumber(mobileNumber: string): Observable<UserProfile> {
+    return this.http
+        .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`);
   }
 }

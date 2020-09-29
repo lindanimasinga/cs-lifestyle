@@ -13,8 +13,8 @@
 
 export interface ShippingData { 
     additionalInstructions: string;
-    buildingName: string;
-    buildingType: ShippingData.BuildingTypeEnum;
+    buildingName?: string;
+    buildingType?: ShippingData.BuildingTypeEnum;
     fee?: number;
     fromAddress: string;
     id?: string;
@@ -22,7 +22,7 @@ export interface ShippingData {
     pickUpTime?: Date;
     toAddress: string;
     type: ShippingData.TypeEnum;
-    unitNumber: string;
+    unitNumber?: string;
 }
 export namespace ShippingData {
     export type BuildingTypeEnum = 'HOUSE' | 'OFFICE' | 'APARTMENT';

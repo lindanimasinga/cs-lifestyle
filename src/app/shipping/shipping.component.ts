@@ -3,8 +3,10 @@ import { UserProfile, Order, ShippingData } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
 import { environment } from 'src/environments/environment';
-import { BuiltinType } from '@angular/compiler';
 import { Router } from '@angular/router';
+
+import { map, mergeMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-shipping',
@@ -27,9 +29,13 @@ export class ShippingComponent implements OnInit {
   }
 
   createCustomer() {
-    this.izingaOrderManager.registerCustomer(this.userProfile)
+    this.izingaOrderManager.getCustomerByPhoneNumber(this.userProfile.mobileNumber)
+    .pipe(
+      mergeMap((profile) => profile != null ? of(profile) : this.izingaOrderManager.registerCustomer(this.userProfile))
+    )
     .subscribe(user => {
       this.userProfile = user
+      this.storageService.userProfile = user;
       this.startOrder()
     })
   }
@@ -41,21 +47,21 @@ export class ShippingComponent implements OnInit {
       shopId: environment.storeId,
       orderType: Order.OrderTypeEnum.ONLINE,
       stage: Order.StageEnum._0CUSTOMERNOTPAID,
-      description: `order from ${this.userProfile.id}`,
+      description: `CS order ${this.userProfile.mobileNumber}`,
       shippingData: {
-        fromAddress: "CS-lifestyle-address",
+        fromAddress: "45 CS lifestyle street",
         toAddress: this.userProfile.address,
-        buildingName: "",
+        messengerId: "ffd4c856-644f-4453-a5ed-84689801a747",
         buildingType: ShippingData.BuildingTypeEnum.HOUSE,
-        unitNumber: "",
         type: ShippingData.TypeEnum.DELIVERY,
-        additionalInstructions: "call me"
+        additionalInstructions: "call me at 10111"
       }
     }
 
     this.izingaOrderManager.startOrder(this.order)
     .subscribe(order => {
       this.order = order
+      this.order.description =  `CS order ${this.userProfile.mobileNumber}:${order.id}`,
       this.storageService.order = order
       this.router.navigate(['payment'])
     })

@@ -3,7 +3,9 @@
     <div></div>
 
     <div class="item-descr mb-5 row">
-        <img *ngFor="let img of shopItem.images" class="col-12 col-md-3 mb-1 md-md-0" [src]="img">
+        <div *ngFor="let img of shopItem.images" class="col-12 col-md-3 mb-1 md-md-0 d-flex justify-content-center">
+            <img [src]="img">
+        </div>
     </div>
 
     <div class="product row">
@@ -15,18 +17,18 @@
 
     <div *ngFor="let option of shopItem.mandatorySelection" class="row">
         <div class="col-6 product h5 mt-3">{{option.name}}</div>
-        <div class="col-6 dropdown">
-            <button class="btn bg-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                {{option.selected != null ? option.selected : option.values[0]}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button *ngFor="let choice of option.values" (click)="option.selected = choice" class="dropdown-item" type="button">{{choice}}</button>
+        <div class="col-6 mt-3">
+            <select [(ngModel)]="option.selected" class="custom-select d-block w-100" id="country" required>
+                <option value="">Choose...</option>
+                <option [value]="choice" *ngFor="let choice of option.values" >{{choice}}</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid {{option.name}}.
             </div>
         </div>
     </div>
 
-    <button class="btn btn-lg btn-block bg-dark mt-5" (click)="addToCart()">
+    <button class="btn btn-lg btn-block bg-dark mt-5" (click)="addToCart()" [disabled]="!hasValidSeletion()">
         Add to Cart
     </button>
 

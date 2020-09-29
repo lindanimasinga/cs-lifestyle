@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
   izingaUrl: "https://api-uat.izinga.co.za/",
+  ukhesheUrl: "https://ukheshe-sandbox.jini.rocks/ukheshe-conductor/rest/v1",
+  mainShopAccount: "0812815707",
   ozow_api_key: "EGYkBM4qz82GvVxVOlUklvPbQrkyIO3h",
   ozow_private_key: "7htslQRtr6Yt70YHzrmODvvLaJFvZzPK",
   ozow_base_url: "https://api.ozow.com",
