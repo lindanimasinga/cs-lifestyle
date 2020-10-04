@@ -1,6 +1,15 @@
 
+
+.page-header {
+    color: #ad8377 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
 #app-root {
- min-height: calc(100vh - 236px - 76px);
+ min-height: calc(100vh - 227px);
 }
 
 .bg-dark {
@@ -12,8 +21,16 @@
     color: #ad8377 !important;
 }
 
+.bg-clear {
+    background-color: #ffffff00 !important;
+}
+
 .bg-light .nav-link {
     color: #ad8377 !important;
+}
+
+.product {
+    color: #ad8377;
 }
 
 mat-icon {
@@ -46,6 +63,9 @@ nav .logo {
 footer{
     padding-left: 16px;
     padding-right: 16px;
+    background-repeat: no-repeat !important;
+    background: #ad8377;
+    background: linear-gradient(0deg, rgba(173,131,119,0.40931372549019607) 28%, rgba(255,255,255,1) 93%);
 }
 
 footer h5 {
@@ -53,7 +73,13 @@ footer h5 {
 }
 
 html, body { 
-    height: 100%; 
+    height: 100%;
+    
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    background-repeat: no-repeat !important;
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 70%, rgba(173,131,119,0.40931372549019607) 100%);
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; }

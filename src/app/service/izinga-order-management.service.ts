@@ -32,9 +32,9 @@ export class IzingaOrderManagementService {
         .patch<Order>(`${environment.izingaUrl}order/${order.id}`, order, {headers: headers})
   }
 
-  getAllOrdersByMobileNumber(mobileNumber: string) : Observable<Order> {
+  getAllOrdersByMobileNumber(mobileNumber: string) : Observable<Array<Order>> {
     return this.http
-        .get<Order>(`${environment.izingaUrl}/order?phone=${mobileNumber}`)
+        .get<Array<Order>>(`${environment.izingaUrl}/order?phone=${mobileNumber}`)
   }
 
   registerCustomer(userProfile: UserProfile) : Observable<UserProfile> {

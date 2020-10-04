@@ -32,7 +32,9 @@ export interface Order {
     stage?: Order.StageEnum;
     totalAmount?: number;
 }
+
 export namespace Order {
+
     export type OrderTypeEnum = 'ONLINE' | 'INSTORE';
     export const OrderTypeEnum = {
         ONLINE: 'ONLINE' as OrderTypeEnum,
@@ -53,5 +55,16 @@ export namespace Order {
         _5ARRIVED: 'STAGE_5_ARRIVED' as StageEnum,
         _6WITHCUSTOMER: 'STAGE_6_WITH_CUSTOMER' as StageEnum,
         _7ALLPAID: 'STAGE_7_ALL_PAID' as StageEnum
+    };
+
+    export const stageEnumText = {
+        STAGE_0_CUSTOMER_NOT_PAID : "Not Paid",
+        STAGE_1_WAITING_STORE_CONFIRM: "Waiting Confirmation",
+        STAGE_2_STORE_PROCESSING: "Processing",
+        STAGE_3_READY_FOR_COLLECTION: "Ready For Collection",
+        STAGE_4_ON_THE_ROAD: "Arriving",
+        STAGE_5_ARRIVED: "Arrived",
+        STAGE_6_WITH_CUSTOMER: "Delivered",
+        STAGE_7_ALL_PAID: "Completed"
     };
 }

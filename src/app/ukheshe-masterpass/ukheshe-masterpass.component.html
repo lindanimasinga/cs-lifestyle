@@ -1,0 +1,18 @@
+<!-- Vertically centered scrollable modal -->
+<div id="masterpass" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-muted" id="staticBackdropLabel"><img
+                        src="./assets/images/masterpass-initial.svg" class="payment-logo mx-1"> Payment</h5>
+            </div>
+
+            <div class="d-flex justify-content-center mb-3">
+                <ngx-qrcode [value] = "value"
+                cssClass = "qrcode"
+                errorCorrectionLevel = "L">
+                </ngx-qrcode>
+            </div>
+        </div>
+    </div>
+</div>

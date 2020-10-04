@@ -20,14 +20,18 @@ export class ShopItemDescrComponent implements OnInit {
   optionSelected: string;
   quantity: number = 1;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
     private izingaService: IzingaOrderManagementService,
     private storageService: StorageService) { }
 
   ngOnInit() {
-    const stockId = this.route.snapshot.paramMap.get('id');
-    this.izingaService.getStoreById(environment.storeId)
-      .subscribe(store => this.shopItem = store.stockList.find(item => item.id == stockId))
+    this.route.params.subscribe(param => {
+      if (param["id"]) {
+        const stockId = this.route.snapshot.paramMap.get('id');
+        this.izingaService.getStoreById(environment.storeId)
+          .subscribe(store => this.shopItem = store.stockList.find(item => item.id == stockId))
+      }
+    });
   }
 
   addToCart() {
@@ -43,7 +47,7 @@ export class ShopItemDescrComponent implements OnInit {
   }
 
   hasValidSeletion(): boolean {
-    return this.shopItem.mandatorySelection.find((item1) => item1.selected == null) == null;
+    return this.shopItem?.mandatorySelection.find((item1) => item1.selected == null) == null;
   }
 
 }

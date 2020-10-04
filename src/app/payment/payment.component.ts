@@ -25,8 +25,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(private paymentService: PaymentService, 
     private storageService: StorageService,
-    private izingaService: IzingaOrderManagementService,
-    private ukhesheService: UkhesheService) { 
+    private izingaService: IzingaOrderManagementService) { 
       this.order = this.storageService.order;
       this.order.shippingData.fee
   }
@@ -38,41 +37,7 @@ export class PaymentComponent implements OnInit {
     })
   }
 
-  ukhesheLogin() {
-    this.ukhesheService.login(this.ukhesheUsername, this.ukheshePassword)
-      .pipe(
-        mergeMap(() => this.ukhesheService.userInfo(this.storageService.userProfile.mobileNumber))
-      )
-      .subscribe(auth => {
-        this.ukhesheLoginSuccess = true;
-      })
-  }
 
-  isUkhesheLoggedIn() {
-    return this.storageService.jwt != null
-  }
-
-  payForOrder() {
-    this.paymentBusy = true
-    this.ukhesheService.payForOrder(this.order)
-      .pipe(
-        map((data) => {
-          this.paymentSuccesful = true;
-          this.order.paymentType = "UKHESHE"
-          return data
-        }),
-        delay(5000),
-        mergeMap(() => this.izingaService.finishOrder(this.order))
-      )
-      .subscribe(
-        (order) => {
-          this.storageService.order = order
-          this.orderCompleted = true;
-        },
-        () => {},
-        () => this.paymentBusy = false,
-      )
-  }
 
 
 

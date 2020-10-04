@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center">
-    <div class="shop-item-container mx-3 my-3">
+    <div class="shop-item-container my-3">
         <a [routerLink]="['item', shopItem.id]">
             <div class="shop-item" [ngClass]="{'gradient-pink': !themeDark, 'gradient-blue': themeDark}">
-                <img [src]="shopItem.images[0]">
+                <img class="rounded" [src]="shopItem.images[0]">
                 <p>{{shopItem.name}} R{{shopItem.price}}</p>
             </div>
         </a>

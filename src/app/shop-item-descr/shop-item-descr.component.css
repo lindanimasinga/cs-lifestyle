@@ -1,10 +1,6 @@
 
 .item-descr img {
-    width: 260px;
-    height: 260px;
+    width: 187.5px;
+    height: 300px;
     object-fit: cover;
-}
-
-.product {
-    color: #cbc0bb;
 }

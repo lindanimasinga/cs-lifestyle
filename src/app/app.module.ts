@@ -16,9 +16,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OtherItemsComponent } from './other-items/other-items.component';
+import { UkheshePaymentComponent } from './ukheshe-payment/ukheshe-payment.component';
+import { UkhesheSignupComponent } from './ukheshe-signup/ukheshe-signup.component';
+import { UkhesheMasterpassComponent } from './ukheshe-masterpass/ukheshe-masterpass.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,12 @@ import { PaymentComponent } from './payment/payment.component';
     HomeComponent,
     CheckoutComponent,
     ShippingComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrdersComponent,
+    OtherItemsComponent,
+    UkheshePaymentComponent,
+    UkhesheSignupComponent,
+    UkhesheMasterpassComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,8 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgxQRCodeModule
   ],
   providers: [
     IzingaOrderManagementService,

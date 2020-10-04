@@ -1,0 +1,86 @@
+            <!-- Vertically centered scrollable modal -->
+            <div id="ukhesheLogin" class="modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-muted" id="staticBackdropLabel"><img src="./assets/images/ukhese-logo.png"
+                                    class="payment-logo mx-1"> Payment</h5>
+                            <h5 class="modal-title text-muted" *ngIf="ukhesheUserData">Avialable Balance: R{{ukhesheUserData?.availableBalance}}</h5>        
+                        </div>
+                        <div *ngIf="paymentSelected == 'ukheshe' && !isUkhesheLoggedIn() && !paymentBusy" class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name">CellPhone Number</label>
+                                    <input [(ngModel)]="ukhesheUsername" type="text" class="form-control" id="cc-name"
+                                        placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        CellPhone number is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-number">Password</label>
+                                    <input [(ngModel)]="ukheshePassword" type="password" class="form-control"
+                                        id="cc-number" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Password is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row  mt-3 ">
+                                <div class="col-md-12">
+                                    <button class="btn btn-lg btn-block btn-primary bg-ukheshe"
+                                        (click)="ukhesheLogin()">
+                                        Login
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="paymentSelected == 'ukheshe' && isUkhesheLoggedIn() && !paymentBusy && !orderCompleted"
+                            class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (ZAR)</span>
+                                    <strong>R{{order.totalAmount}}</strong>
+                                </li>
+                            </ul>
+                            <div class="mt-3">
+                                Click continue to finalise your order.
+                            </div>
+
+                            <div class="row  mt-3 ">
+                                <div class="col-md-12">
+                                    <button class="btn btn-lg btn-block btn-primary bg-ukheshe" (click)="payForOrder()">
+                                        Continue To Pay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="paymentBusy" class="modal-body d-flex justify-content-center mb-3">
+                            <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_Cemmpu.json"
+                                background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay>
+                            </lottie-player>
+                        </div>
+                        <div *ngIf="orderCompleted" class="modal-body">
+                            <div class="modal-body" >
+                                <div class="d-flex justify-content-center">
+                                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_1DhPVn.json"
+                                        background="transparent" speed="0.5" style="width: 100px; height: 100px;" autoplay>
+                                    </lottie-player>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    Your order has been successfully placed.
+                                </div>
+                            </div>
+
+                            <div class="row  mt-3">
+                                <div class="col-md-12">
+                                    <button class="btn btn-lg btn-block btn-primary bg-ukheshe" (click)="payForOrder()">
+                                        Done
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>

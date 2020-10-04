@@ -3,7 +3,7 @@
 }
 
 .carousel-item {
- height: calc(100vh - 200px);
+ height: 575px;
 }
 
 @media (max-width: 575.98px) {
@@ -13,8 +13,7 @@
 }
 
 .carousel-item img {
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .carousel-message {
@@ -72,3 +71,11 @@ img.headline {
    /* display: block; */
    margin: 0 0 16 0;
  }
+
+ .selection {
+   color: #ad8377;
+ }
+
+ body { 
+  background: linear-gradient(0deg, rgba(255,255,255,1) 75%, rgba(173,131,119,1) 100%) !important;
+}

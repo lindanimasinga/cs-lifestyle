@@ -1,0 +1,40 @@
+<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
+    <h3 class="page-header display-5">Orders</h3>
+</div>
+<table *ngIf="orders != null" class="mt-3 table table-striped text-muted">
+    <thead>
+      <tr>
+        <th class="order-id" scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <th scope="row" class="order-id">{{order.id}}</th>
+        <td>{{order.date | date}}</td>
+        <td>R{{order.totalAmount}}</td>
+        <td class="status">{{statusText(order.stage)}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!--
+  basket: Basket;
+  basketAmount?: number;
+  customerId: string;
+  date?: Date;
+  description?: string;
+  hasVat?: boolean;
+  id?: string;
+  messengerPaid?: boolean;
+  modifiedDate?: Date;
+  orderType?: Order.OrderTypeEnum;
+  paymentType?: Order.PaymentTypeEnum;
+  serviceFee?: number;
+  shippingData: ShippingData;
+  shopId: string;
+  shopPaid?: boolean;
+  stage?: Order.StageEnum;
+  totalAmount?: number; -->

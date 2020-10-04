@@ -1,0 +1,4 @@
+ngx-qrcode img, .qrcode img {
+    width: 150px;
+    height: 150px;
+}

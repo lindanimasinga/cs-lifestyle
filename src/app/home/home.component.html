@@ -1,10 +1,10 @@
 
-<div id="carousel-container" class="carousel slide px-md-3 pt-md-2 mb-1" data-ride="carousel">
+<div id="carousel-container" class="carousel slide mb-1" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel-container" data-slide-to="0" class="active"></li>
       <li *ngFor="let imageUrl of images ; let number = index;" data-target="#carousel-container" data-slide-to="{{images.indexOf(imageUrl)}}"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner rounded shadow-sm">
       <div class="carousel-item active ">
         <img src="{{images[0]}}" class="" alt="...">
       </div>
@@ -22,26 +22,30 @@
     </a>
   </div>
   
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5">
-    <div class="bg-light mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden shadow-md">
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5 ">
+    <div class="bg-light mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden rounded shadow-sm">
       <div class="my-3 py-3">
-        <h2 class="display-5">Create Everyday</h2>
+        <h3 class="display-5">Create Everyday</h3>
         <p class="lead">And an even wittier subheading.</p>
       </div>
       <img [src]="images[1]" class="headline bg-light mx-auto" style="width: 80%; height: 300px;">
     </div>
-    <div class="bg-dark mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden shadow-md">
+    <div class="bg-dark mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden rounded shadow-sm">
       <div class="my-3 p-3">
-        <h2 class="display-5">Fashion</h2>
+        <h3 class="display-5">Fashion</h3>
         <p class="lead">Fashion is art and YOU are the canvas - Velvet Paper</p>
       </div>
       <img [src]="images[2]" class="headline bg-dark mx-auto" style="width: 80%; height: 300px;">
     </div>
   </div>
   
-  <div class="container mt-5 d-flex align-items-center">
+  <div class="my-3 py-3 d-flex justify-content-center">
+    <h3 class="display-5 page-header">Summer Selection</h3>
+  </div>
+
+  <div class="d-flex align-items-center">
     <div class="row">
-      <app-shop-item class="col-md-6 col-lg-4" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
+      <app-shop-item class="col-md-4 col-lg-3 col-xl-3" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
     </div>
   </div>
   
