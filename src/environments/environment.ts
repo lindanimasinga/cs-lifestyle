@@ -10,16 +10,16 @@ export const environment = {
   ukhesheUrl: "https://ukheshe-sandbox.jini.rocks/ukheshe-conductor/rest/v1",
   ukhesheMainShopAccount: "0812815707",
   ukhesheCustomerId: 534,
-  ozow_api_key: "EGYkBM4qz82GvVxVOlUklvPbQrkyIO3h",
-  ozow_private_key: "7htslQRtr6Yt70YHzrmODvvLaJFvZzPK",
+  ozow_api_key: "EB5758F2C3B4DF3FF4F2669D5FF5B",
+  ozow_private_key: "215114531AFF7134A94C88CEEA48E",
   ozow_base_url: "https://api.ozow.com",
-  ozow_site_code: "MYF-MYF-001",
+  ozow_site_code: "TSTSTE0001",
   ozow_country_code: "ZA",
   ozow_currency_code: "ZAR",
   ozow_succeess_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
   ozow_cancel_url:`${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
   ozow_error_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_is_a_test: false,
+  ozow_is_a_test: true,
   feesPercentage: 0.032
 };
 

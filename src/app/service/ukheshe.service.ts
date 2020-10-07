@@ -75,17 +75,13 @@ export class UkhesheService {
   }
 
   generateMasterPassCode(amount: number) : Observable<UkhesheQrCode> {
-    var headers = {
-      "Content-type": "application/json",
-      "Authorization": this.storage.jwt
-    };
 
     var request = {
       "amount": amount
     };
 
-    console.log("generate code")
+    console.log("generate code for R" + amount)
     return this.http
-        .post<UkhesheQrCode>(environment.izingaMasterpassUrl,request,  {headers: headers})
+        .post<UkhesheQrCode>(environment.izingaMasterpassUrl,request)
   }
 }

@@ -1,14 +1,20 @@
-<div class="mt-5 ml-md-3 d-flex justify-content-sm-center justify-content-md-start">
+<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
     <h3 class="page-header display-5">{{shopItem?.name}}</h3>
 </div>
 <div class="mt-3 row d-flex justify-content-center">
 
-    <div class="col-md-6">
-        <div class="item-descr mb-5 mr-md-1 row">
-            <div *ngFor="let img of shopItem?.images" class="col-md-6 mb-2 md-md-0 d-flex justify-content-center">
-                <img class="shadow-sm rounded" [src]="img">
+    <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-5">
+        <div class="d-inline-flex">
+            <span class="item-descr mr-md-1">
+                <div *ngFor="let img of shopItem?.images" class="mb-1" (click)="imageSelected = img">
+                    <img class="shadow-sm rounded thumbnail" [src]="img">
+                </div>
+            </span>
+            <div class="">
+                <img *ngIf="imageSelected" class="selected-image col" [src]="imageSelected">
             </div>
         </div>
+        
     </div>
 
     <div class="col-md-6">

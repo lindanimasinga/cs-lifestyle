@@ -5,8 +5,8 @@ import { StorageService } from '../service/storage-service.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
-import { map, mergeMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { map, mergeMap, catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-shipping',
@@ -31,6 +31,14 @@ export class ShippingComponent implements OnInit {
   createCustomer() {
     this.izingaOrderManager.getCustomerByPhoneNumber(this.userProfile.mobileNumber)
     .pipe(
+      catchError(error => {
+        if(error.status === 404) {
+          console.log("Not found user")
+          return of(null)
+        } else {
+          return throwError(error); 
+        }
+      }),
       mergeMap((profile) => profile != null ? of(profile) : this.izingaOrderManager.registerCustomer(this.userProfile))
     )
     .subscribe(user => {

@@ -1,6 +1,12 @@
 
-.item-descr img {
+.selected-image {
     width: 187.5px;
     height: 300px;
+    object-fit: cover;
+}
+
+.thumbnail {
+    width: 42.18px;
+    height: 72px;
     object-fit: cover;
 }

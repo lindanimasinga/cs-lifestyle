@@ -57,7 +57,16 @@ nav .logo {
 
 .btn {
     font-size: 1rem;
+    font-weight: 300;
     border: none;
+    border-radius: 1rem;
+    height: 50px;
+}
+
+@media(max-width: 380px) {
+    .btn {
+        width: 100% !important;
+    }
 }
 
 footer{

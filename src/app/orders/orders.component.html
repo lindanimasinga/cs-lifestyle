@@ -15,7 +15,11 @@
         <th scope="row" class="order-id">{{order.id}}</th>
         <td>{{order.date | date}}</td>
         <td>R{{order.totalAmount}}</td>
-        <td class="status">{{statusText(order.stage)}}</td>
+        <td class="status">
+          <a [routerLink]="'/order/' + order.id">
+          {{statusText(order.stage)}}
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>

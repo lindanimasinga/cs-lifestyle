@@ -19,17 +19,29 @@ export class ShopItemDescrComponent implements OnInit {
   basketItem: BasketItem;
   optionSelected: string;
   quantity: number = 1;
+  imageSelected: string;
 
   constructor(private route: ActivatedRoute,
     private izingaService: IzingaOrderManagementService,
     private storageService: StorageService) { }
 
   ngOnInit() {
+
     this.route.params.subscribe(param => {
       if (param["id"]) {
         const stockId = this.route.snapshot.paramMap.get('id');
-        this.izingaService.getStoreById(environment.storeId)
-          .subscribe(store => this.shopItem = store.stockList.find(item => item.id == stockId))
+        if(this.storageService.shop != null) {
+          var store = this.storageService.shop
+          this.shopItem = store.stockList.find(item => item.id == stockId)
+          this.imageSelected = this.shopItem.images[0]
+          
+        } else {
+          this.izingaService.getStoreById(environment.storeId)
+            .subscribe(store => {
+              this.shopItem = store.stockList.find(item => item.id == stockId)
+              this.imageSelected = this.shopItem.images[0]
+            })
+        }
       }
     });
   }

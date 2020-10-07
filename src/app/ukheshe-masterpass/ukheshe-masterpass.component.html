@@ -7,11 +7,29 @@
                         src="./assets/images/masterpass-initial.svg" class="payment-logo mx-1"> Payment</h5>
             </div>
 
-            <div class="d-flex justify-content-center mb-3">
+            <div class="d-flex justify-content-center mb-1 mt-3">
                 <ngx-qrcode [value] = "value"
                 cssClass = "qrcode"
                 errorCorrectionLevel = "L">
                 </ngx-qrcode>
+            </div>
+            <div class="d-flex justify-content-center mb-3 h5">
+                {{value}}
+            </div>
+            <div class="mx-3 mb-3">
+                <small class="mb-1 text-muted">Scan the QRCode with the following mobile apps</small>
+                <div>
+                    <img src="./assets/images/snapscan.svg" class="payment-logo mr-1">
+                    <img src="./assets/images/zapper.png" class="payment-logo mx-1">
+                    <img src="./assets/images/ukhese-logo.png" class="payment-logo mx-1">
+                    <img src="./assets/images/nedbank.jpeg" class="payment-nedbank mx-1">
+                </div>
+                <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 mb-2 shadow-sm" data-dismiss="modal">
+                        Done
+                </button>
+                <small class="text-muted">
+                    Learn more about masterpass <a href="https://www.youtube.com/watch?v=j82hJTRlCZw&feature=youtu.be" target="_blank">here</a>
+                </small>
             </div>
         </div>
     </div>

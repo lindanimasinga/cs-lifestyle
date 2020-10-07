@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     this.izingaService.getStoreById(environment.storeId)
     .subscribe(store => {
       this.store = store
+      this.storageService.shop = this.store
       this.shopItems = store.stockList;
     })
 

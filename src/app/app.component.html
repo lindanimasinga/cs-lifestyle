@@ -15,7 +15,7 @@
         <a class="nav-link" routerLink="cart">Cart</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="orders">Orders</a>
+        <a class="nav-link" routerLink="store-orders">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Contact Us</a>
@@ -30,10 +30,10 @@
 
 <div *ngIf="hasItemsInCart()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3" >
   
-  <button mat-fab class="bg-dark">
-    <a routerLink="cart">
-    <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
+  <a routerLink="cart">
+    <button mat-fab class="bg-dark">
+      <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
   </a>
-  </button>
 </div>
 

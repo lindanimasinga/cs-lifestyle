@@ -5,16 +5,16 @@
 
     <div class="row">
 
-        <div class="col-md-6 order-md-2 mb-3 mt-3">
+        <div class="col-md-8 order-md-2 mb-5 mt-3">
             <div class="d-block my-3">
-                <div class="form-check mb-2">
+                <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="paymentType" [(ngModel)]="paymentSelected"
                         value="ukheshe" checked>
                     <label class="form-check-label" for="exampleRadios1">
                         Pay with <img src="./assets/images/ukhese-logo.png" class="payment-logo mx-1"> Wallet
                     </label>
                 </div>
-                <div class="form-check mb-2">
+                <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="paymentType" [(ngModel)]="paymentSelected"
                         value="masterpass" checked>
                     <label class="form-check-label" for="exampleRadios1">
@@ -31,7 +31,7 @@
             </div>
 
 
-            <div *ngIf="paymentSelected == 'ozow'" class="row  mt-3 ">
+            <div *ngIf="paymentSelected == 'ozow'" class="row  mt-3 align-self-end">
                 <div class="col-md-12">
                     <a [href]="ozowPaymentUrl"><button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm">
                             Pay Now
@@ -61,10 +61,9 @@
         <app-ukheshe-masterpass [order]="order"> </app-ukheshe-masterpass>
 
         </div>
-        <div class="col-md-6 order-md-2 mb-3 mt-5">
+        <div class="col-md-4 order-md-2 mb-3">
             <h5 class="d-flex justify-content-between align-items-center mb-3 product">
-                <span class="text-muted">Your Final Order</span>
-                <span class="badge badge-secondary badge-pill">3</span>
+                <span class="text-muted">Your Order</span>
             </h5>
             <ul class="list-group mb-3">
                 <li *ngFor="let orderItem of order.basket.items"

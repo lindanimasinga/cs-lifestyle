@@ -38,7 +38,9 @@ export class UkhesheMasterpassComponent implements OnInit {
         this.value = qrCodeUkheshe.code
         console.log("code is " + this.value)
         },
-        () => {},
+        (error) => {
+          console.log("error is " + error)  
+        },
         () => this.paymentBusy = false
       )
   }

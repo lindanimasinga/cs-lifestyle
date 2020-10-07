@@ -7,6 +7,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrdersComponent } from './orders/orders.component';
+import { OrderItemHistoryComponent } from './order-item-history/order-item-history.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'cart', component: CheckoutComponent },
   {path : 'shipping', component: ShippingComponent},
   {path : 'payment', component: PaymentComponent},
-  {path : 'orders', component: OrdersComponent}
+  {path : 'store-orders', component: OrdersComponent},
+  {path : 'order/:id', component: OrderItemHistoryComponent}
 ];
 
 @NgModule({

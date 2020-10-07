@@ -37,6 +37,16 @@ export class IzingaOrderManagementService {
         .get<Array<Order>>(`${environment.izingaUrl}/order?phone=${mobileNumber}`)
   }
 
+  getAllOrdersByStoreId(storeId: string) {
+    return this.http
+        .get<Array<Order>>(`${environment.izingaUrl}/order?storeId=${storeId}`)
+  }
+
+  getOrderById(orderId: string) : Observable<Order> {
+    return this.http
+    .get<Order>(`${environment.izingaUrl}/order/${orderId}`)
+  }
+
   registerCustomer(userProfile: UserProfile) : Observable<UserProfile> {
     var headers = {
       "Content-type": "application/json",
@@ -48,5 +58,10 @@ export class IzingaOrderManagementService {
   getCustomerByPhoneNumber(mobileNumber: string): Observable<UserProfile> {
     return this.http
         .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`);
+  }
+
+  getCustomerById(customerId: string): Observable<UserProfile> {
+    return this.http
+        .get<UserProfile>(`${environment.izingaUrl}/user/${customerId}`);
   }
 }
