@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   images = [
     "https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-9/119056896_147821566975668_1658580827841461240_o.jpg?_nc_cat=106&_nc_sid=e3f864&_nc_ohc=U78mvCDNvYQAX_ZEiKp&_nc_ht=scontent-jnb1-1.xx&oh=84638c5634326582fd9296cac40e7c56&oe=5F9D6802",
-    "https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/richardquinndebenhams.jpg",
+    "https://assets.superbalistcdn.co.za/500x720/filters:quality(75):format(jpg)/1946854/original.jpg",
     "https://instagram.fcpt7-1.fna.fbcdn.net/v/t51.2885-15/e35/117301761_629230881051602_1316649096769295735_n.jpg?_nc_ht=instagram.fcpt7-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=25hz-8510rQAX-JiJJA&oh=7e664fb6bfe93c01aef639bcb23d4ef0&oe=5F685138",
     "https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/original.jpg"]
   

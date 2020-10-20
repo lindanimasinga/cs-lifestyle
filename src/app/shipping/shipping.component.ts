@@ -55,7 +55,7 @@ export class ShippingComponent implements OnInit {
       shopId: environment.storeId,
       orderType: Order.OrderTypeEnum.ONLINE,
       stage: Order.StageEnum._0CUSTOMERNOTPAID,
-      description: `CS order ${this.userProfile.mobileNumber}`,
+      description: `ord-${this.userProfile.mobileNumber}`,
       shippingData: {
         fromAddress: "45 CS lifestyle street",
         toAddress: this.userProfile.address,
@@ -69,7 +69,7 @@ export class ShippingComponent implements OnInit {
     this.izingaOrderManager.startOrder(this.order)
     .subscribe(order => {
       this.order = order
-      this.order.description =  `CS order ${this.userProfile.mobileNumber}:${order.id}`,
+      this.order.description =  `ord-${this.order.id}`,
       this.storageService.order = order
       this.router.navigate(['payment'])
     })

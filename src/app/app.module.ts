@@ -26,6 +26,7 @@ import { UkheshePaymentComponent } from './ukheshe-payment/ukheshe-payment.compo
 import { UkhesheSignupComponent } from './ukheshe-signup/ukheshe-signup.component';
 import { UkhesheMasterpassComponent } from './ukheshe-masterpass/ukheshe-masterpass.component';
 import { OrderItemHistoryComponent } from './order-item-history/order-item-history.component';
+import { OzowPaymentComponent } from './ozow-payment/ozow-payment.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OrderItemHistoryComponent } from './order-item-history/order-item-histo
     UkheshePaymentComponent,
     UkhesheSignupComponent,
     UkhesheMasterpassComponent,
-    OrderItemHistoryComponent
+    OrderItemHistoryComponent,
+    OzowPaymentComponent
   ],
   imports: [
     BrowserModule,

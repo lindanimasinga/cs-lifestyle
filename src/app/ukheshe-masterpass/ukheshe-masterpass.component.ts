@@ -35,7 +35,7 @@ export class UkhesheMasterpassComponent implements OnInit {
     this.ukhesheService.generateMasterPassCode(this.order.totalAmount)
       .subscribe(qrCodeUkheshe => {
         this.ukhesheMasterpassCodeSuccess = true;
-        this.value = qrCodeUkheshe.code
+        this.value = qrCodeUkheshe?.code
         console.log("code is " + this.value)
         },
         (error) => {

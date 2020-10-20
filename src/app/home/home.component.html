@@ -43,10 +43,8 @@
     <h3 class="display-5 page-header">Summer Selection</h3>
   </div>
 
-  <div class="d-flex align-items-center">
-    <div class="row">
+  <div class="d-flex align-items-center row">
       <app-shop-item class="col-md-4 col-lg-3 col-xl-3" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
-    </div>
   </div>
   
   

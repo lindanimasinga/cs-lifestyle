@@ -74,4 +74,8 @@ export class UkheshePaymentComponent implements OnInit {
       )
   }
 
+  openOrderPage() {
+    
+  }
+
 }

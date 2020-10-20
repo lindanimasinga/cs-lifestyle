@@ -1,4 +1,12 @@
+@font-face {
+    font-family: Calibri;
+    src: url("/assets/fonts/Calibri.ttf") format("opentype");
+}
 
+@font-face {
+    font-family: Catamaran;
+    src: url("/assets/fonts/Catamaran-Medium.ttf") format("opentype");
+}
 
 .page-header {
     color: #ad8377 !important;
@@ -9,7 +17,7 @@
 }
 
 #app-root {
- min-height: calc(100vh - 227px);
+    min-height: calc(100vh - 227px);
 }
 
 .bg-dark {
@@ -69,26 +77,42 @@ nav .logo {
     }
 }
 
-footer{
+footer {
     padding-left: 16px;
     padding-right: 16px;
     background-repeat: no-repeat !important;
     background: #ad8377;
-    background: linear-gradient(0deg, rgba(173,131,119,0.40931372549019607) 28%, rgba(255,255,255,1) 93%);
+    background: linear-gradient(0deg, rgba(173, 131, 119, 0.40931372549019607) 28%, rgba(255, 255, 255, 1) 93%);
 }
 
 footer h5 {
     color: #ad8377;
 }
 
-html, body { 
+html, body {
     height: 100%;
-    
 }
 
-body { 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+body {
     background-repeat: no-repeat !important;
-    background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 70%, rgba(173,131,119,0.40931372549019607) 100%);
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; }
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 70%, rgba(173, 131, 119, 0.40931372549019607) 100%);
+    margin: 0;
+    font-family: Catamaran
+}

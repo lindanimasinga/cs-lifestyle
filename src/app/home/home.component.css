@@ -76,6 +76,10 @@ img.headline {
    color: #ad8377;
  }
 
+ .lead {
+   height: 60px;
+ }
+
  body { 
   background: linear-gradient(0deg, rgba(255,255,255,1) 75%, rgba(173,131,119,1) 100%) !important;
 }

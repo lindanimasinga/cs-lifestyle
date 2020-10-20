@@ -33,9 +33,10 @@
 
             <div *ngIf="paymentSelected == 'ozow'" class="row  mt-3 align-self-end">
                 <div class="col-md-12">
-                    <a [href]="ozowPaymentUrl"><button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm">
+                    <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm" data-toggle="modal"
+                        data-target="#ozow-modal">
                             Pay Now
-                        </button></a>
+                        </button>
                 </div>
             </div>
 
@@ -57,11 +58,12 @@
                 </div>
             </div>
 
+        <app-ozow-payment [paymentUrl]="ozowPaymentUrl"></app-ozow-payment>    
         <app-ukheshe-payment [order]="order"></app-ukheshe-payment>
         <app-ukheshe-masterpass [order]="order"> </app-ukheshe-masterpass>
 
         </div>
-        <div class="col-md-4 order-md-2 mb-3">
+        <div *ngIf="order" class="col-md-4 order-md-2 mb-3">
             <h5 class="d-flex justify-content-between align-items-center mb-3 product">
                 <span class="text-muted">Your Order</span>
             </h5>
