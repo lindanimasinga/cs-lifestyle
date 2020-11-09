@@ -14,7 +14,7 @@
       <tr *ngFor="let order of orders">
         <th scope="row" class="order-id">{{order.id}}</th>
         <td>{{order.date | date}}</td>
-        <td>R{{order.totalAmount}}</td>
+        <td>{{order.totalAmount | currency:'R'}}</td>
         <td class="status">
           <a [routerLink]="'/order/' + order.id">
           {{statusText(order.stage)}}

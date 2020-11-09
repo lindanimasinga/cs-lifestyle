@@ -9,9 +9,9 @@
             <div class="d-block my-3">
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="paymentType" [(ngModel)]="paymentSelected"
-                        value="ukheshe" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Pay with <img src="./assets/images/ukhese-logo.png" class="payment-logo mx-1"> Wallet
+                        value="ozow">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Pay with <img src="./assets/images/ozow-black.png" class="payment-logo mx-1"> EFT
                     </label>
                 </div>
                 <div class="form-check mb-3">
@@ -23,9 +23,9 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="paymentType" [(ngModel)]="paymentSelected"
-                        value="ozow">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Pay with <img src="./assets/images/ozow-black.png" class="payment-logo mx-1"> EFT
+                        value="ukheshe" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Pay with <img src="./assets/images/ukhese-logo.png" class="payment-logo mx-1"> Wallet
                     </label>
                 </div>
             </div>
@@ -74,21 +74,14 @@
                         <h6 class="my-0">{{orderItem.name}}</h6>
                         <small class="text-muted">{{orderItem.description}}</small>
                     </div>
-                    <span class="text-muted">R{{orderItem.price}}</span>
+                    <span class="text-muted">{{orderItem.price | currency:'R'}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <div class="my-0">Shipping Fee</div>
+                        <div class="my-0">Shipping and Processing</div>
                         <small class="text-muted">Shipping to {{order.shippingData.toAddress}}</small>
                     </div>
-                    <span class="text-muted">R{{order.shippingData.fee}}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <div class="my-0">Service Fee</div>
-                        <small class="text-muted">Service fee</small>
-                    </div>
-                    <span class="text-muted">R{{order.serviceFee}}</span>
+                    <span class="text-muted">{{order.shippingData.fee + order.serviceFee | currency:'R'}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (ZAR)</span>

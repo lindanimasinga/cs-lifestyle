@@ -10,6 +10,7 @@ import { ShopItemDescrComponent } from './shop-item-descr/shop-item-descr.compon
 import { HomeComponent } from './home/home.component';
 import { IzingaOrderManagementService} from './service/izinga-order-management.service'
 import {UkhesheService} from './service/ukheshe.service'
+import {FirebaseService} from './service/firebase.service'
 import { StorageService} from './service/storage-service.service';
 import {PaymentService}  from './service/payment.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -62,6 +63,7 @@ import { OzowPaymentComponent } from './ozow-payment/ozow-payment.component';
     StorageService,
     PaymentService,
     UkhesheService,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

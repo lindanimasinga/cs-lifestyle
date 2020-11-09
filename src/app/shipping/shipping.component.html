@@ -1,21 +1,60 @@
-<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
+<div name="scrollTo" class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
     <h3 class="page-header display-5">Shipping</h3>
 </div>
-<div class="container mt-3">
+
+<div *ngIf="!isPhoneNumberVerified" class="container mt-3">
+    <div class="mb-5 text-muted">We need to verify your cellphone number is correct and active before we process your order. Please
+        enter your cellphone number below. </div>
+    <div class="mb-3">
+        <label for="cellphone">Cellphone Number</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">+27</span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="userProfile.mobileNumber" name="mobileNumber"
+                placeholder="cellphone" required [disabled]="isVerificationRequested">
+            <div class="invalid-feedback" style="width: 100%;">
+                Your cellphone number is required.
+            </div>
+        </div>
+    </div>
+    <div id="recaptcha-container" [style.visibility]="isVerificationRequested? 'hidden': 'visible'"></div>
+    <div *ngIf="hasError" class="error my-3">{{errorMessage}}</div>
+    <div *ngIf="isVerificationRequested" class="mb-3">
+        <div class="text-muted mb-3">We have sent you a verification code to you via sms. Please enter the code below. </div>
+        <label for="cellphone">Verification Code</label>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="code" name="mobileNumber" placeholder="cellphone"
+                required>
+            <div class="invalid-feedback" style="width: 100%;">
+                Your cellphone number is required.
+            </div>
+        </div>
+        <div class="text-muted mb-3 mt-1 resend" (click)="resend()">To resend click <a>here</a></div>
+    </div>
+
+    <button *ngIf="!isVerificationRequested" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit"
+        (click)="verify()">Get OTP</button>
+    <button *ngIf="isVerificationRequested" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit"
+        (click)="confirmCode()">Confirm</button>
+</div>
+<div *ngIf="isPhoneNumberVerified" class="container mt-3">
     <div class="row">
         <div class="col order-md-1">
             <form class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" [(ngModel)]="userProfile.name" name="name" value="" required>
+                        <input type="text" class="form-control" [(ngModel)]="userProfile.name" name="name" value=""
+                            required>
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" [(ngModel)]="userProfile.description" name="surname" value="" required>
+                        <input type="text" class="form-control" [(ngModel)]="userProfile.description" name="surname"
+                            value="" required>
                         <div class="invalid-feedback">
                             Valid last name is required.
                         </div>
@@ -28,7 +67,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+27</span>
                         </div>
-                        <input type="text" class="form-control" [(ngModel)]="userProfile.mobileNumber" name="mobileNumber" placeholder="cellphone" required>
+                        <input type="text" class="form-control" [value]="userProfile.mobileNumber" name="mobileNumber"
+                            placeholder="cellphone" disabled>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your cellphone number is required.
                         </div>
@@ -37,7 +77,8 @@
 
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" [(ngModel)]="userProfile.emailAddress" name="email" placeholder="you@example.com">
+                    <input type="email" class="form-control" [(ngModel)]="userProfile.emailAddress" name="email"
+                        placeholder="you@example.com">
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
@@ -45,7 +86,8 @@
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" [(ngModel)]="userProfile.address" name="address" placeholder="1234 Main St" required>
+                    <input type="text" class="form-control" [(ngModel)]="userProfile.address" name="address"
+                        placeholder="1234 Main St" required>
                     <div class="invalid-feedback">
                         Please enter your shipping address.
                     </div>
@@ -53,46 +95,16 @@
 
                 <div class="mb-3">
                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite">
+                    <input type="text" class="form-control" id="address2" name="address2"
+                        placeholder="Apartment or suite">
                 </div>
 
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
-                </div>
-                <hr class="mb-4">
 
-                <button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm" type="submit" (click)="createCustomer()">Save and Continue</button>
+                <hr class="mb-4">
+                <div class="text-muted">Your contact information will be saved for us to be able to contact you to get
+                    your order at your doorstep.</div>
+                <button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm" type="submit" (click)="startOrder()">Save
+                    and Continue</button>
             </form>
         </div>
     </div>

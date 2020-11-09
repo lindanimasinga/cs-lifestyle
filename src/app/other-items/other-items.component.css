@@ -12,15 +12,24 @@
     object-fit: cover;
 }
 
-.shop-item p {
+.shop-item .details {
     display: flex;
     position: sticky;
     margin-top: 175px;
     margin-left: 16px;
-    color: #ad8377;
+    margin-right: 16px;
+    color: #ad8377  ;
     font-weight: 400;
     font-size: 14px;
     z-index: 3;
+}
+
+.itemName {
+    white-space: nowrap; 
+    width: 80px;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .gradient-pink::after {

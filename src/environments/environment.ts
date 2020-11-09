@@ -8,6 +8,8 @@ export const environment = {
   izingaUrl: "https://api-uat.izinga.co.za/",
   izingaMasterpassUrl: "https://ellyw5af54.execute-api.af-south-1.amazonaws.com/prod/ukheshe-masterpass-code",
   ukhesheUrl: "https://ukheshe-sandbox.jini.rocks/ukheshe-conductor/rest/v1",
+  ukhesheAppleUrl: "https://apps.apple.com/za/app/ukheshe/id1350353337",
+  ukhesheAndroidUrl: "https://play.google.com/store/apps/details?id=guru.jini.ukheshe&hl=en_ZA&gl=US",
   ukhesheMainShopAccount: "0812815707",
   ukhesheCustomerId: 534,
   ozow_api_key: "760c42eec84640cf98aa1558135a9d90",
@@ -20,7 +22,7 @@ export const environment = {
   ozow_succeess_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
   ozow_cancel_url:`${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
   ozow_error_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_is_a_test: true
+  ozow_is_a_test: false
 };
 
 /*

@@ -40,6 +40,10 @@ export class AppComponent {
     return this.storageService.basket.items.length > 0;
   }
 
+  shouldShowIcon(): boolean {
+    return this.router.url == "/" || this.router.url.startsWith("/item/");
+  }
+
   get cartNumberOfItems() { 
     return this.storageService.basket.items.length;
   }

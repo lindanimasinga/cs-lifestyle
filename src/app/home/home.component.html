@@ -1,28 +1,11 @@
 
-<div id="carousel-container" class="carousel slide mb-1" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-container" data-slide-to="0" class="active"></li>
-      <li *ngFor="let imageUrl of images ; let number = index;" data-target="#carousel-container" data-slide-to="{{images.indexOf(imageUrl)}}"></li>
-    </ol>
-    <div class="carousel-inner rounded shadow-sm">
-      <div class="carousel-item active ">
-        <img src="{{images[0]}}" class="" alt="...">
-      </div>
-      <div *ngFor="let imageUrl of images ; let number = index;" class="carousel-item">
-        <img src="{{images[number]}}" class="" alt="...">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carousel-container" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-container" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+
+  
+  <div class="carousel" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "percentPosition": false}'>
+    <img *ngFor="let imageUrl of images ; let number = index;" src="{{images[number]}}" class="carousel-cell" alt="...">
   </div>
   
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5 ">
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5">
     <div class="bg-light mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden rounded shadow-sm">
       <div class="my-3 py-3">
         <h3 class="display-5">Create Everyday</h3>

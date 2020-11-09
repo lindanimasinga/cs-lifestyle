@@ -12,12 +12,13 @@
     object-fit: cover;
 }
 
-.shop-item p {
+.shop-item .details {
     display: flex;
     position: sticky;
     margin-top: 260px;
     margin-left: 16px;
-    color: #ad8377;
+    margin-right: 16px;
+    color: #ad8377  ;
     font-weight: 400;
     font-size: 16px;
     z-index: 3;

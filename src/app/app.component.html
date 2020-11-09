@@ -28,7 +28,7 @@
 <router-outlet></router-outlet>
 </div>
 
-<div *ngIf="hasItemsInCart()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3" >
+<div *ngIf="hasItemsInCart() && shouldShowIcon()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3" >
   
   <a routerLink="cart">
     <button mat-fab class="bg-dark">

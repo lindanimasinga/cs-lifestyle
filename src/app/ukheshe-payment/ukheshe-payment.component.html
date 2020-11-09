@@ -5,9 +5,9 @@
                         <div class="modal-header">
                             <h5 class="modal-title text-muted" id="staticBackdropLabel"><img src="./assets/images/ukhese-logo.png"
                                     class="payment-logo mx-1"> Payment</h5>
-                            <h5 class="modal-title text-muted" *ngIf="ukhesheUserData">Avialable Balance: R{{ukhesheUserData?.availableBalance}}</h5>        
+                            <h5 class="modal-title text-muted" *ngIf="ukhesheUserData">Avialable Balance: {{ukhesheUserData?.availableBalance | currency:'R'}}</h5>        
                         </div>
-                        <div *ngIf="paymentSelected == 'ukheshe' && !isUkhesheLoggedIn() && !paymentBusy" class="modal-body">
+                        <div *ngIf="!isUkhesheLoggedIn() && !paymentBusy" class="modal-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="cc-name">CellPhone Number</label>
@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div *ngIf="hasError"class="my-3 error">{{errorMessage}}</div>
                             <div class="row  mt-3 ">
                                 <div class="col-md-12">
                                     <button class="btn btn-lg btn-block btn-primary bg-ukheshe"
@@ -35,22 +35,28 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="my-3">
+                                <a [href]="ukhesheDownloadUrl" target="_blank">Click here to sign up</a>
+                            </div>
                         </div>
-                        <div *ngIf="paymentSelected == 'ukheshe' && isUkhesheLoggedIn() && !paymentBusy && !orderCompleted"
+                        <div *ngIf="isUkhesheLoggedIn() && !paymentBusy && !orderCompleted"
                             class="modal-body">
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>Total (ZAR)</span>
-                                    <strong>R{{order.totalAmount}}</strong>
+                                    <strong>{{order.totalAmount | currency:'R'}}</strong>
                                 </li>
                             </ul>
-                            <div class="mt-3">
+                            <div *ngIf="!insufficientFunds" class="mt-3">
                                 Click continue to finalise your order.
+                            </div>
+                            <div *ngIf="insufficientFunds" class="mt-3 error">
+                                You dont have enough funds avalable. Please topup your wallet on Ukheshe app.
                             </div>
 
                             <div class="row  mt-3 ">
                                 <div class="col-md-12">
-                                    <button class="btn btn-lg btn-block btn-primary bg-ukheshe" (click)="payForOrder()">
+                                    <button class="btn btn-lg btn-block btn-primary bg-ukheshe" (click)="payForOrder()" [disabled]="insufficientFunds">
                                         Continue To Pay
                                     </button>
                                 </div>

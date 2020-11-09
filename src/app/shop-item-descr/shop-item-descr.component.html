@@ -21,7 +21,7 @@
 
         <div class="product row">
             <div class="col-6 product h5 ">Price</div>
-            <div class="col-6 product h5 price">R {{shopItem?.price}}</div>
+            <div class="col-6 product h5 price">{{shopItem?.price | currency:'R'}}</div>
         </div>
 
         <div class="mb-3">{{shopItem?.description}}</div>
