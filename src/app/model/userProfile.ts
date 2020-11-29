@@ -28,6 +28,7 @@ export class UserProfile {
     emailAddress?: string;
     modifiedDate?: Date;
     name?: string;
+    surname?: string;
     responseTimeMinutes?: number;
     role: UserProfile.RoleEnum;
     servicesCompleted?: number;

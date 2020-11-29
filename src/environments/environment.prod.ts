@@ -8,4 +8,5 @@ export const environment = {
   ukhesheAndroidUrl: "https://play.google.com/store/apps/details?id=guru.jini.ukheshe&hl=en_ZA&gl=US",
   ukhesheMainShopAccount: "0812815707",
   ukhesheCustomerId: 534,
+  payFastUrl: "https://sandbox.payfast.co.za/eng/process"
 };

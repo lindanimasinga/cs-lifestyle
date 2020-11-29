@@ -40,11 +40,12 @@ export namespace Order {
         ONLINE: 'ONLINE' as OrderTypeEnum,
         INSTORE: 'INSTORE' as OrderTypeEnum
     };
-    export type PaymentTypeEnum = 'UKHESHE' | 'CASH' | "OZOW";
+    export type PaymentTypeEnum = 'UKHESHE' | 'CASH' | "OZOW" | "PAYFAST";
     export const PaymentTypeEnum = {
         UKHESHE: 'UKHESHE' as PaymentTypeEnum,
         CASH: 'CASH' as PaymentTypeEnum,
-        OZOW: 'OZOW' as PaymentTypeEnum
+        OZOW: 'OZOW' as PaymentTypeEnum,
+        PAYFAST: 'PAYFAST' as PaymentTypeEnum
     };
     export type StageEnum = 'STAGE_0_CUSTOMER_NOT_PAID' | 'STAGE_1_WAITING_STORE_CONFIRM' | 'STAGE_2_STORE_PROCESSING' | 'STAGE_3_READY_FOR_COLLECTION' | 'STAGE_4_ON_THE_ROAD' | 'STAGE_5_ARRIVED' | 'STAGE_6_WITH_CUSTOMER' | 'STAGE_7_ALL_PAID';
     export const StageEnum = {

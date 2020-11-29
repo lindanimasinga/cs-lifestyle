@@ -36,9 +36,9 @@ export class PaymentService {
       TransactionReference: order.description,
       BankReference: order.description,
       Customer: "CelesteMoniqueCustomer",
-      CancelUrl: environment.ozow_cancel_url,
+      CancelUrl: environment.ozow_payment_cancel_url,
       ErrorUrl: environment.ozow_error_url ,
-      NotifyUrl: environment.ozow_notify_url,
+      NotifyUrl: environment.ozo_payment_notify_url,
       SuccessUrl: environment.ozow_succeess_url,
       IsTest: environment.ozow_is_a_test
     }
@@ -50,10 +50,10 @@ Amount: order.totalAmount,
 TransactionReference: order.description,
 BankReference: order.description,
 Customer: "CelesteMoniqueCustomer",
-CancelUrl: environment.ozow_cancel_url,
+CancelUrl: environment.ozow_payment_cancel_url,
 ErrorUrl: environment.ozow_error_url,
 SuccessUrl: environment.ozow_succeess_url,
-NotifyUrl: environment.ozow_notify_url,
+NotifyUrl: environment.ozo_payment_notify_url,
 IsTest: environment.ozow_is_a_test
     }
 

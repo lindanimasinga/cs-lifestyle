@@ -18,11 +18,12 @@ export const environment = {
   ozow_site_code: "CUR-CEL-001",
   ozow_country_code: "ZA",
   ozow_currency_code: "ZAR",
-  ozow_notify_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_succeess_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_cancel_url:`${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_error_url: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/payment`,
-  ozow_is_a_test: false
+  ozo_payment_notify_url: `${window.location.origin}/payment`,
+  ozow_succeess_url: `${window.location.origin}/payment`,
+  ozow_payment_cancel_url:`${window.location.origin}/payment`,
+  ozow_error_url: `${window.location.origin}/payment`,
+  ozow_is_a_test: false,
+  payFastUrl: "https://sandbox.payfast.co.za/eng/process"
 };
 
 /*

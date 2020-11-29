@@ -14,7 +14,6 @@ export class AppComponent {
   title = 'cs-clothing-web';
 
   constructor(private storageService: StorageService, private router: Router) {
-
   }
 
   ngOnInit() {
@@ -37,7 +36,7 @@ export class AppComponent {
   }
   
   hasItemsInCart(): boolean {
-    return this.storageService.basket.items.length > 0;
+    return this.storageService.basket != null && this.storageService.basket.items.length > 0;
   }
 
   shouldShowIcon(): boolean {
@@ -45,6 +44,6 @@ export class AppComponent {
   }
 
   get cartNumberOfItems() { 
-    return this.storageService.basket.items.length;
+    return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
   }
 }

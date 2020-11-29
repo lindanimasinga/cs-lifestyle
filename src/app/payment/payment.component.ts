@@ -51,6 +51,7 @@ export class PaymentComponent implements OnInit {
       var transactionId = queryParamMap['TransactionId']
       var transactionRef: string = queryParamMap['TransactionReference']
       var status = queryParamMap['Status']
+      var paymentType: string = queryParamMap['type']
       var orderId = transactionRef.replace("ord-", "")
       console.log(`transaction id is ${transactionId}`)
       console.log(`status id is ${status}`)
@@ -62,8 +63,14 @@ export class PaymentComponent implements OnInit {
           mergeMap(order => {
             if (status == "Complete") {
               this.order = order
-              this.order.description = "ozow-" + transactionId
-              this.order.paymentType = "OZOW"
+              if(paymentType !== null && paymentType.toLocaleLowerCase() == "payfast") {
+                this.order.description = "payfast-" + transactionId
+                this.order.paymentType = "PAYFAST"
+              } else {
+                this.order.description = "ozow-" + transactionId
+                this.order.paymentType = "OZOW"
+              }
+              
               return this.izingaService.finishOrder(this.order).
                 pipe(
                   map(order => {

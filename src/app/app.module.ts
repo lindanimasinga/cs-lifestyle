@@ -28,6 +28,8 @@ import { UkhesheSignupComponent } from './ukheshe-signup/ukheshe-signup.componen
 import { UkhesheMasterpassComponent } from './ukheshe-masterpass/ukheshe-masterpass.component';
 import { OrderItemHistoryComponent } from './order-item-history/order-item-history.component';
 import { OzowPaymentComponent } from './ozow-payment/ozow-payment.component';
+import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
+import { PayfastComponent } from './payfast/payfast.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { OzowPaymentComponent } from './ozow-payment/ozow-payment.component';
     UkhesheSignupComponent,
     UkhesheMasterpassComponent,
     OrderItemHistoryComponent,
-    OzowPaymentComponent
+    OzowPaymentComponent,
+    PlaceAutocompleteComponent,
+    PayfastComponent
   ],
   imports: [
     BrowserModule,

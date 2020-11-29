@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile, Order, ShippingData } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
@@ -16,9 +16,16 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class ShippingComponent implements OnInit {
 
+  //@ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  
   isPhoneNumberVerified = false
   isVerificationRequested = false
   code: string
+  shippingBuildingType: ShippingData.BuildingTypeEnum = ShippingData.BuildingTypeEnum.APARTMENT
+  buildingTypeEnums = ShippingData.BuildingTypeEnum
+  shippingBuildingUnitNumber: string
+  shippingBuildingName: string
+  additionalInstructions: string
 
   userProfile: UserProfile = {
     imageUrl: "https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg",
@@ -50,11 +57,13 @@ export class ShippingComponent implements OnInit {
     return this.userProfile.mobileNumber
   }
 
-  set phoneNumber(number: string) {
-    this.userProfile.mobileNumber =  number
+  set phoneNumber(phoneNumber: string) {
+    this.userProfile.mobileNumber =  phoneNumber
   }
 
   verify() {
+    this.phoneNumber = this.phoneNumber.startsWith("0") ? 
+      this.phoneNumber.replace("0", "+27") : this.phoneNumber.startsWith("27") ? "+27" + this.phoneNumber : this.phoneNumber;
     this.firebaseService.requestVerification(this.phoneNumber)
       .subscribe(() => {
         this.isVerificationRequested = true
@@ -105,6 +114,7 @@ export class ShippingComponent implements OnInit {
   }
 
   startOrder() {
+    console.log(`enum is ${JSON.stringify(this.shippingBuildingType)}`)
     var customerObsv = this.userProfile.id != null ? of(this.userProfile) : this.createCustomer()
     customerObsv.pipe(
       mergeMap(() => {
@@ -116,12 +126,14 @@ export class ShippingComponent implements OnInit {
           stage: Order.StageEnum._0CUSTOMERNOTPAID,
           description: `ord-${this.userProfile.mobileNumber}`,
           shippingData: {
-            fromAddress: "45 CS lifestyle street",
+            fromAddress: "Celeste Monique Shop",
             toAddress: this.userProfile.address,
             messengerId: "ffd4c856-644f-4453-a5ed-84689801a747",
-            buildingType: ShippingData.BuildingTypeEnum.HOUSE,
+            buildingType: this.shippingBuildingType,
+            unitNumber: this.shippingBuildingUnitNumber,
+            buildingName: this.shippingBuildingName,
             type: ShippingData.TypeEnum.DELIVERY,
-            additionalInstructions: "call me at 10111"
+            additionalInstructions: this.additionalInstructions
           }
         }
         return this.izingaOrderManager.startOrder(this.order)

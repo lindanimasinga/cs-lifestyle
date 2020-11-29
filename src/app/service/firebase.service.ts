@@ -36,9 +36,7 @@ export class FirebaseService {
 
   requestVerification(phoneNumber: string): Observable<firebase.default.auth.ConfirmationResult> {
     const appVerifier = this.recaptchaVerifier;
-    const phoneNumberString = phoneNumber.startsWith("0") ? phoneNumber.replace("0", "+27") : "+27" + phoneNumber;
-
-    var promise = firebase.default.auth().signInWithPhoneNumber(phoneNumberString, appVerifier)
+    var promise = firebase.default.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
     return from(promise)
       .pipe(
         map(resp => this.confirmResults = resp)

@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
     })
 
     this.images = [
-        "https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-9/119056896_147821566975668_1658580827841461240_o.jpg?_nc_cat=106&_nc_sid=e3f864&_nc_ohc=U78mvCDNvYQAX_ZEiKp&_nc_ht=scontent-jnb1-1.xx&oh=84638c5634326582fd9296cac40e7c56&oe=5F9D6802",
+        "https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/celeste-m.jpg",
+        "https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/jumpsuite-black-1.jpg",
         "http://demo.minimalthemes.net/opamo/assets/images/header-03.jpg",
         "http://demo.minimalthemes.net/opamo/assets/images/header-02.jpg",
         "http://demo.minimalthemes.net/opamo/assets/images/header-04.jpg"];
