@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import {StoreProfile, Order, UserProfile} from '../model/models'
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {StoreProfile, Order, UserProfile, Promotion} from '../model/models'
 import { StorageService } from './storage-service.service';
 import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class IzingaOrderManagementService {
     };
     return this.http
         .post<Order>(`${environment.izingaUrl}/order`, order, {headers: headers})
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          })
+        )
   }
 
   finishOrder(order: Order) : Observable<Order> {
@@ -30,21 +37,51 @@ export class IzingaOrderManagementService {
     };
     return this.http
         .patch<Order>(`${environment.izingaUrl}order/${order.id}`, order, {headers: headers})
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 
   getAllOrdersByMobileNumber(mobileNumber: string) : Observable<Array<Order>> {
     return this.http
         .get<Array<Order>>(`${environment.izingaUrl}/order?phone=${mobileNumber}`)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 
   getAllOrdersByStoreId(storeId: string) {
     return this.http
         .get<Array<Order>>(`${environment.izingaUrl}/order?storeId=${storeId}`)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
+  }
+
+  getAllPromotionsByStoreId(storeId: string) {
+    return this.http
+        .get<Array<Promotion>>(`${environment.izingaUrl}/promotion?storeType=${environment.storeType}&storeId=${storeId}`)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 
   getOrderById(orderId: string) : Observable<Order> {
     return this.http
     .get<Order>(`${environment.izingaUrl}/order/${orderId}`)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.storage.errorMessage = error.message
+        return throwError(error)
+      }))
   }
 
   registerCustomer(userProfile: UserProfile) : Observable<UserProfile> {
@@ -52,16 +89,31 @@ export class IzingaOrderManagementService {
       "Content-type": "application/json",
     };
     return this.http
-        .post<UserProfile>(`${environment.izingaUrl}/user`, userProfile, {headers: headers});
+        .post<UserProfile>(`${environment.izingaUrl}/user`, userProfile, {headers: headers})
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 
   getCustomerByPhoneNumber(mobileNumber: string): Observable<UserProfile> {
     return this.http
-        .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`);
+        .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 
   getCustomerById(customerId: string): Observable<UserProfile> {
     return this.http
-        .get<UserProfile>(`${environment.izingaUrl}/user/${customerId}`);
+        .get<UserProfile>(`${environment.izingaUrl}/user/${customerId}`)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.message
+            return throwError(error)
+          }))
   }
 }

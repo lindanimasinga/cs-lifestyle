@@ -1,2 +1,7 @@
-<input [(ngModel)]="address" type="text" class="form-control" id="searchTextField" name="street"
-    placeholder="Apartment or suite">
+<input [(ngModel)]="address" type="text" class="form-control" id="searchTextField" name="addressModel"
+    placeholder="Street Address" #addressModel="ngModel">
+    <div *ngIf="addressModel.invalid && (addressModel.dirty || addressModel.touched)">
+        <div *ngIf="addressModel.errors.required" class="error">
+            Valid street address is required.
+        </div>
+    </div>

@@ -25,6 +25,7 @@ export class PaymentComponent implements OnInit {
   paymentBusy = false;
   paymentSuccesful = false
   orderCompleted = false
+  shopName: string
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +42,8 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.order != null) {
-      this.paymentService.generatePaymentUrl(this.order)
+      this.shopName = this.storageService.shop?.name
+      this.paymentService.generatePaymentUrl(this.order, this.shopName)
         .subscribe(url => {
           this.ozowPaymentUrl = url;
         })
@@ -86,6 +88,12 @@ export class PaymentComponent implements OnInit {
           this.storageService.order = order
           if(order.stage == Order.StageEnum._1WAITINGSTORECONFIRM) {
             this.router.navigate(['order', order.id])
+          }
+
+          this.shopName = this.storageService?.shop?.name
+          if(this.shopName == null) {
+            this.izingaService.getStoreById(order.shopId)
+              .subscribe(shop => this.shopName = shop.name)
           }
         },
           (error) => {

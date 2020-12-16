@@ -26,7 +26,7 @@ export class PaymentService {
     }
   }
 
-  generatePaymentUrl(order: Order): Observable<string> {
+  generatePaymentUrl(order: Order, shopName: string): Observable<string> {
 
     var ozowPayment: OzowPaymentRequest = {
       SiteCode : environment.ozow_site_code,
@@ -35,7 +35,7 @@ export class PaymentService {
       Amount: order.totalAmount,
       TransactionReference: order.description,
       BankReference: order.description,
-      Customer: "CelesteMoniqueCustomer",
+      Customer: `${shopName} customer`,
       CancelUrl: environment.ozow_payment_cancel_url,
       ErrorUrl: environment.ozow_error_url ,
       NotifyUrl: environment.ozo_payment_notify_url,
@@ -49,7 +49,7 @@ CurrencyCode: "ZAR",
 Amount: order.totalAmount,
 TransactionReference: order.description,
 BankReference: order.description,
-Customer: "CelesteMoniqueCustomer",
+Customer: `${shopName} customer`,
 CancelUrl: environment.ozow_payment_cancel_url,
 ErrorUrl: environment.ozow_error_url,
 SuccessUrl: environment.ozow_succeess_url,

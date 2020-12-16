@@ -14,6 +14,8 @@ export class PayfastComponent implements OnInit {
 
   @Input() order: Order
   orderHash: string
+  @Input()
+  storeName: string
   environment = environment
   data = []
 
@@ -21,10 +23,10 @@ export class PayfastComponent implements OnInit {
 
   ngOnInit(): void {
     var dataMap = new Map<string, any>([
-      ["merchant_id" , "11522007"],
-      ["merchant_key" , "xr8z5udsdz9t9"],
+      ["merchant_id" , environment.payfast_merchant_id],
+      ["merchant_key" , environment.payfast_merchant_key],
       ["amount" , `${this.order.totalAmount}`],
-      ["item_name", "Celeste Clothing"],
+      ["item_name", this.storeName],
       ["return_url", `${environment.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],
       ["cancel_url", `${environment.ozow_payment_cancel_url}?Status=cancel&type=payfast&TransactionReference=${this.order.id}`],
       ["notify_url", `${environment.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],

@@ -18,5 +18,7 @@ export interface Promotion {
     imageUrl?: string;
     message?: string;
     shopId?: string;
+    stockId?: string;
     title?: string;
+    shopType?: "CLOTHING"
 }

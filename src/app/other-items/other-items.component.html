@@ -1,10 +1,10 @@
 <div class="mb-3 product h5">Similar Items</div>
 <div class="row d-flex justify-content-sm-center justify-content-md-start">
     <div class="col-6 col-md-3 col-lg-2 col-xl-2 d-flex justify-content-center" *ngFor="let item of shopItems; let number = index"  [shopItem]="item" [themeDark]="number%2 == 0">
-    <div class="d-flex justify-content-center">
-        <div class="shop-item-container mx-3 my-3 shadow-sm">
+    <div [id]="'other-item'+number" class="d-flex justify-content-center digit">
+        <div class="shop-item-container mx-3 my-3 shadow-sm zoom">
             <a [routerLink]="['/item', item.id]">
-                <div class="shop-item" [ngClass]="{'gradient-pink': !themeDark, 'gradient-blue': themeDark}">
+                <div class="shop-item gradient-color" [ngClass]="{'gradient-pink': !themeDark, 'gradient-blue': themeDark}">
                     <img class="rounded" [src]="item.images[0]">
                     <div class="d-flex justify-content-between details">
                         <span class="itemName">{{item.name}} </span>

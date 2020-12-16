@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 declare var google: any
 
@@ -36,6 +36,7 @@ export class PlaceAutocompleteComponent implements OnInit {
     return this.addressString;
   }
 
+  @Input()
   set address(address: string) {
     this.addressString = address
     console.log(`address changed ${address}`)

@@ -77,7 +77,7 @@
         <app-ozow-payment [paymentUrl]="ozowPaymentUrl"></app-ozow-payment>    
         <app-ukheshe-payment [order]="order"></app-ukheshe-payment>
         <app-ukheshe-masterpass [order]="order"> </app-ukheshe-masterpass>
-        <app-payfast [order]="order"> </app-payfast>
+        <app-payfast [order]="order" [storeName]="shopName"> </app-payfast>
 
         </div>
         <div *ngIf="order" class="col-md-4 order-md-2 mb-3">

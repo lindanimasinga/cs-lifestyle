@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ShopItem } from '../model/shop-item';
 import { Stock } from '../model/stock';
 
+declare var ScrollMagic: any;
+
 @Component({
   selector: 'app-shop-item',
   templateUrl: './shop-item.component.html',

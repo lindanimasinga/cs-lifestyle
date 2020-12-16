@@ -21,7 +21,7 @@ export class ShippingComponent implements OnInit {
   isPhoneNumberVerified = false
   isVerificationRequested = false
   code: string
-  shippingBuildingType: ShippingData.BuildingTypeEnum = ShippingData.BuildingTypeEnum.APARTMENT
+  shippingBuildingType: ShippingData.BuildingTypeEnum
   buildingTypeEnums = ShippingData.BuildingTypeEnum
   shippingBuildingUnitNumber: string
   shippingBuildingName: string
@@ -61,9 +61,15 @@ export class ShippingComponent implements OnInit {
     this.userProfile.mobileNumber =  phoneNumber
   }
 
+  validData() {
+    return this.userProfile.address && this.userProfile.name && this.userProfile.surname
+      && this.userProfile.mobileNumber 
+      && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
+  }
+
   verify() {
-    this.phoneNumber = this.phoneNumber.startsWith("0") ? 
-      this.phoneNumber.replace("0", "+27") : this.phoneNumber.startsWith("27") ? "+27" + this.phoneNumber : this.phoneNumber;
+    this.phoneNumber = this.phoneNumber.startsWith("+27")? this.phoneNumber : this.phoneNumber.startsWith("0") ? 
+      this.phoneNumber.replace("0", "+27") : this.phoneNumber.startsWith("27") ? "+" + this.phoneNumber : "+27" +this.phoneNumber;
     this.firebaseService.requestVerification(this.phoneNumber)
       .subscribe(() => {
         this.isVerificationRequested = true
@@ -114,6 +120,11 @@ export class ShippingComponent implements OnInit {
   }
 
   startOrder() {
+
+    if(!this.validData()) {
+      return
+    }
+
     console.log(`enum is ${JSON.stringify(this.shippingBuildingType)}`)
     var customerObsv = this.userProfile.id != null ? of(this.userProfile) : this.createCustomer()
     customerObsv.pipe(
@@ -126,9 +137,9 @@ export class ShippingComponent implements OnInit {
           stage: Order.StageEnum._0CUSTOMERNOTPAID,
           description: `ord-${this.userProfile.mobileNumber}`,
           shippingData: {
-            fromAddress: "Celeste Monique Shop",
+            fromAddress: `${this.storageService.shop?.name}`,
             toAddress: this.userProfile.address,
-            messengerId: "ffd4c856-644f-4453-a5ed-84689801a747",
+            messengerId: environment.messengerId,
             buildingType: this.shippingBuildingType,
             unitNumber: this.shippingBuildingUnitNumber,
             buildingName: this.shippingBuildingName,

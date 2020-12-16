@@ -1,9 +1,10 @@
 <nav name="scrollTo" class="navbar navbar-expand-lg navbar-light bg-clear bg-light mb-1 mb-3">
   <a class="navbar-brand" routerLink="/">
-    <img src="./assets/images/logo-hires.jpg" height="50" class="logo d-inline-block shadow" alt="" loading="lazy">
-    <span class="shop-name ml-2 mr-md-3" height="50">Celeste Monique Lifestyle</span>
+    <img [src]="shop.imageUrl" class="logo d-inline-block shadow" alt="" loading="lazy">
+    <span class="shop-name ml-2 mr-md-3" height="50">{{shop.name}}</span>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
@@ -24,16 +25,16 @@
   </div>
 </nav>
 
-<div class="container">
-<router-outlet></router-outlet>
+<div class="container mb-3">
+  <div *ngIf="hasError" class="d-flex justify-content-center error">{{errorMessage}}</div>
+  <router-outlet></router-outlet>
 </div>
 
-<div *ngIf="hasItemsInCart() && shouldShowIcon()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3" >
-  
+<div *ngIf="hasItemsInCart() && shouldShowIcon()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3">
+
   <a routerLink="cart">
     <button mat-fab class="bg-dark">
       <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
     </button>
   </a>
 </div>
-
