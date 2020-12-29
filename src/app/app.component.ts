@@ -6,6 +6,8 @@ import { StoreProfile } from './model/models';
 import { IzingaOrderManagementService } from './service/izinga-order-management.service';
 import { environment } from 'src/environments/environment';
 
+declare var firebase: any
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,6 +23,19 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    var firebaseConfig = {
+      apiKey: environment.firebase_apiKey,
+      authDomain: environment.authDomain,
+      databaseURL: environment.databaseURL,
+      projectId: environment.projectId,
+      messagingSenderId: environment.messagingSenderId,
+      appId: environment.appId,
+      measurementId: environment.measurementId
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         var page: NavigationEnd = event;
@@ -63,6 +78,10 @@ export class AppComponent {
 
   get hasError(): boolean {
     return this.storageService.errorMessage != null 
+  }
+
+  clearError() {
+    this.storageService.errorMessage = null;
   }
 
   get errorMessage() {

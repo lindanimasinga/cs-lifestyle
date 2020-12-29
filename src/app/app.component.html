@@ -1,7 +1,7 @@
 <nav name="scrollTo" class="navbar navbar-expand-lg navbar-light bg-clear bg-light mb-1 mb-3">
   <a class="navbar-brand" routerLink="/">
-    <img [src]="shop.imageUrl" class="logo d-inline-block shadow" alt="" loading="lazy">
-    <span class="shop-name ml-2 mr-md-3" height="50">{{shop.name}}</span>
+    <img [src]="shop?.imageUrl" class="logo d-inline-block shadow" alt="" loading="lazy">
+    <span class="shop-name ml-2 mr-md-3" height="50">{{shop?.name}}</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +26,14 @@
 </nav>
 
 <div class="container mb-3">
-  <div *ngIf="hasError" class="d-flex justify-content-center error">{{errorMessage}}</div>
   <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="hasError" class="alert alert-danger error alert-dismissible fade show fixed-top" role="alert">
+  <strong>{{errorMessage}}</strong>
+  <button type="button" class="close" aria-label="Close" (click)="clearError()">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 
 <div *ngIf="hasItemsInCart() && shouldShowIcon()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3">

@@ -116,6 +116,7 @@ a:active {
 }
 
 body {
+    min-height: 100vh !important;
     background-repeat: no-repeat !important;
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 70%, rgba(173, 131, 119, 0.40931372549019607) 100%);
     margin: 0;

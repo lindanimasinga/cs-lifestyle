@@ -29,7 +29,15 @@ export const environment = {
   ozow_is_a_test: false,
   payFastUrl: "https://sandbox.payfast.co.za/eng/process",
   payfast_merchant_id: "10020746",
-  payfast_merchant_key: "cix8odfanpfra"
+  payfast_merchant_key: "cix8odfanpfra",
+  firebase_apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
+  authDomain: "cs-clothing.firebaseapp.com",
+  databaseURL: "https://cs-clothing.firebaseio.com",
+  projectId: "cs-clothing",
+  storageBucket: "cs-clothing.appspot.com",
+  messagingSenderId: "705023698499",
+  appId: "1:705023698499:web:7d53f4b87c0fe9c3fa56f6",
+  measurementId: "G-RYDG5R4HMM"
 };
 
 /*
