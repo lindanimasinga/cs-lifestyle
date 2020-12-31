@@ -47,6 +47,12 @@ export class ShopItemDescrComponent implements OnInit {
   }
 
   addToCart() {
+
+    if(!this.hasStock) {
+      this.storageService.errorMessage = "Sorry. Stock not available for this product."
+      return
+    }
+
     this.basketItem = {
       name: this.shopItem.name,
       price: this.shopItem.price,
@@ -60,6 +66,10 @@ export class ShopItemDescrComponent implements OnInit {
 
   hasValidSeletion(): boolean {
     return this.shopItem?.mandatorySelection.find((item1) => item1.selected == null) == null;
+  }
+
+  get hasStock(): boolean {
+    return this.shopItem.quantity > 0
   }
 
 }

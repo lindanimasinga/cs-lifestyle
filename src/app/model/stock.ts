@@ -14,6 +14,7 @@ import { SelectionOption } from './selectionOption';
 
 export interface Stock { 
     description?: string;
+    detailedDescription?: string;
     discountPerc?: number;
     images?: Array<string>;
     mandatorySelection?: Array<SelectionOption>;

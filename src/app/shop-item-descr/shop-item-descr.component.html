@@ -46,6 +46,11 @@
     </div>
 </div>
 
+<div *ngIf="shopItem.detailedDescription" class="mt-3">
+    <div class="product h5 mb-3">Description</div>
+    <div>{{shopItem.detailedDescription}}</div>
+</div>
+
 <div class="mt-5">
     <app-other-items></app-other-items>
 </div>

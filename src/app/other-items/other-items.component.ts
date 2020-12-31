@@ -37,7 +37,7 @@ export class OtherItemsComponent implements OnInit {
       new ScrollMagic.Scene({
         triggerElement: `#other-item${number}`,
         reverse: true,
-        triggerHook: "0.9" // move trigger to center of element
+        triggerHook: "1" // move trigger to center of element
       })
         .setClassToggle(`#other-item${number}`, "visible") // add class to reveal
        // .addIndicators() // add indicators (requires plugin)
