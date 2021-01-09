@@ -4,7 +4,7 @@
 
 import { StoreProfile } from '../app/model/models';
 
-export const environment = {
+export var environment = {
   production: false,
   storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
   storeType: StoreProfile.StoreTypeEnum.CLOTHING,

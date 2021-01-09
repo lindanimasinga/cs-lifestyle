@@ -1,0 +1,16 @@
+<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
+    <h3 class="page-header display-5">About Us</h3>
+</div>
+<div class="container">
+    <div class="mt-3 h5 product">Contacts</div>
+    <div class="text-muted">Phone Number: <a [href]="'tel:'+shop?.mobileNumber"> {{shop?.mobileNumber}}</a></div>
+    <div class="text-muted">Whatsapp: <a [href]="'https://api.whatsapp.com/send?phone='+shop?.mobileNumber"> {{shop?.mobileNumber}}</a></div>
+    <label *ngIf="shop.email" class="text-muted">Email: </label><a [href]="'mailto:'+shop.email"> {{shop.email}}</a>
+    <div *ngIf="shop.address" class="mt-3 h5 product">Physical Address</div>
+    <div class="text-muted address"> {{shop?.address}}</div>
+    <div class="mt-3 h5 product">Business Hours</div>
+    <div *ngFor="let hours of shop.businessHours">
+        <div class="text-muted">{{hours.day}}: {{hours.open | date: 'HH:mm'}} - {{hours.close | date: 'HH:mm'}}</div>
+    </div>
+
+</div>  

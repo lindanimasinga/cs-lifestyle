@@ -5,6 +5,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +17,16 @@ export class FirebaseService {
 
   constructor() {
     var firebaseConfig = {
-      apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
-      authDomain: "cs-clothing.firebaseapp.com",
-      databaseURL: "https://cs-clothing.firebaseio.com",
-      projectId: "cs-clothing",
-      storageBucket: "cs-clothing.appspot.com",
-      messagingSenderId: "705023698499",
-      appId: "1:705023698499:web:7d53f4b87c0fe9c3fa56f6"
-    }
-    // Initialize Firebase
-    firebase.default.initializeApp(firebaseConfig);
+      apiKey: environment.firebase_apiKey,
+      authDomain: environment.authDomain,
+      databaseURL: environment.databaseURL,
+      projectId: environment.projectId,
+      messagingSenderId: environment.messagingSenderId,
+      appId: environment.appId,
+      measurementId: environment.measurementId
+    };
+      // Initialize Firebase
+      firebase.default.initializeApp(firebaseConfig);
   }
 
   createCapture() {

@@ -14,7 +14,8 @@ import { BusinessHours } from './businessHours';
 import { Stock } from './stock';
 
 
-export interface StoreProfile { 
+export interface StoreProfile {
+    shortName?: string; 
     address?: string;
     badges?: number;
     bank?: Bank;
@@ -30,6 +31,7 @@ export interface StoreProfile {
     likes?: number;
     longitude?: number;
     mobileNumber?: string;
+    email?: String;
     modifiedDate?: Date;
     name?: string;
     ownerId?: string;

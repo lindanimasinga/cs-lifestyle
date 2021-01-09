@@ -30,6 +30,8 @@ import { OrderItemHistoryComponent } from './order-item-history/order-item-histo
 import { OzowPaymentComponent } from './ozow-payment/ozow-payment.component';
 import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
 import { PayfastComponent } from './payfast/payfast.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { PayfastComponent } from './payfast/payfast.component';
     OrderItemHistoryComponent,
     OzowPaymentComponent,
     PlaceAutocompleteComponent,
-    PayfastComponent
+    PayfastComponent,
+    ContactUsComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

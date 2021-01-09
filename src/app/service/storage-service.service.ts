@@ -36,24 +36,24 @@ export class StorageService {
 
   get basket() {
     if(this._basket == null) {
-      this._basket = JSON.parse(this.cache.getItem(this.BASKET_KEY))
+      this._basket = JSON.parse(this.cache.getItem(this.BASKET_KEY + this.shop?.shortName))
     }
     return this._basket;
   }
 
   set basket(basket: Basket) {
     this._basket = basket
-    this.cache.setItem(this.BASKET_KEY, JSON.stringify(this._basket))
+    this.cache.setItem(this.BASKET_KEY + this.shop?.shortName, JSON.stringify(this._basket))
   }
 
   set order(order: Order) {
     this._order = order
-    this.cache.setItem(this.ORDER_KEY, JSON.stringify(this._order))
+    this.cache.setItem(this.ORDER_KEY + this.shop?.shortName, JSON.stringify(this._order))
   }
 
   get order() {
     if(this._order == null) {
-      this._order = JSON.parse(this.cache.getItem(this.ORDER_KEY))
+      this._order = JSON.parse(this.cache.getItem(this.ORDER_KEY + this.shop?.shortName))
     }
     return this._order;
   }
@@ -74,6 +74,11 @@ export class StorageService {
       this.basket.items.splice(index, 1);
    }
    this.basket = this.basket
+  }
+
+  clearOrder() {
+    this.basket.items = []
+    this.basket = this.basket
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Order } from '../model/order';
+import { StorageService } from '../service/storage-service.service';
 
 declare var require: any
 var MD5 = require("crypto-js").MD5;
@@ -17,19 +18,33 @@ export class PayfastComponent implements OnInit {
   @Input()
   storeName: string
   environment = environment
+  ozo_payment_notify_url = environment.ozo_payment_notify_url
+  ozow_succeess_url = environment.ozow_succeess_url
+  ozow_payment_cancel_url = environment.ozow_payment_cancel_url
+  ozow_error_url = environment.ozow_error_url
   data = []
 
-  constructor() { }
+  constructor(private storage: StorageService) { }
 
   ngOnInit(): void {
+
+    if(window.location.href.includes(this.storage.shop.id)) {
+      console.log("href is " + window.location.href)
+      console.log("shop is " + this.storage.shop.id)
+      this.ozo_payment_notify_url = `${window.location.origin}/${this.storage.shop.id}/payment`
+      this.ozow_succeess_url = `${window.location.origin}/${this.storage.shop.id}/payment`
+      this.ozow_payment_cancel_url =`${window.location.origin}/${this.storage.shop.id}/payment`
+      this.ozow_error_url = `${window.location.origin}/${this.storage.shop.id}/payment` 
+    }
+
     var dataMap = new Map<string, any>([
       ["merchant_id" , environment.payfast_merchant_id],
       ["merchant_key" , environment.payfast_merchant_key],
       ["amount" , `${this.order.totalAmount}`],
       ["item_name", this.storeName],
-      ["return_url", `${environment.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],
-      ["cancel_url", `${environment.ozow_payment_cancel_url}?Status=cancel&type=payfast&TransactionReference=${this.order.id}`],
-      ["notify_url", `${environment.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],
+      ["return_url", `${this.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],
+      ["cancel_url", `${this.ozow_payment_cancel_url}?Status=cancel&type=payfast&TransactionReference=${this.order.id}`],
+      ["notify_url", `${this.ozo_payment_notify_url}?Status=Complete&type=payfast&TransactionReference=${this.order.id}`],
       ["m_payment_id",  this.order.id]
     ])
 
@@ -43,7 +58,7 @@ export class PayfastComponent implements OnInit {
   }
 
   get paymentUrl() {
-    return `${environment.payFastUrl}?cmd=_paynow&receiver=11522007&item_name=Celeste+Clothing-${this.order.id}&item_description=Online-Shop&amount=${this.order.totalAmount}&return_url=${environment.ozo_payment_notify_url}&cancel_url=${environment.ozow_payment_cancel_url}`
+    return `${environment.payFastUrl}?cmd=_paynow&receiver=11522007&item_name=Celeste+Clothing-${this.order.id}&item_description=Online-Shop&amount=${this.order.totalAmount}&return_url=${this.ozo_payment_notify_url}&cancel_url=${this.ozow_payment_cancel_url}`
   }
 
 

@@ -1,0 +1,11 @@
+.shop-name {
+    font-weight: 500;
+    font-size: large;
+    color: #ffffff;
+}
+
+@media(max-width: 320px) {
+    .shop-name {
+        font-size: small;
+    }
+}
