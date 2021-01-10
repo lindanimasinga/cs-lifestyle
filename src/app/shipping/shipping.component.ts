@@ -133,7 +133,7 @@ export class ShippingComponent implements OnInit {
         this.order = {
           basket : this.storageService.basket,
           customerId: this.userProfile.id,
-          shopId: environment.storeId,
+          shopId: this.storageService.shop.id,
           orderType: Order.OrderTypeEnum.ONLINE,
           stage: Order.StageEnum._0CUSTOMERNOTPAID,
           description: `ord-${this.userProfile.mobileNumber}`,
