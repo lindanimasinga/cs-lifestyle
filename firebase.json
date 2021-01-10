@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/cs-clothing-web",
+    "site": "izinga-shop",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,6 +13,5 @@
         "destination": "/index.html"
       }
     ]
-
   }
 }
