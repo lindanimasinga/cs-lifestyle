@@ -21,14 +21,11 @@ export class OtherItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.izingaService.getStoreById(environment.storeId)
-    .subscribe(store => {
-      this.store = store
-      this.shopItems = store.stockList;
+      this.store = this.storageService.shop
+      this.shopItems = this.store.stockList;
       setTimeout(() => {
         this.initScrollMagic()
       }, 100);
-    })
   }
 
   initScrollMagic() {
