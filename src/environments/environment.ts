@@ -30,14 +30,14 @@ export var environment = {
   payFastUrl: "https://sandbox.payfast.co.za/eng/process",
   payfast_merchant_id: "10020746",
   payfast_merchant_key: "cix8odfanpfra",
-  firebase_apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
-  authDomain: "cs-clothing.firebaseapp.com",
-  databaseURL: "https://cs-clothing.firebaseio.com",
-  projectId: "cs-clothing",
-  storageBucket: "cs-clothing.appspot.com",
-  messagingSenderId: "705023698499",
-  appId: "1:705023698499:web:7d53f4b87c0fe9c3fa56f6",
-  measurementId: "G-RYDG5R4HMM"
+  firebase_apiKey: "AIzaSyB1KhGf_VDF8VDUT0pNddLXB1Hls_dtR0U",
+  authDomain: "ijudi-d19bd.firebaseapp.com",
+  databaseURL: "https://ijudi-d19bd.firebaseio.com",
+  projectId: "ijudi-d19bd",
+  storageBucket: "ijudi-d19bd.appspot.com",
+  messagingSenderId: "315529266651",
+  appId: "1:315529266651:web:b28ea03f57c4d432ed53fe",
+  measurementId: "G-ZJRDF78RJX"
 };
 
 /*

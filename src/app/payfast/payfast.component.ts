@@ -28,13 +28,13 @@ export class PayfastComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(window.location.href.includes(this.storage.shop.id)) {
+    if(window.location.href.includes(this.storage.shop.shortName)) {
       console.log("href is " + window.location.href)
       console.log("shop is " + this.storage.shop.id)
-      this.ozo_payment_notify_url = `${window.location.origin}/${this.storage.shop.id}/payment`
-      this.ozow_succeess_url = `${window.location.origin}/${this.storage.shop.id}/payment`
-      this.ozow_payment_cancel_url =`${window.location.origin}/${this.storage.shop.id}/payment`
-      this.ozow_error_url = `${window.location.origin}/${this.storage.shop.id}/payment` 
+      this.ozo_payment_notify_url = `${window.location.origin}/${this.storage.shop.shortName}/payment`
+      this.ozow_succeess_url = `${window.location.origin}/${this.storage.shop.shortName}/payment`
+      this.ozow_payment_cancel_url =`${window.location.origin}/${this.storage.shop.shortName}/payment`
+      this.ozow_error_url = `${window.location.origin}/${this.storage.shop.shortName}/payment` 
     }
 
     var dataMap = new Map<string, any>([

@@ -15,6 +15,8 @@ import { Stock } from './stock';
 
 
 export interface StoreProfile {
+    brandSecondaryColor: string;
+    brandPrimaryColor: string;
     shortName?: string; 
     address?: string;
     badges?: number;
