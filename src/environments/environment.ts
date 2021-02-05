@@ -31,6 +31,7 @@ export const environment = {
   payfast_merchant_id: "10020746",
   payfast_merchant_key: "cix8odfanpfra",
   firebase_apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
+  apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
   authDomain: "cs-clothing.firebaseapp.com",
   databaseURL: "https://cs-clothing.firebaseio.com",
   projectId: "cs-clothing",

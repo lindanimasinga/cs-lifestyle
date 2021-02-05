@@ -1,10 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as firebase from "firebase/app";
 // Add the Firebase services that you want to use
 import "firebase/auth";
 import "firebase/firestore";
-import { Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { StorageService } from './storage-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +17,9 @@ export class FirebaseService {
   recaptchaVerifier: any;
   confirmResults: firebase.default.auth.ConfirmationResult;
 
-  constructor() {
-    var firebaseConfig = {
-      apiKey: "AIzaSyDS5nZrHe5On5jyUUl_mCjr2QRSc_N3Jwo",
-      authDomain: "cs-clothing.firebaseapp.com",
-      databaseURL: "https://cs-clothing.firebaseio.com",
-      projectId: "cs-clothing",
-      storageBucket: "cs-clothing.appspot.com",
-      messagingSenderId: "705023698499",
-      appId: "1:705023698499:web:7d53f4b87c0fe9c3fa56f6"
-    }
+  constructor(private storage: StorageService) {
     // Initialize Firebase
-    firebase.default.initializeApp(firebaseConfig);
+    firebase.default.initializeApp(environment);
   }
 
   createCapture() {
@@ -46,5 +40,11 @@ export class FirebaseService {
   confirmCode(code: string) {
     return from(this.confirmResults
       .confirm(code))
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.storage.errorMessage = error.message
+          return throwError(error)
+        })
+      )
   }
 }

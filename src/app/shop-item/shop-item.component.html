@@ -4,8 +4,8 @@
             <div class="shop-item" [ngClass]="{'gradient-pink': !themeDark, 'gradient-blue': themeDark}">
                 <img class="rounded" [src]="shopItem.images[0]">
                 <div class="d-flex justify-content-between details">
-                    <span>{{shopItem.name}} </span>
-                    <span>{{shopItem.price | currency:'R'}}</span>
+                    <span class="d-flex align-items-end">{{shopItem.name}} </span>
+                    <span class="d-flex align-items-end">{{shopItem.price | currency:'R'}}</span>
                 </div>
             </div>
         </a>
