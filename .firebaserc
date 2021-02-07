@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "cs-clothing"
-  }
+     "default": "cs-clothing"
+  },
+  "targets": {
+    "cs-clothing": {
+      "hosting": {
+        "prod": [
+          "celestemonique"
+        ],
+        "uat": [
+          "cs-clothing"
+        ]
+      }
+    }
 }
