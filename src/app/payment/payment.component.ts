@@ -76,7 +76,7 @@ export class PaymentComponent implements OnInit {
               return this.izingaService.finishOrder(this.order).
                 pipe(
                   map(order => {
-                    this.storageService.basket.items = []
+                    this.storageService.clearOrder()
                     return order
                   })
                 )
@@ -87,7 +87,7 @@ export class PaymentComponent implements OnInit {
           this.order = order
           this.storageService.order = order
           if(order.stage == Order.StageEnum._1WAITINGSTORECONFIRM) {
-            this.router.navigate(['order', order.id])
+            this.router.navigate(['../order', order.id], {relativeTo: this.route})
           }
 
           this.shopName = this.storageService?.shop?.name

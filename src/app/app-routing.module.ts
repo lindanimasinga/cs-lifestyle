@@ -8,16 +8,37 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderItemHistoryComponent } from './order-item-history/order-item-history.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
-  { path: '', component:  HomeComponent},
-  { path: 'item/:id', component: ShopItemDescrComponent },
-  { path: 'cart', component: CheckoutComponent },
-  {path : 'shipping', component: ShippingComponent},
-  {path : 'payment', component: PaymentComponent},
-  {path : 'store-orders', component: OrdersComponent},
-  {path : 'order/:id', component: OrderItemHistoryComponent}
+  {
+    path: '', component: MainComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'item/:id', component: ShopItemDescrComponent },
+      { path: 'cart', component: CheckoutComponent },
+      { path: 'shipping', component: ShippingComponent },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'store-orders', component: OrdersComponent },
+      { path: 'order/:id', component: OrderItemHistoryComponent },
+      { path: 'contact', component: ContactUsComponent },
+    ]
+  },
+  {
+    path: ':shortname', component: MainComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'item/:id', component: ShopItemDescrComponent },
+      { path: 'cart', component: CheckoutComponent },
+      { path: 'shipping', component: ShippingComponent },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'store-orders', component: OrdersComponent },
+      { path: 'order/:id', component: OrderItemHistoryComponent },
+      { path: 'contact', component: ContactUsComponent },
+    ]
+  },
 ];
 
 @NgModule({

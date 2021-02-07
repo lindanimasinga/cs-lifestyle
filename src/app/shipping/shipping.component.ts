@@ -3,7 +3,7 @@ import { UserProfile, Order, ShippingData } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { from, Observable, of, throwError } from 'rxjs';
@@ -39,7 +39,8 @@ export class ShippingComponent implements OnInit {
   constructor(private izingaOrderManager: IzingaOrderManagementService,
     private storageService: StorageService,
     private firebaseService: FirebaseService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -132,7 +133,7 @@ export class ShippingComponent implements OnInit {
         this.order = {
           basket : this.storageService.basket,
           customerId: this.userProfile.id,
-          shopId: environment.storeId,
+          shopId: this.storageService.shop.id,
           orderType: Order.OrderTypeEnum.ONLINE,
           stage: Order.StageEnum._0CUSTOMERNOTPAID,
           description: `ord-${this.userProfile.mobileNumber}`,
@@ -153,7 +154,7 @@ export class ShippingComponent implements OnInit {
       this.order = order
       this.order.description =  `ord-${this.order.id}`,
       this.storageService.order = order
-      this.router.navigate(['payment'])
+      this.router.navigate(['../payment'],{ relativeTo: this.route})
     })
   }
 

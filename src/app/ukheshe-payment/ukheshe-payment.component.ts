@@ -91,7 +91,7 @@ export class UkheshePaymentComponent implements OnInit {
         (order) => {
           this.storageService.order = order
           this.orderCompleted = true;
-          this.storageService.basket.items = []
+          this.storageService.clearOrder()
         },
         () => {},
         () => this.paymentBusy = false,

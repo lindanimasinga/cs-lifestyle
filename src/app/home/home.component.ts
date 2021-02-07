@@ -3,6 +3,7 @@ import { StorageService } from '../service/storage-service.service';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StoreProfile, Stock, Promotion } from '../model/models';
 import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 declare var Flickity: any;
 declare var ScrollMagic: any;
@@ -15,39 +16,39 @@ declare var ScrollMagic: any;
 export class HomeComponent implements OnInit {
 
   images: Array<String>
-  store: StoreProfile;
-  shopItems: Stock[];
   promotions: Promotion[] = [
   ]
 
   constructor(private storageService: StorageService,
-    private izingaService: IzingaOrderManagementService) {
+    private izingaService: IzingaOrderManagementService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-
-    this.izingaService.getStoreById(environment.storeId)
-      .subscribe(store => {
-        this.store = store
-        this.storageService.shop = this.store
-        this.shopItems = store.stockList;
+      console.log(`store id 2 is ${JSON.stringify(this.activatedRoute.paramMap)}`)
         setTimeout(() => {
           this.initScrollMagic()
         }, 100);
-      })
-
-    this.izingaService.getAllPromotionsByStoreId(environment.storeId)
-      .subscribe(promotions => {
-        this.promotions = promotions
-        setTimeout(() => {
-          this.initCarousel()
-          this.initScrollMagicForPromotions()
-        }, 100);
-      })
+      
+    this.izingaService.getAllPromotionsByStoreId(this.store.id)
+        .subscribe(promotions => {
+          this.promotions = promotions
+          setTimeout(() => {
+            this.initCarousel()
+            this.initScrollMagicForPromotions()
+          }, 100);
+        })
   }
 
   ngAfterViewInit() {
     //this.initCarousel()
+  }
+
+  get store(): StoreProfile {
+    return this.storageService.shop
+  }
+
+  get shopItems(): Stock[] {
+    return this.storageService.shop?.stockList
   }
 
   initCarousel() {

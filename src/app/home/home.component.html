@@ -1,6 +1,6 @@
-<div class="carousel digit">
+<div *ngIf="promotions?.length > 0" class="carousel digit">
   <div *ngFor="let promotion of promotions ; let number = index;">
-    <a *ngIf="promotion.stockId != null else unclickable" [href]="'./item/' + promotion.stockId">
+    <a *ngIf="promotion.stockId != null else unclickable" [routerLink]="'./item/' + promotion.stockId">
       <img [src]="promotion.imageUrl" class="carousel-cell" alt="...">
     </a>
     <ng-template #unclickable>
@@ -10,8 +10,8 @@
   
 </div>
 
-<div *ngIf="promotions.length > 2" class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5">
-  <a [routerLink]="'./item/' + promotions[0].stockId">
+<div *ngIf="promotions.length >= 2" class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3 mb-5">
+  <a [routerLink]="promotions[0].stockId != null? ('./item/' + promotions[0].stockId) : '#'">
     <div id="promotion1"
       class="bg-light mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden rounded shadow-sm digit">
       <div class="my-3 py-3">
@@ -21,7 +21,7 @@
       <img [src]="promotions[0].imageUrl" class="headline bg-light mx-auto" style="width: 80%; height: 300px;">
     </div>
   </a>
-  <a [href]="'./item/' + promotions[1].stockId">
+  <a [href]="promotions[1].stockId != null? ('./item/' + promotions[1].stockId) : '#'">
     <div id="promotion2"
       class="bg-dark mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden rounded shadow-sm digit">
 

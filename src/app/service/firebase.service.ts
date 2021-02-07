@@ -18,8 +18,17 @@ export class FirebaseService {
   confirmResults: firebase.default.auth.ConfirmationResult;
 
   constructor(private storage: StorageService) {
-    // Initialize Firebase
-    firebase.default.initializeApp(environment);
+    var firebaseConfig = {
+      apiKey: environment.firebase_apiKey,
+      authDomain: environment.authDomain,
+      databaseURL: environment.databaseURL,
+      projectId: environment.projectId,
+      messagingSenderId: environment.messagingSenderId,
+      appId: environment.appId,
+      measurementId: environment.measurementId
+    };
+      // Initialize Firebase
+      firebase.default.initializeApp(firebaseConfig);
   }
 
   createCapture() {
