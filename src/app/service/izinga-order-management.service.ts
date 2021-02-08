@@ -25,7 +25,7 @@ export class IzingaOrderManagementService {
         .post<Order>(`${environment.izingaUrl}/order`, order, {headers: headers})
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           })
         )
@@ -39,7 +39,7 @@ export class IzingaOrderManagementService {
         .patch<Order>(`${environment.izingaUrl}order/${order.id}`, order, {headers: headers})
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -49,7 +49,7 @@ export class IzingaOrderManagementService {
         .get<Array<Order>>(`${environment.izingaUrl}/order?phone=${mobileNumber}`)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -59,7 +59,7 @@ export class IzingaOrderManagementService {
         .get<Array<Order>>(`${environment.izingaUrl}/order?storeId=${storeId}`)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -69,7 +69,7 @@ export class IzingaOrderManagementService {
         .get<Array<Promotion>>(`${environment.izingaUrl}/promotion?storeType=${environment.storeType}&storeId=${storeId}`)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -79,7 +79,7 @@ export class IzingaOrderManagementService {
     .get<Order>(`${environment.izingaUrl}/order/${orderId}`)
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        this.storage.errorMessage = error.message
+        this.storage.errorMessage = error.error.message
         return throwError(error)
       }))
   }
@@ -92,7 +92,7 @@ export class IzingaOrderManagementService {
         .post<UserProfile>(`${environment.izingaUrl}/user`, userProfile, {headers: headers})
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -102,7 +102,7 @@ export class IzingaOrderManagementService {
         .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
@@ -112,7 +112,7 @@ export class IzingaOrderManagementService {
         .get<UserProfile>(`${environment.izingaUrl}/user/${customerId}`)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.message
+            this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
   }
