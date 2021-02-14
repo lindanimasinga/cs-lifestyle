@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { StorageService } from './service/storage-service.service';
+import { Utils } from './utils/utils';
 
 declare var firebase: any
 
@@ -14,7 +16,7 @@ export class AppComponent {
 
   title = 'cs-clothing-web';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private storage: StorageService) {
   }
 
   ngOnInit() {
@@ -34,9 +36,15 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.configureScrollEffects()
+        this.applyTheme()
       }
     });
     
+  }
+  applyTheme() {
+    if(this.storage.shop) {
+      Utils.applyCustomeTheme(this.storage.shop.brandPrimaryColor)
+    }
   }
 
   private configureScrollEffects() {

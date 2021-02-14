@@ -4,6 +4,7 @@ import { IzingaOrderManagementService } from '../service/izinga-order-management
 import { StoreProfile, Stock, Promotion } from '../model/models';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { Utils } from '../utils/utils';
 
 declare var Flickity: any;
 declare var ScrollMagic: any;
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
             this.initCarousel()
             this.initScrollMagicForPromotions()
           }, 100);
+          setTimeout(() => Utils.applyCustomeTheme(this.store.brandPrimaryColor), 100)
         })
   }
 

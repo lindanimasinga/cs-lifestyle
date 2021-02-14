@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StoreProfile } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
+import {Utils} from '../utils/utils'
 
 @Component({
   selector: 'app-main',
@@ -28,6 +29,7 @@ export class MainComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.storageService.shop = shop;
+      setTimeout(() => Utils.applyCustomeTheme(shop.brandPrimaryColor), 100)
     })
 
     if(this.hasError) {
