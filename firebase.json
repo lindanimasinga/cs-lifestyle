@@ -1,17 +1,41 @@
-{
-  "hosting": {
-    "public": "dist/cs-clothing-web",
-    "site": "izinga-shop",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
-}
+ { "hosting": [
+    {
+      "target": "uat",
+      "public": "dist/cs-clothing-web",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "prod",
+      "public": "dist/cs-clothing-web",
+      "ignore": [
+        "firebase.json",
+        "**/.*",  
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ],
+  "emulators": {
+    "hosting": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8081
+    }
+  }}

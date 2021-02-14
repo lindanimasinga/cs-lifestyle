@@ -15,11 +15,11 @@
 .shop-item .details {
     display: flex;
     position: sticky;
-    margin-top: 235px;
+    margin-top: 230px;
     margin-left: 16px;
     margin-right: 16px;
-    color: #b96831  ;
-    font-weight: 400;
+    color: #494949  ;
+    font-weight: bold;
     font-size: 18px;
     z-index: 3;
     height: 50px;

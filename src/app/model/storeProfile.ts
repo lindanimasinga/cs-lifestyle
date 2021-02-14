@@ -14,7 +14,7 @@ import { BusinessHours } from './businessHours';
 import { Stock } from './stock';
 
 
-export interface StoreProfile {
+export class StoreProfile {
     brandSecondaryColor: string;
     brandPrimaryColor: string;
     shortName?: string; 

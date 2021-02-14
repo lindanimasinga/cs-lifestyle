@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderItemHistoryComponent } from './order-item-history/order-item-history.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'store-orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
+      { path: 'terms-conditions', component: TermsConditionsComponent},
     ]
   },
   {
@@ -37,6 +39,7 @@ const routes: Routes = [
       { path: 'store-orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
+      { path: 'terms-conditions', component: TermsConditionsComponent},
     ]
   },
 ];

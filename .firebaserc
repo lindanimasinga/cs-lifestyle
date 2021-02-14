@@ -1,5 +1,17 @@
 {
   "projects": {
-    "default": "ijudi-d19bd"
-  }
+     "default": "cs-clothing"
+  },
+  "targets": {
+    "cs-clothing": {
+      "hosting": {
+        "prod": [
+          "celestemonique"
+        ],
+        "uat": [
+          "cs-clothing"
+        ]
+      }
+    }
+}
 }
