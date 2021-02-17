@@ -5,6 +5,7 @@ export class Utils {
         Utils.applyThemeForClass("nav-link", 'color', primaryColor)
         Utils.applyThemeForClass("logo", 'border', `2px solid ${primaryColor}`)
         Utils.applyThemeForClass("details", 'color', primaryColor)
+        Utils.applyThemeForClass("bg-light", 'color', primaryColor)
         Utils.applyThemeForClass("footer-header", 'color', primaryColor)
         Utils.applyThemeForClass("page-header", 'color', primaryColor)
         Utils.applyThemeForClass("body", 'background', `linear-gradient(0deg, #ffffff 70%, ${primaryColor}98 100%)`)
