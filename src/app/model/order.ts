@@ -31,6 +31,7 @@ export interface Order {
     shopPaid?: boolean;
     stage?: Order.StageEnum;
     totalAmount?: number;
+    freeDelivery?: boolean;
 }
 
 export namespace Order {
