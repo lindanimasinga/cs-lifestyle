@@ -2,6 +2,7 @@ export class Utils {
 
     static applyCustomeTheme(primaryColor: string) {
         Utils.applyThemeForClass("bg-dark", "background-color", primaryColor)
+        Utils.applyThemeForClass("optimize-covid-banner", "background", primaryColor)
         Utils.applyThemeForClass("nav-link", 'color', primaryColor)
         Utils.applyThemeForClass("logo", 'border', `2px solid ${primaryColor}`)
         Utils.applyThemeForClass("details", 'color', primaryColor)
