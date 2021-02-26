@@ -59,7 +59,8 @@ export class HomeComponent implements OnInit {
       // options
       "autoPlay": 5000,
       "imagesLoaded": true,
-      "percentPosition": false
+      "percentPosition": false,
+      "wrapAround": true
     })
   }
 

@@ -2,10 +2,10 @@ import { StoreProfile } from '../app/model/models';
 
 export const environment = {
   production: true,
-  storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
+  storeId: "c70fd4da-8ab5-4c0b-ac7a-1125c79fad1a",
   storeType: StoreProfile.StoreTypeEnum.CLOTHING,
-  messengerId: "ffd4c856-644f-4453-a5ed-84689801a747",
-  izingaUrl: "https://api-uat.izinga.co.za",
+  messengerId: "9969ecbc-b6bf-4e68-8c6e-a8490f388b5a",
+  izingaUrl: "https://api.izinga.co.za",
   izingaMasterpassUrl: "https://ellyw5af54.execute-api.af-south-1.amazonaws.com/prod/ukheshe-masterpass-code",
   ukhesheUrl: "https://api.ukheshe.co.za",
   ukhesheAppleUrl: "https://apps.apple.com/za/app/ukheshe/id1350353337",
