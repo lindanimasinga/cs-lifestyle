@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.storageService.shop = shop;
-      setTimeout(() => Utils.applyCustomeTheme(shop.brandPrimaryColor), 100)
+      setTimeout(() => Utils.applyCustomeTheme(shop.brandPrimaryColor, shop.brandSecondaryColor), 100)
     })
 
     if(this.hasError) {

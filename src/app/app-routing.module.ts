@@ -11,13 +11,15 @@ import { OrderItemHistoryComponent } from './order-item-history/order-item-histo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { IzingaHomeComponent } from './izinga-home/izinga-home.component';
+import { StoresComponent } from './stores/stores.component';
 
 
 const routes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: '', component: IzingaHomeComponent },
       { path: 'item/:id', component: ShopItemDescrComponent },
       { path: 'cart', component: CheckoutComponent },
       { path: 'shipping', component: ShippingComponent },
@@ -26,6 +28,7 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'stores', component: StoresComponent}
     ]
   },
   {
@@ -40,6 +43,7 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'stores', component: StoresComponent}
     ]
   },
 ];

@@ -25,6 +25,11 @@
     color: white !important;
 }
 
+.button-dark {
+    background-color: #10A59F !important;
+    color: white !important;
+}
+
 .bg-light {
     color: #494949 !important;
 }
@@ -34,12 +39,12 @@
 }
 
 .bg-light .nav-link {
-    color: #494949 !important;
+    color: white !important;
     font-size: larger;
 }
 
 .product {
-    color: #494949  ;
+    color: white  ;
 }
 
 mat-icon {
@@ -52,10 +57,7 @@ mat-icon {
 
 nav .logo {
     object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #494949;
     height: 60px;
-    width: 60px;
 }
 
 .payment-logo {
@@ -84,7 +86,7 @@ footer {
     padding-left: 16px;
     padding-right: 16px;
     background-repeat: no-repeat !important;
-    background: linear-gradient(0deg, #49494998 28%, #ffffff 93%);
+    background: #2d2d2d
 }
 
 footer * {
@@ -93,7 +95,7 @@ footer * {
 }
 
 footer h5 {
-    color: #494949 !important;
+    color: white !important;
 }
 
 html, body {
@@ -123,7 +125,8 @@ a:active {
 body {
     min-height: 100vh !important;
     background-repeat: no-repeat !important;
-    background: linear-gradient(0deg, #ffffff 70%, #49494998 100%);
+    background: #2d2d2d;
+    color: white;
     margin: 0;
     font-family: Catamaran
 }

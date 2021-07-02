@@ -1,0 +1,10 @@
+<div class="card">
+
+    <img class="card-img-top" [src]="store.imageUrl">
+
+<div class="card-body">
+    <h5 class="card-title">{{store.name}}</h5>
+    <p >{{store.description}}</p>
+    <a [routerLink]="'../' + store.id">View Store</a>
+  </div>
+</div>

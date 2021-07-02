@@ -1,0 +1,14 @@
+
+<div class="container d-flex align-items-center">
+    <div class="w-100 px-5">
+        <form class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label class="mb-3" for="address">Enter Your Location to find nearby stores</label>
+                <app-place-autocomplete (addressChanged)="address = $event" (latitudeChanged)="lat = $event" (longitudeChanged)="long = $event"></app-place-autocomplete>
+                <a routerLink="stores" [queryParams]="{lat: lat, long: long}">
+                    <button class="btn btn-primary button-dark mt-5">Find Stores</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

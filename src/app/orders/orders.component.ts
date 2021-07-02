@@ -4,6 +4,7 @@ import { IzingaOrderManagementService } from '../service/izinga-order-management
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { StorageService } from '../service/storage-service.service';
 
 @Component({
   selector: 'app-orders',
@@ -14,10 +15,10 @@ export class OrdersComponent implements OnInit {
 
   orders: Array<Order>
 
-  constructor(private izingaOrderManager: IzingaOrderManagementService, private route: Router) { }
+  constructor(private izingaOrderManager: IzingaOrderManagementService, private storage: StorageService, private route: Router) { }
 
   ngOnInit(): void {
-    this.izingaOrderManager.getAllOrdersByStoreId(environment.storeId)
+    this.izingaOrderManager.getAllOrdersByStoreId(this.storage.shop.id)
       .subscribe(resp => this.orders= resp.filter(order => order.orderType == "ONLINE"))
   }
 

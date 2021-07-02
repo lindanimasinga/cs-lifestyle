@@ -26,19 +26,25 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       console.log(`store id 2 is ${JSON.stringify(this.activatedRoute.paramMap)}`)
-        setTimeout(() => {
-          this.initScrollMagic()
-        }, 100);
       
-    this.izingaService.getAllPromotionsByStoreId(this.store.id)
-        .subscribe(promotions => {
-          this.promotions = promotions
-          setTimeout(() => {
-            this.initCarousel()
-            this.initScrollMagicForPromotions()
-          }, 100);
-          setTimeout(() => Utils.applyCustomeTheme(this.store.brandPrimaryColor), 100)
-        })
+    var shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
+    console.log("shortname is " + shortName)
+    this.izingaService.getStoreById(shortName)
+    .subscribe(shop => {
+      this.storageService.shop = shop;
+      //init scrolling
+      setTimeout(() => {this.initScrollMagic()}, 100);
+      //get promotions
+      this.izingaService.getAllPromotionsByStoreId(this.store.id)
+          .subscribe(promotions => {
+            this.promotions = promotions
+            setTimeout(() => {
+              this.initCarousel()
+              this.initScrollMagicForPromotions()
+            }, 100);
+            setTimeout(() => Utils.applyCustomeTheme(this.store.brandPrimaryColor, this.store.brandSecondaryColor), 100)
+          })
+    })
   }
 
   ngAfterViewInit() {

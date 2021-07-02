@@ -17,6 +17,10 @@ export class IzingaOrderManagementService {
     return this.http.get<StoreProfile>(`${environment.izingaUrl}/store/${id}`);
   }
 
+  getAllStores(lat: number, long: number, range: number): Observable<Array<StoreProfile>> {
+    return this.http.get<Array<StoreProfile>>(`${environment.izingaUrl}/store?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}&size=20`);
+  }
+
   startOrder(order: Order) : Observable<Order> {
     var headers = {
       "Content-type": "application/json",

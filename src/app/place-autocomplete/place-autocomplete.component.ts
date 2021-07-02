@@ -10,6 +10,8 @@ declare var google: any
 export class PlaceAutocompleteComponent implements OnInit {
 
   @Output() addressChanged: EventEmitter<string> = new EventEmitter();
+  @Output() latitudeChanged: EventEmitter<number> = new EventEmitter();
+  @Output() longitudeChanged: EventEmitter<number> = new EventEmitter();
   private addressString: string
 
 
@@ -29,6 +31,9 @@ export class PlaceAutocompleteComponent implements OnInit {
     autocomplete.addListener('place_changed', () => {
       var place = autocomplete.getPlace()
       this.address = place.formatted_address
+      this.latitudeChanged.emit(place.geometry.location.lat)
+      this.longitudeChanged.emit(place.geometry.location.long)
+      console.log(`location is ${place.geometry.location.long}`)
     });
   }
 
@@ -46,6 +51,10 @@ export class PlaceAutocompleteComponent implements OnInit {
   public onAddressChange(address: any) {
     this.address = address.formatted_address
     console.log(`address changed ${this.address}`)
+    this.addressChanged.emit(this.address);
+  }
+
+  public onALatitudeChange(address: any) {
     this.addressChanged.emit(this.address);
   }
 

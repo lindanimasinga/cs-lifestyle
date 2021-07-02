@@ -33,6 +33,9 @@ import { PayfastComponent } from './payfast/payfast.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { IzingaHomeComponent } from './izinga-home/izinga-home.component';
+import { StoresComponent } from './stores/stores.component';
+import { StoreCardComponent } from './store-card/store-card.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
     PayfastComponent,
     ContactUsComponent,
     MainComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    IzingaHomeComponent,
+    StoresComponent,
+    StoreCardComponent
   ],
   imports: [
     BrowserModule,

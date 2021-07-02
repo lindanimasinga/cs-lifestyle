@@ -43,7 +43,7 @@ export class AppComponent {
   }
   applyTheme() {
     if(this.storage.shop) {
-      Utils.applyCustomeTheme(this.storage.shop.brandPrimaryColor)
+      Utils.applyCustomeTheme(this.storage.shop.brandPrimaryColor, this.storage.shop.brandSecondaryColor)
     }
   }
 
