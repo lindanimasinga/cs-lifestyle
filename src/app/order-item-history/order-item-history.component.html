@@ -41,7 +41,8 @@
                 <div>
                     <h6 class="my-0">Mobile Number</h6>
                 </div>
-                <span class="text-muted">{{customer.mobileNumber}}</span>
+                <a [href]="'https://wa.me/'+ customer.mobileNumber + '?text=Hello, this is Lindani from iZinga. I noticed you have tried to order. Are you having trouble?'">
+                    <span class="text-muted">{{customer.mobileNumber}}</span></a>
             </li>
             <li *ngIf="customer.email != null" class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
