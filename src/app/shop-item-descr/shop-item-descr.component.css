@@ -1,12 +1,19 @@
 
 .selected-image {
-    width: 281.6px;
-    height: 384px;
+    width: 170px;
+    height: 170px;
     object-fit: cover;
 }
 
 .thumbnail {
-    width: 42.18px;
-    height: 72px;
+    width: 42px;
+    height: 42px;
     object-fit: cover;
 }
+
+.btn-checkout {
+    color: #ffffff;
+    background-color: #d69447;
+    width: 100vw !important;
+    border-radius: 0%;
+  }

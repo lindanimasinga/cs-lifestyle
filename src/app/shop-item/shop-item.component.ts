@@ -15,6 +15,8 @@ export class ShopItemComponent implements OnInit {
   shopItem: Stock
   @Input()
   themeDark = false;
+  @Input()
+  shopId: String
 
   constructor() { }
 

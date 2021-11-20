@@ -14,5 +14,7 @@ import { BasketItem } from './basketItem';
 
 export interface Basket { 
     id?: string;
+    storeName?: string;
+    storeId?: string;
     items?: Array<BasketItem>;
 }

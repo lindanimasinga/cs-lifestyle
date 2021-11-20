@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../service/storage-service.service';
-import { BasketItem } from '../model/models';
+import { BasketItem, StoreProfile } from '../model/models';
 
 @Component({
   selector: 'app-shop-item-descr',
@@ -20,6 +20,7 @@ export class ShopItemDescrComponent implements OnInit {
   optionSelected: string;
   quantity: number = 1;
   imageSelected: string;
+  store: StoreProfile;
 
   constructor(private route: ActivatedRoute,
     private izingaService: IzingaOrderManagementService,
@@ -30,8 +31,8 @@ export class ShopItemDescrComponent implements OnInit {
     this.route.params.subscribe(param => {
       if (param["id"]) {
         const stockId = this.route.snapshot.paramMap.get('id');
-        var store = this.storageService.shop
-        this.shopItem = store.stockList.find(item => item.id == stockId)
+        this.store = this.storageService.shop
+        this.shopItem = this.store.stockList.find(item => item.id == stockId)
         this.imageSelected = this.shopItem.images[0]
       }
     });
@@ -61,6 +62,16 @@ export class ShopItemDescrComponent implements OnInit {
 
   get hasStock(): boolean {
     return this.shopItem.quantity > 0
+  }
+
+  hasItemsInCart(): boolean {
+    return this.storageService.basket != null && 
+      this.storageService.basket.storeName == this.store?.name &&
+      this.storageService.basket.items.length > 0;
+  }
+
+  get cartNumberOfItems() { 
+    return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
   }
 
 }

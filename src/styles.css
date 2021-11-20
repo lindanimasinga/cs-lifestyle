@@ -9,7 +9,12 @@
 }
 
 .page-header {
-    color: #494949 !important;
+    color: #ffffff !important;
+}
+
+.list-group-item {
+    background-color: #2D2D2D;
+    color: white;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -21,7 +26,7 @@
 }
 
 .bg-dark {
-    background-color: #494949 !important;
+    background-color: #10A59F !important;
     color: white !important;
 }
 
@@ -57,7 +62,7 @@ mat-icon {
 
 nav .logo {
     object-fit: cover;
-    height: 60px;
+    height: 48px;
 }
 
 .payment-logo {
@@ -86,16 +91,17 @@ footer {
     padding-left: 16px;
     padding-right: 16px;
     background-repeat: no-repeat !important;
-    background: #2d2d2d
+    background: #2D2D2D
 }
 
 footer * {
     color: white;
-    font-weight: 500;
+    font-size: 14px;
 }
 
-footer h5 {
-    color: white !important;
+.footer-header {
+    font-size: 16px !important;
+    color: white;
 }
 
 html, body {
@@ -125,7 +131,7 @@ a:active {
 body {
     min-height: 100vh !important;
     background-repeat: no-repeat !important;
-    background: #2d2d2d;
+    background: #212121;
     color: white;
     margin: 0;
     font-family: Catamaran

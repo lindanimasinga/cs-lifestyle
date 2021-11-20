@@ -1,5 +1,5 @@
 <div name="scrollTo" class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
-    <h3 class="page-header display-5">Shipping</h3>
+    <div class="page-header h5">Shipping</div>
 </div>
 
 <div *ngIf="!isPhoneNumberVerified" class="container mt-3">
@@ -52,15 +52,6 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" [(ngModel)]="userProfile.surname" name="surname" value="" #lastname="ngModel" required>
-                        <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                        <div *ngIf="lastname.errors.required" class="error">
-                            Valid last name is required.
-                        </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -71,15 +62,6 @@
                         <div class="invalid-feedback" style="width: 100%;">
                             Your cellphone number is required.
                         </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" [(ngModel)]="userProfile.emailAddress" name="email"
-                        placeholder="you@example.com">
-                    <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
                     </div>
                 </div>
 
@@ -114,12 +96,12 @@
                 </div>
 
                 <!--<input ngx-google-places-autocomplete #placesRef="ngx-places" [options]='options' (onAddressChange)="AddressChange($event)"/> 
-                -->
+                
                 <div class="mb-3">
                     <label for="instructions">Additional Instructions<span class="text-muted">(Optional)</span></label>
                     <textarea [(ngModel)]="additionalInstructions" type="textarea" class="form-control" name="instructions"
-                        placeholder="This is a special gilf for my mom. Please put a wrap for me, thanks."></textarea>
-                </div>
+                        placeholder="Enter additional instructions for the drivers"></textarea>
+                </div> -->
 
 
                 <hr class="mb-4">

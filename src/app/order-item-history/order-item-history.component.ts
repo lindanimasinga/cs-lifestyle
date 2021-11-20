@@ -50,4 +50,10 @@ export class OrderItemHistoryComponent implements OnInit {
     return Order.stageEnumText[stage];
   }
 
+  get mobileNumber() {
+   return this.customer.mobileNumber.startsWith("0") ? 
+      this.customer.mobileNumber.replace('0', "+27") : 
+      this.customer.mobileNumber.startsWith("27") ? this.customer.mobileNumber.replace('27', "+27") : this.customer.mobileNumber 
+  }
+
 }

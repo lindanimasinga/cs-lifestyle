@@ -1,3 +1,8 @@
 .btn {
     background-color: #e0182d !important;
 }
+
+.modal-content {
+    background-color: #2D2D2D;
+    color: white;
+}

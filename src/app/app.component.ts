@@ -41,10 +41,8 @@ export class AppComponent {
     });
     
   }
+  
   applyTheme() {
-    if(this.storage.shop) {
-      Utils.applyCustomeTheme(this.storage.shop.brandPrimaryColor, this.storage.shop.brandSecondaryColor)
-    }
   }
 
   private configureScrollEffects() {

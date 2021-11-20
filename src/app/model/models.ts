@@ -13,4 +13,5 @@ export * from './shippingData';
 export * from './stock';
 export * from './storeProfile';
 export * from './userProfile';
+export * from './current-location';
 export * from './view';

@@ -36,6 +36,7 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { IzingaHomeComponent } from './izinga-home/izinga-home.component';
 import { StoresComponent } from './stores/stores.component';
 import { StoreCardComponent } from './store-card/store-card.component';
+import { OrderCardComponent } from './order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { StoreCardComponent } from './store-card/store-card.component';
     TermsConditionsComponent,
     IzingaHomeComponent,
     StoresComponent,
-    StoreCardComponent
+    StoreCardComponent,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,

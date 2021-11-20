@@ -63,7 +63,7 @@ export class ShippingComponent implements OnInit {
   }
 
   validData() {
-    return this.userProfile.address && this.userProfile.name && this.userProfile.surname
+    return this.userProfile.address && this.userProfile.name
       && this.userProfile.mobileNumber 
       && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
   }

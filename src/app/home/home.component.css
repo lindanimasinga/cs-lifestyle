@@ -2,6 +2,13 @@
 
 }
 
+.btn-checkout {
+  color: #ffffff;
+  background-color: #d69447;
+  width: 100vw !important;
+  border-radius: 0%;
+}
+
 .carousel-item, .carousel-cell {
  height: 475px;
 }

@@ -1,5 +1,5 @@
 <nav name="scrollTo" class="navbar navbar-expand-lg navbar-light bg-clear bg-light mb-1 mb-3">
-    <a class="navbar-brand" routerLink=".">
+    <a class="navbar-brand" routerLink="/">
       <img src="./assets/images/izinga-logo.png" class="logo d-inline-block" alt="" loading="lazy">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -26,8 +26,6 @@
 
  <div class="container-fluid"> 
 
-<span class="shop-name my-5" height="50">{{shop?.name}}</span>  
-
 <router-outlet></router-outlet>
 
 <div *ngIf="hasError" class="alert alert-danger error alert-dismissible fade show fixed-top" role="alert">
@@ -35,15 +33,6 @@
     <button type="button" class="close" aria-label="Close" (click)="clearError()">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  
-  <div *ngIf="hasItemsInCart() && shouldShowIcon()" class="fixed-bottom d-flex justify-content-end mr-3 mb-3">
-  
-    <a routerLink="./cart">
-      <button mat-fab class="bg-dark">
-        <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
-      </button>
-    </a>
   </div>
 
 </div>

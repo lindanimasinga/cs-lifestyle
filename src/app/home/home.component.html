@@ -23,7 +23,7 @@
   </a>
   <a [href]="promotions[1].stockId != null? ('./item/' + promotions[1].stockId) : '#'">
     <div id="promotion2"
-      class="bg-dark mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden rounded shadow-sm digit">
+      class="bg-dark mt-sm-3 mr-md-3 mb-1 pt-3 px-3 pt-md-1 px-md-5 text-center overflow-hidden rounded shadow-sm">
 
       <div class="my-3 p-3">
         <h3 class="display-5">{{promotions[1].title}}</h3>
@@ -35,63 +35,21 @@
 </div>
 
 <div class="my-3 py-3 d-flex justify-content-center">
-  <h3 class="display-5 page-header">Menu</h3>
+  <div class="h5 page-header">{{shop?.name}} Menu</div>
 </div>
 
 <div class="d-flex align-items-center row">
-
-  <div [id]="'item'+number" *ngFor="let item of shopItems; let number = index" class="col-md-4 col-lg-3 col-xl-3 digit">
-    <app-shop-item [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
+  <div [id]="'item'+number" *ngFor="let item of shopItems; let number = index" class="col-6 col-md-4 col-lg-2 col-xl-2">
+    <app-shop-item [shopId]="shop.id" [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
   </div>
-
 </div>
 
-
-<!--
-  <div id="mc_embed_signup" class="container d-flex align-items-center">
-    <div class="card">
-      <div class="card-body">
-    <form action="https://gmail.us3.list-manage.com/subscribe/post?u=d9116733dac1eb2c3210fd6d2&amp;id=6c42a9a3bf"
-      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
-      novalidate>
-      <div id="mc_embed_signup_scroll">
-        <h2>Subscribe</h2>
-        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-        <div class="mc-field-group">
-          <label for="mce-FNAME">First Name </label>
-          <input class="form-control" type="text" value="" name="FNAME" class="" id="mce-FNAME">
-        </div>
-        <div class="mc-field-group">
-          <label for="mce-LNAME">Current City </label>
-          <input class="form-control" type="text" value="" name="LNAME" class="" id="mce-LNAME">
-        </div>
-        <div class="mc-field-group">
-          <label for="mce-SUNURB">Suburb <span class="asterisk">*</span>
-          </label>
-          <input class="form-control" type="text" value="" name="SUNURB" class="required" id="mce-SUNURB">
-        </div>
-        <div class="mc-field-group size1of2">
-          <label for="mce-PHONE">Phone Number <span class="asterisk">*</span>
-          </label>
-          <input class="form-control" type="text" name="PHONE" class="required" value="" id="mce-PHONE">
-        </div>
-        <div class="mc-field-group">
-          <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
-          </label>
-          <input class="form-control" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-        </div>
-        <div id="mce-responses" class="clear">
-          <div class="response" id="mce-error-response" style="display:none"></div>
-          <div class="response" id="mce-success-response" style="display:none"></div>
-        </div>
-         
-        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-            name="b_d9116733dac1eb2c3210fd6d2_6c42a9a3bf" tabindex="-1" value=""></div>
-        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="" class="btn"></div>
-      </div>
-    </form>
-    </div>
-    </div>
-  </div>
+<div *ngIf="hasItemsInCart()" class="fixed-bottom">
   
-  -->
+  <a routerLink="./cart">
+    <button class="btn btn-checkout shadow-sm">
+      <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
+      CHECKOUT
+    </button>
+  </a>
+</div>

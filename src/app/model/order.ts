@@ -70,4 +70,15 @@ export namespace Order {
         STAGE_6_WITH_CUSTOMER: "Delivered",
         STAGE_7_ALL_PAID: "Completed"
     };
+
+    export const stageEnumColor = {
+        STAGE_0_CUSTOMER_NOT_PAID : "#10a59f",
+        STAGE_1_WAITING_STORE_CONFIRM: "#d66247",
+        STAGE_2_STORE_PROCESSING: "#d69447",
+        STAGE_3_READY_FOR_COLLECTION: "#1083a5",
+        STAGE_4_ON_THE_ROAD: "#707070",
+        STAGE_5_ARRIVED: "#A2A2A2",
+        STAGE_6_WITH_CUSTOMER: "#d69447",
+        STAGE_7_ALL_PAID: "#A2A2A2"
+    };
 }

@@ -1,7 +1,7 @@
 <div *ngIf="order != null" class="mt-5 mb-3 d-flex justify-content-sm-center justify-content-md-start">
-    <h3 class="page-header display-5">Order <small>{{order.id}}</small></h3> 
+    <div class="page-header h5">Order <small>{{order.id}}</small></div> 
 </div>
-<div class="order-status badge badge-info" *ngIf="order">{{statusText(order.stage)}}</div>
+<h3><div class="order-status badge badge-info" *ngIf="order">{{statusText(order.stage)}}</div></h3>
 <div class="row mt-3">
     <div *ngIf="order != null" class="col-md-6 order-md-2 mb-3">
         <ul class="list-group mb-3">
@@ -41,8 +41,8 @@
                 <div>
                     <h6 class="my-0">Mobile Number</h6>
                 </div>
-                <a [href]="'https://wa.me/'+ customer.mobileNumber + '?text=Hello, this is Lindani from iZinga. I noticed you have tried to order. Are you having trouble?'">
-                    <span class="text-muted">{{customer.mobileNumber}}</span></a>
+                <a [href]="'https://wa.me/'+ mobileNumber + '?text=Hello, this is Lindani from iZinga. I noticed you have tried to order. Are you having trouble?'">
+                    <span class="text-muted">{{mobileNumber}}</span></a>
             </li>
             <li *ngIf="customer.email != null" class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>

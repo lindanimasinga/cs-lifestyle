@@ -1,5 +1,5 @@
 <div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
-    <h3 class="page-header display-5">Payment</h3>
+    <div class="page-header h5">Payment</div>
 </div>
 <div class="container">
 
@@ -47,15 +47,6 @@
                 </div>
             </div>
 
-            <div *ngIf="paymentSelected == 'ukheshe'" class="row  mt-3">
-                <div class="col-md-12">
-                    <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm" data-toggle="modal"
-                        data-target="#ukhesheLogin">
-                        Pay Now
-                    </button>
-                </div>
-            </div>
-
             <div *ngIf="paymentSelected == 'masterpass'" class="row  mt-3">
                 <div class="col-md-12">
                     <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm" data-toggle="modal"
@@ -74,9 +65,7 @@
                 </div>
             </div>
 
-        <app-ozow-payment [paymentUrl]="ozowPaymentUrl"></app-ozow-payment>    
-        <app-ukheshe-payment [order]="order"></app-ukheshe-payment>
-        <app-ukheshe-masterpass [order]="order"> </app-ukheshe-masterpass>
+        <app-ozow-payment [paymentUrl]="ozowPaymentUrl"></app-ozow-payment> 
         <app-payfast [order]="order" [storeName]="shopName"> </app-payfast>
 
         </div>
@@ -103,7 +92,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (ZAR)</span>
-                    <strong>R{{order.totalAmount}}</strong>
+                    <strong>{{order.totalAmount | currency:'R'}}</strong>
                 </li>
             </ul>
         </div>

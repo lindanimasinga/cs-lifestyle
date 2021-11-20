@@ -1,5 +1,22 @@
-<div class="row d-flex justify-content-center">
-    <div *ngFor="let store of stores" class="col-sm-3 my-3 mx-3">
-        <app-store-card [store]="store"></app-store-card>
+<div>
+    <div class="mt-3 mb-5 mx-3 d-flex justify-content-center">
+        <span class="address mr-5">{{address}}</span>
+        <a (click)="changeAddress()"><button class="btn btn-primary button-dark btn-small">Change</button></a>
+    </div>
+
+    <div *ngIf="hasOrders()" class="mb-3">
+        <div class="h5 mb-3">My Orders</div>
+        <div class="row d-flex justify-content-start">
+            <div *ngFor="let order of currentOrders" class="orders col-sm-3 my-1 d-flex justify-content-start">
+                <app-order-card [order]="order"></app-order-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="h5 mb-3">Shops</div>
+    <div class="row d-flex justify-content-center">
+        <div *ngFor="let store of stores" class="col-sm-3 my-2 mx-3 d-flex justify-content-center">
+            <app-store-card [store]="store"></app-store-card>
+        </div>
     </div>
 </div>

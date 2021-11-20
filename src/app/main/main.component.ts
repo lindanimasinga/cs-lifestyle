@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
 
   constructor(private storageService: StorageService,
     private izingaService: IzingaOrderManagementService,
-    private router: Router,
     private activatedRoute: ActivatedRoute) {
   }
 
@@ -29,7 +28,6 @@ export class MainComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.storageService.shop = shop;
-      setTimeout(() => Utils.applyCustomeTheme(shop.brandPrimaryColor, shop.brandSecondaryColor), 100)
     })
 
     if(this.hasError) {
@@ -39,18 +37,6 @@ export class MainComponent implements OnInit {
 
   get shop() : StoreProfile {
     return this.storageService.shop
-  }
-
-  hasItemsInCart(): boolean {
-    return this.storageService.basket != null && this.storageService.basket.items.length > 0;
-  }
-
-  shouldShowIcon(): boolean {
-    return this.router.url == "/" || this.router.url.startsWith("/item/") || this.router.url == `/${this.shop?.shortName}` || this.router.url.startsWith(`/${this.shop?.shortName}/item/`);
-  }
-
-  get cartNumberOfItems() { 
-    return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
   }
 
   get hasError(): boolean {
