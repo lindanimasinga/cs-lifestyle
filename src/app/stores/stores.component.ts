@@ -47,7 +47,7 @@ export class StoresComponent implements OnInit {
         .pipe(
           map(orders => orders
             .filter(
-              store => store.stage != Order.StageEnum._0CUSTOMERNOTPAID || store.stage != Order.StageEnum._7ALLPAID
+              store => store.stage != Order.StageEnum._7ALLPAID
               )
             )
           )

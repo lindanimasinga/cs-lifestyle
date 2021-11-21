@@ -1,5 +1,4 @@
-<a routerLink="/{{order.shopId}}/order/{{order.id}}">
-<div class="order-card d-flex justify-content-between">
+<div (click)="viewOrderDetails()" class="order-card d-flex justify-content-between">
     <div class="info p-3 ">
         <div class="pb-1 text-muted">Order No. {{order.id}}</div>
         <div class="pb-1 text-muted">Date. {{order.date | date: 'd MMM y h:mma'}}</div>
@@ -9,4 +8,3 @@
         {{statusText(order.stage)}}
     </div>
 </div>
-</a>
