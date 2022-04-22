@@ -5,18 +5,20 @@
     </div>
 
     <div *ngIf="hasOrders()" class="mb-3">
-        <div class="h5 mb-3">My Orders</div>
+        <div class="container h5 mb-3">My Orders</div>
         <div class="row d-flex justify-content-start">
-            <div *ngFor="let order of currentOrders" class="orders col-sm-3 my-1 d-flex justify-content-start">
+            <div *ngFor="let order of currentOrders" class="orders col-md-6 col-lg-6 col-xl-4 py-2 d-flex justify-content-start">
                 <app-order-card [order]="order"></app-order-card>
             </div>
         </div>
     </div>
 
-    <div class="h5 mb-3">Shops</div>
-    <div class="row d-flex justify-content-center">
-        <div *ngFor="let store of stores" class="col-sm-3 my-2 mx-3 d-flex justify-content-center">
-            <app-store-card [store]="store"></app-store-card>
+    <div class="container h5 mb-3">Shops</div>
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div *ngFor="let store of stores" class="col-md-6 col-xl-4 px-2 py-2 d-flex justify-content-center">
+                <app-store-card [store]="store"></app-store-card>
+            </div>
         </div>
     </div>
 </div>

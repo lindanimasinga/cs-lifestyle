@@ -9,3 +9,11 @@
         font-size: small;
     }
 }
+
+.logo {
+    background-image: var(--bkg-logo);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 131px;
+    height: 50px;
+}

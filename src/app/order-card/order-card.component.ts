@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Order } from '../model/order';
 
 @Component({
@@ -27,9 +28,7 @@ export class OrderCardComponent implements OnInit {
 
   viewOrderDetails() {
     if(this.order.stage == Order.StageEnum._0CUSTOMERNOTPAID) {
-      this.router.navigate([`${this.order.shopId}/payment`], { queryParams: 
-        {"Status": "unpaid", "type": "none", 
-        "TransactionReference": this.order.id}})
+      window.location.href = `${environment.izingaPayUrl}?Status=init&type=yoco&TransactionReference=${this.order.id}&callback=${environment.ozow_succeess_url}`
     } else {
       this.router.navigate([`/${this.order.shopId}/order/${this.order.id}`], { queryParams: 
         {"Status": "unpaid", "type": "none", 

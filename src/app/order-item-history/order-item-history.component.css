@@ -1,4 +1,4 @@
 .list-group-item {
-    background-color: #2D2D2D;
-    color: white;
+    background-color: var(--bkg-card-color);;
+    color: var(--text-color);
 }

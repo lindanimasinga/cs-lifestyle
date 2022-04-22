@@ -9,12 +9,12 @@
 }
 
 .page-header {
-    color: #ffffff !important;
+    color: var(--text-color) !important;
 }
 
 .list-group-item {
     background-color: #2D2D2D;
-    color: white;
+    color: var(--text-color);
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -22,7 +22,7 @@
 }
 
 #app-root {
-    min-height: calc(100vh - 227px);
+    min-height: calc(100vh - 176px);
 }
 
 .bg-dark {
@@ -44,16 +44,16 @@
 }
 
 .bg-light .nav-link {
-    color: white !important;
+    color: var(--text-color) !important;
     font-size: larger;
 }
 
 .product {
-    color: white  ;
+    color: var(--text-color)  ;
 }
 
 mat-icon {
-    color: white !important;
+    color: var(--text-color) !important;
 }
 
 .bg-ukheshe {
@@ -95,13 +95,13 @@ footer {
 }
 
 footer * {
-    color: white;
+    color: var(--text-color);
     font-size: 14px;
 }
 
 .footer-header {
     font-size: 16px !important;
-    color: white;
+    color: var(--text-color);
 }
 
 html, body {
@@ -130,12 +130,30 @@ a:active {
 
 body {
     min-height: 100vh !important;
-    background-repeat: no-repeat !important;
-    background: #212121;
-    color: white;
+    background: var(--bkg-color);
+    color: var(--text-color);
     margin: 0;
     font-family: Catamaran
 }
+
+body {
+    --text-color: #707070;
+    --bkg-color: #F8F7F7;
+    --bkg-card-color: white;
+    --btn-txt-color: #707070;
+    --btn-bg-color: rgb(11, 88, 160);
+    --bkg-logo: url('/assets/images/izinga-logo.png')
+  }
+  body.dark-theme {
+    --text-color: #eee;
+    --bkg-color: #212121;
+    --bkg-card-color: #2D2D2D;
+    --btn-txt-color: rgb(46, 43, 43);
+    --btn-bg-color: rgb(20, 211, 195);
+    --bkg-logo: url('/assets/images/izinga-logo.png')
+  }
+
+
 
 /*animations*/
 .digit {

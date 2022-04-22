@@ -41,14 +41,15 @@ export namespace Order {
         ONLINE: 'ONLINE' as OrderTypeEnum,
         INSTORE: 'INSTORE' as OrderTypeEnum
     };
-    export type PaymentTypeEnum = 'UKHESHE' | 'CASH' | "OZOW" | "PAYFAST";
+    export type PaymentTypeEnum = 'UKHESHE' | 'CASH' | "OZOW" | "PAYFAST" | "YOCO";
     export const PaymentTypeEnum = {
         UKHESHE: 'UKHESHE' as PaymentTypeEnum,
         CASH: 'CASH' as PaymentTypeEnum,
         OZOW: 'OZOW' as PaymentTypeEnum,
-        PAYFAST: 'PAYFAST' as PaymentTypeEnum
+        PAYFAST: 'PAYFAST' as PaymentTypeEnum,
+        YOCO: 'YOCO' as PaymentTypeEnum
     };
-    export type StageEnum = 'STAGE_0_CUSTOMER_NOT_PAID' | 'STAGE_1_WAITING_STORE_CONFIRM' | 'STAGE_2_STORE_PROCESSING' | 'STAGE_3_READY_FOR_COLLECTION' | 'STAGE_4_ON_THE_ROAD' | 'STAGE_5_ARRIVED' | 'STAGE_6_WITH_CUSTOMER' | 'STAGE_7_ALL_PAID';
+    export type StageEnum = 'STAGE_0_CUSTOMER_NOT_PAID' | 'STAGE_1_WAITING_STORE_CONFIRM' | 'STAGE_2_STORE_PROCESSING' | 'STAGE_3_READY_FOR_COLLECTION' | 'STAGE_4_ON_THE_ROAD' | 'STAGE_5_ARRIVED' | 'STAGE_6_WITH_CUSTOMER' | 'STAGE_7_ALL_PAID' | 'CANCELLED';
     export const StageEnum = {
         _0CUSTOMERNOTPAID: 'STAGE_0_CUSTOMER_NOT_PAID' as StageEnum,
         _1WAITINGSTORECONFIRM: 'STAGE_1_WAITING_STORE_CONFIRM' as StageEnum,
@@ -57,18 +58,20 @@ export namespace Order {
         _4ONTHEROAD: 'STAGE_4_ON_THE_ROAD' as StageEnum,
         _5ARRIVED: 'STAGE_5_ARRIVED' as StageEnum,
         _6WITHCUSTOMER: 'STAGE_6_WITH_CUSTOMER' as StageEnum,
-        _7ALLPAID: 'STAGE_7_ALL_PAID' as StageEnum
+        _7ALLPAID: 'STAGE_7_ALL_PAID' as StageEnum,
+        _CANCELLED: 'CANCELLED' as StageEnum
     };
 
     export const stageEnumText = {
         STAGE_0_CUSTOMER_NOT_PAID : "Not Paid",
         STAGE_1_WAITING_STORE_CONFIRM: "Waiting Confirmation",
         STAGE_2_STORE_PROCESSING: "Processing",
-        STAGE_3_READY_FOR_COLLECTION: "Ready For Collection",
+        STAGE_3_READY_FOR_COLLECTION: "Driver is collecting",
         STAGE_4_ON_THE_ROAD: "Arriving",
         STAGE_5_ARRIVED: "Arrived",
         STAGE_6_WITH_CUSTOMER: "Delivered",
-        STAGE_7_ALL_PAID: "Completed"
+        STAGE_7_ALL_PAID: "Completed",
+        CANCELLED: "Cancelled"
     };
 
     export const stageEnumColor = {
@@ -79,6 +82,7 @@ export namespace Order {
         STAGE_4_ON_THE_ROAD: "#707070",
         STAGE_5_ARRIVED: "#A2A2A2",
         STAGE_6_WITH_CUSTOMER: "#d69447",
-        STAGE_7_ALL_PAID: "#A2A2A2"
+        STAGE_7_ALL_PAID: "#A2A2A2",
+        CANCELLED: "#d66247"
     };
 }

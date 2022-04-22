@@ -6,12 +6,14 @@ import { Utils } from './utils/utils';
 
 declare var firebase: any
 
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+document.body.classList.toggle('dark-theme', prefersDarkScheme.matches);
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
 
   title = 'cs-clothing-web';

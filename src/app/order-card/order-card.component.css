@@ -1,5 +1,5 @@
 .order-card {
-    background-color: #2D2D2D;
+    background: var(--bkg-card-color);
     height: 100px;
     width: 346px;
 }

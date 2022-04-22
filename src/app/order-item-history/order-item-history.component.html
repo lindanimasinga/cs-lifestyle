@@ -8,12 +8,12 @@
             <li *ngFor="let orderItem of order.basket.items"
                 class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
-                    <h6 class="my-0">{{orderItem.name}}</h6>
+                    <h6 class="my-0">{{orderItem.quantity}} x {{orderItem.name}}</h6>
                     <div *ngFor="let option of orderItem.options">
                         <small class="text-muted">{{option.name}} : {{option.selected}}</small>
                     </div>
                 </div>
-                <span class="text-muted">{{orderItem.price | currency:'R'}}</span>
+                <span class="text-muted">{{orderItem.price * orderItem.quantity | currency:'R'}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
