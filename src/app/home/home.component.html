@@ -41,7 +41,7 @@
 
 <div class="d-flex align-items-center row">
   <div [id]="'item'+number" *ngFor="let item of shopItems; let number = index" class="col-6 col-md-4 col-lg-3 col-xl-2">
-    <app-shop-item [shopId]="shop.id" [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
+    <app-shop-item [shop]="shop" [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
   </div>
 </div>
 

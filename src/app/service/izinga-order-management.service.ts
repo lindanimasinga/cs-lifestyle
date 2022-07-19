@@ -89,6 +89,16 @@ export class IzingaOrderManagementService {
           }))
   }
 
+  getAllPromotions(lat: number, long: number, range: number) {
+    return this.http
+        .get<Array<Promotion>>(`${environment.izingaUrl}/promotion?storeType=${environment.storeType}`, {headers: this.headers})
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.error.message
+            return throwError(error)
+          }))
+  }
+
   getOrderById(orderId: string) : Observable<Order> {
     return this.http
     .get<Order>(`${environment.izingaUrl}/order/${orderId}`, {headers: this.headers})

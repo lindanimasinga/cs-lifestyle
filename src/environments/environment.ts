@@ -7,7 +7,7 @@ import { StoreProfile } from '../app/model/models';
 export var environment = {
   production: false,
   storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
-  storeType: StoreProfile.StoreTypeEnum.CLOTHING,
+  storeType: StoreProfile.StoreTypeEnum.FOOD,
   messengerId: "ffd4c856-644f-4453-a5ed-84689801a747",
   izingaUrl: "https://api-uat.izinga.co.za",
   izingaPayUrl: "https://pay-izinga-uat.web.app",

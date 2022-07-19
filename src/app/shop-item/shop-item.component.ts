@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShopItem } from '../model/shop-item';
 import { Stock } from '../model/stock';
+import { StoreProfile } from '../model/storeProfile';
 
 declare var ScrollMagic: any;
 
@@ -16,11 +17,16 @@ export class ShopItemComponent implements OnInit {
   @Input()
   themeDark = false;
   @Input()
-  shopId: String
+  shop: StoreProfile
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get stockImage() {
+    return this.shopItem.images[0] != null && this.shopItem.images[0].trim().length != 0 && this.shopItem.images[0] != "https:null" ?
+    this.shopItem.images[0] : this.shop.imageUrl
   }
 
 }

@@ -33,7 +33,7 @@ export const environment = {
   databaseURL: "https://ijudi-d19bd.firebaseio.com",
   projectId: "ijudi-d19bd",
   storageBucket: "cs-clothing.appspot.com",
-  messagingSenderId: "705023698499",
+  messagingSenderId: "315529266651",
   appId: "1:315529266651:web:b28ea03f57c4d432ed53fe",
   measurementId: "G-ZJRDF78RJX"
 };
