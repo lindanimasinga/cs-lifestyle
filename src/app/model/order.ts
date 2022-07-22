@@ -85,4 +85,8 @@ export namespace Order {
         STAGE_7_ALL_PAID: "#A2A2A2",
         CANCELLED: "#d66247"
     };
+
+    export const stageColors = ["#10a59f", "#d66247", "#d69447", "#1083a5", "#707070",
+        "#A2A2A2", "#d69447", "#A2A2A2", "#d66247"
+    ];
 }

@@ -1,5 +1,5 @@
 .card {
-    width: 320px;
+  
     border-radius: 1rem;
     background: var(--bkg-card-color);
     outline: none;
@@ -7,14 +7,14 @@
 }
 
 .card img {
-    width: 160px;
-    height: 131px;
+    width: 187px;
+    height: 140px;
     object-fit: cover;
     border-radius: 1rem 0 0 1rem;
 }
 
 .card-header {
-    width: 160px;
+    width: 148px;
     border-radius: 0 1rem 1rem 0;
     background-color: var(--bkg-card-color);
     border: none;

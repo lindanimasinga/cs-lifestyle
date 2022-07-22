@@ -148,6 +148,7 @@ body {
     --bkg-card-color: white;
     --btn-txt-color: #707070;
     --btn-bg-color: rgb(11, 88, 160);
+    --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
   body.dark-theme {
@@ -156,6 +157,7 @@ body {
     --bkg-card-color: #2D2D2D;
     --btn-txt-color: rgb(46, 43, 43);
     --btn-bg-color: rgb(20, 211, 195);
+    --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
 

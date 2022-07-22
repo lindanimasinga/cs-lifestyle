@@ -19,6 +19,7 @@ export class StoresComponent implements OnInit {
   stores: StoreProfile[] = []
   promotions: Promotion[] = []
   currentOrders: Order[]
+  tags = new Set<string>()
   address: string
   
   constructor(private activeRoute: ActivatedRoute, private router: Router,
@@ -36,7 +37,10 @@ export class StoresComponent implements OnInit {
         .pipe(
           map(stores => stores.filter(store => !store.storeOffline))
         )
-        .subscribe(resp => this.stores = resp)
+        .subscribe(resp => {
+          this.stores = resp
+          this.stores.forEach(item => item.tags.forEach(tag => this.tags.add(tag)))
+        })
     
     this.izingaService.getAllPromotions(lat, long, 0.1)
         .subscribe(resp => {
@@ -72,6 +76,8 @@ export class StoresComponent implements OnInit {
     return this.currentOrders != null && this.currentOrders.length > 0
   }
 
-  
+  statusColor(index: number) {
+    return Order.stageColors[index % Order.stageColors.length];
+  }
 
 }
