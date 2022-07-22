@@ -10,9 +10,11 @@
 
 .card {
     border: none !important;
+    background: var(--bkg-card-color);
+    outline: none;
 }
 
-.page-header {
+.page-header, a {
     color: var(--text-color) !important;
 }
 

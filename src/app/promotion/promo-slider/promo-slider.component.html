@@ -1,0 +1,11 @@
+<div *ngIf="promotions?.length > 0" class="container h5 mb-3">Promotions</div>
+<div *ngIf="promotions?.length > 0" class="carousel digit">
+    <div *ngFor="let promotion of promotions ; let number = index;" class="mr-3">
+      <a *ngIf="promotion.stockId != null else unclickable" [routerLink]="'./item/' + promotion.stockId">
+        <app-promotion [promotion]="promotion"></app-promotion>
+      </a>
+      <ng-template #unclickable>
+        <app-promotion [promotion]="promotion"></app-promotion>
+      </ng-template>
+    </div>
+</div>

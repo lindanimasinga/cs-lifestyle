@@ -1,6 +1,6 @@
 .card {
     width: 160px;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 1rem 1rem;
     background: var(--bkg-card-color);
     outline: none;
     border: none;
@@ -10,11 +10,12 @@
     width: 160px;
     height: 160px;
     object-fit: cover;
+    border-radius: 1rem 1rem 1rem 1rem;
 }
 
 .card-header {
     width: 160px;
-    border-radius: 0 1rem 1rem 0;
+    border-radius: 1rem 1rem 1rem 1rem;
     background-color: var(--bkg-card-color);
     border: none;
 }

@@ -1,6 +1,7 @@
 {
   "short_name": "iZinga",
   "name": "iZinga",
+  "description": "The best foods in town",
   "icons": [{
     "src": "images/izinga-short.png",
     "type": "image/png",

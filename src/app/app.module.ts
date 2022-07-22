@@ -38,6 +38,7 @@ import { StoresComponent } from './stores/stores.component';
 import { StoreCardComponent } from './store-card/store-card.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { PromotionComponent } from './promotion/promotion.component';
+import { PromoSliderComponent } from './promotion/promo-slider/promo-slider.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { PromotionComponent } from './promotion/promotion.component';
     StoresComponent,
     StoreCardComponent,
     OrderCardComponent,
-    PromotionComponent
+    PromotionComponent,
+    PromoSliderComponent
   ],
   imports: [
     BrowserModule,

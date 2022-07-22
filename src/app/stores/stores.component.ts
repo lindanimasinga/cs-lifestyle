@@ -9,9 +9,6 @@ import { StoreProfile } from '../model/storeProfile';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
 
-declare var Flickity: any;
-declare var ScrollMagic: any;
-
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',
@@ -44,12 +41,7 @@ export class StoresComponent implements OnInit {
     this.izingaService.getAllPromotions(lat, long, 0.1)
         .subscribe(resp => {
           this.promotions = resp
-          setTimeout(() => {
-            this.initCarousel()
-            this.initScrollMagicForPromotions()
-          }, 100);
         })
-    
     })
 
     this.fetchOrders()
@@ -80,47 +72,6 @@ export class StoresComponent implements OnInit {
     return this.currentOrders != null && this.currentOrders.length > 0
   }
 
-  initCarousel() {
-    var elem = document.querySelector('.carousel');
-    new Flickity(elem, {
-      // options
-      "autoPlay": 5000,
-      "imagesLoaded": true,
-      "percentPosition": false,
-      "wrapAround": true
-    })
-  }
-
-  initScrollMagicForPromotions() {
   
-    var controller = new ScrollMagic.Controller();
-    
-    new ScrollMagic.Scene({
-      triggerElement: `.carousel`,
-      reverse: true,
-      triggerHook: "0.9" // move trigger to center of element
-    })
-      .setClassToggle(`.carousel`, "visible") // add class to reveal
-     // .addIndicators() // add indicators (requires plugin)
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: "#promotion1",
-      reverse: true,
-      triggerHook: "0.9" // move trigger to center of element
-    })
-      .setClassToggle(`#promotion1`, "visible") // add class to reveal
-   //   .addIndicators() // add indicators (requires plugin)
-      .addTo(controller);
-
-    new ScrollMagic.Scene({
-      triggerElement: "#promotion2",
-      reverse: true,
-      triggerHook: "0.9" // move trigger to center of element
-    })
-      .setClassToggle("#promotion2", "visible") // add class to reveal
-      //.addIndicators() // add indicators (requires plugin)
-      .addTo(controller);
-  }
 
 }

@@ -1,17 +1,5 @@
 {
   "projects": {
     "default": "ijudi-d19bd"
-  },
-  "targets": {
-    "ijudi-d19bd": {
-      "hosting": {
-        "uat": [
-          "pay-izinga-uat"
-        ],
-        "prod": [
-          "pay-izinga"
-        ]
-      }
-    }
   }
 }
