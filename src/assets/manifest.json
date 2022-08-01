@@ -1,6 +1,7 @@
 {
   "short_name": "iZinga",
   "name": "iZinga",
+  "gcm_sender_id": "315529266651",
   "description": "The best foods in town",
   "icons": [{
     "src": "images/izinga-short.png",

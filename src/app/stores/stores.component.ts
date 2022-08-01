@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { CurrentLocation } from '../model/current-location';
 import { Order } from '../model/order';
 import { Promotion } from '../model/promotion';

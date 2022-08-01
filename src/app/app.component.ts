@@ -4,8 +4,6 @@ import { environment } from 'src/environments/environment';
 import { StorageService } from './service/storage-service.service';
 import { Utils } from './utils/utils';
 
-declare var firebase: any
-
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 document.body.classList.toggle('dark-theme', prefersDarkScheme.matches);
 
@@ -22,18 +20,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    var firebaseConfig = {
-      apiKey: environment.firebase_apiKey,
-      authDomain: environment.authDomain,
-      databaseURL: environment.databaseURL,
-      projectId: environment.projectId,
-      messagingSenderId: environment.messagingSenderId,
-      appId: environment.appId,
-      measurementId: environment.measurementId
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

@@ -11,6 +11,7 @@ export class StorageService {
   BASKET_KEY = "sdfsdfljsdf";
   ORDER_KEY = "fuiwerfbsk";
   CUURENT_LOCATION_KEY = "kfjhdyrbvsl"
+  TOKEN_KEY = "vm1xcnvfoiwerw"
   jwt: string;
   ukhesheUser: UkhesheUser;
   shop: StoreProfile;
@@ -21,6 +22,7 @@ export class StorageService {
   _userProfile: UserProfile //= {"id":"ffd4c856-644f-4453-a5ed-84689801a747","name":"Lindani","description":"customer","yearsInService":0,"address":"41 Sheffield Cl, Milnerton Rural, Cape Town, 7441, South Africa","imageUrl":"https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg","likes":0,"servicesCompleted":0,"badges":0,"mobileNumber":"0812815707","emailAddress":null,"role":"STORE_ADMIN","responseTimeMinutes":0,"verificationCode":null,"bank":{"name":"Ukheshe","phone":"0812815707","accountId":null,"type":"wallet"},"latitude":0.0,"longitude":0.0,"idNumber":""};
   _currentLocation: CurrentLocation
   errorMessage: String;
+  _fcmToken: string
 
   constructor() { }
 
@@ -66,6 +68,22 @@ export class StorageService {
       this._order = JSON.parse(this.cache.getItem(this.ORDER_KEY))
     }
     return this._order;
+  }
+
+  set fcmToken(token: string) {
+    this._fcmToken = token
+    if(token == null) {
+      this.cache.removeItem(this.TOKEN_KEY)
+      return
+    }
+    this.cache.setItem(this.TOKEN_KEY, this._fcmToken)
+  }
+
+  get fcmToken() {
+    if(this._fcmToken == null) {
+      this._fcmToken = this.cache.getItem(this.TOKEN_KEY)
+    }
+    return this._fcmToken;
   }
   
   addToCart(basketItem: BasketItem) {

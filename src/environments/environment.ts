@@ -32,6 +32,7 @@ export var environment = {
   payfast_merchant_id: "10022392",
   payfast_merchant_key: "os0ltelv1gepy",
   firebase_apiKey: "AIzaSyB1KhGf_VDF8VDUT0pNddLXB1Hls_dtR0U",
+  firebaseVapidKey: "BBTAcjDdxSYob_-MRhZiBbrzOaW4qvyLQjHiZEsmVq8S3LXHZMrXBvsixmiIs8VYVFrlRaaZUeEPEGuUc-pM39A",
   authDomain: "ijudi-d19bd.firebaseapp.com",
   databaseURL: "https://ijudi-d19bd.firebaseio.com",
   projectId: "ijudi-d19bd",

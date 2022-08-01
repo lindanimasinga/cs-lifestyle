@@ -18,7 +18,7 @@
     </div>
 
     <span *ngIf="tags.size > 0" class="tag mt-5 d-flex justify-content-center">
-        <span *ngFor="let tag of tags; let number = index" class="badge rounded-pill text-bg-info mr-1" [ngStyle]="{'background-color': statusColor(number)}">{{tag | titlecase }}</span>
+        <span *ngFor="let tag of tags; let number = index" class="badge rounded-pill text-bg-info" [ngStyle]="{'background-color': statusColor(number)}">{{tag | titlecase }}</span>
     </span>
 
 

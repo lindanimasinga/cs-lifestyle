@@ -32,12 +32,12 @@
 }
 
 .bg-dark {
-    background-color: #10A59F !important;
+    background-color: var(--btn-bg-color) !important;
     color: white !important;
 }
 
 .button-dark {
-    background-color: #10A59F !important;
+    background-color: var(--btn-bg-color) !important;
     color: white !important;
 }
 
@@ -97,17 +97,17 @@ footer {
     padding-left: 16px;
     padding-right: 16px;
     background-repeat: no-repeat !important;
-    background: #2D2D2D
+    background: var(--footer-bkg-color)
 }
 
 footer * {
-    color: var(--text-color);
+    color: var(--footer-text-color);
     font-size: 14px;
 }
 
 .footer-header {
     font-size: 16px !important;
-    color: var(--text-color);
+    color: var(--footer-text-color);
 }
 
 html, body {
@@ -145,18 +145,23 @@ body {
 body {
     --text-color: #707070;
     --bkg-color: #F8F7F7;
+    --footer-bkg-color: #707070;
+    --footer-text-color: #eee;
     --bkg-card-color: white;
     --btn-txt-color: #707070;
-    --btn-bg-color: rgb(11, 88, 160);
+    --btn-bg-color: #10A59F;
     --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
-  body.dark-theme {
+
+body.dark-theme {
     --text-color: #eee;
     --bkg-color: #212121;
     --bkg-card-color: #2D2D2D;
+    --footer-bkg-color: #000000;
+    --footer-text-color: #eee;
     --btn-txt-color: rgb(46, 43, 43);
-    --btn-bg-color: rgb(20, 211, 195);
+    --btn-bg-color: #10A59F;
     --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
