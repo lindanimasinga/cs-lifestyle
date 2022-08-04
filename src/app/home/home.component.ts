@@ -14,9 +14,8 @@ import { Utils } from '../utils/utils';
 export class HomeComponent implements OnInit {
 
   images: Array<String>
-  promotions: Promotion[] = [
-  ]
-  
+  promotions: Promotion[] = []
+  categories: Set<String> = new Set<String>()
   shop: StoreProfile;
 
   constructor(private izingaService: IzingaOrderManagementService, private storage: StorageService, 
@@ -33,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.shop = shop;
+      this.categories = new Set(this.shop.stockList.map(stk => stk.group))
       //get promotions
       this.izingaService.getAllPromotionsByStoreId(this.shop.id)
           .subscribe(promotions => {
@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit {
     return this.shop
   }
 
-  get shopItems(): Stock[] {
-    return this.shop?.stockList
+  shopItems(category?: string): Stock[] {
+    return this.shop?.stockList.filter(item => item.group?.toLowerCase() == category?.toLowerCase())
   }
 
   hasItemsInCart(): boolean {

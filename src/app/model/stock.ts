@@ -12,7 +12,8 @@
 import { SelectionOption } from './selectionOption';
 
 
-export interface Stock { 
+export interface Stock {
+    group?: string; 
     description?: string;
     detailedDescription?: string;
     discountPerc?: number;
