@@ -8,10 +8,18 @@
     src: url("/assets/fonts/Catamaran-Medium.ttf") format("opentype");
 }
 
+.store-card {
+  border-radius: var(--store-card-radius) !important;
+  
+}
+
+
+
 .card {
     border: none !important;
     background: var(--bkg-card-color);
     outline: none;
+    
 }
 
 .page-header, a {
@@ -21,6 +29,7 @@
 .list-group-item {
     background-color: var(--bkg-card-color);
     color: var(--text-color);
+    
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -53,6 +62,10 @@
     color: var(--text-color) !important;
     font-size: larger;
 }
+.locationIcon-color{
+    color: white;
+    
+}
 
 .product {
     color: var(--text-color)  ;
@@ -77,6 +90,7 @@ nav .logo {
 
 .navbar {
     z-index: 4;
+    
 }
 
 .btn {
@@ -97,7 +111,7 @@ footer {
     padding-left: 16px;
     padding-right: 16px;
     background-repeat: no-repeat !important;
-    background: #2D2D2D
+    background: #13b253dc
 }
 
 footer * {
@@ -120,6 +134,7 @@ a:link {
 
 a:visited {
     text-decoration: none;
+    
 }
 
 a:hover {
@@ -128,6 +143,7 @@ a:hover {
 
 a:active {
     text-decoration: none;
+    
 }
 
 .error {
@@ -143,23 +159,26 @@ body {
 }
 
 body {
-    --text-color: #707070;
-    --bkg-color: #F8F7F7;
-    --bkg-card-color: white;
-    --btn-txt-color: #707070;
+    --text-color:rgba(255, 249, 249, 0.937);
+    --store-card-radius: 0px;
+    --bkg-color: #6c757d;
+    --bkg-card-color: #181817e9;
+    --btn-txt-color: white;
     --btn-bg-color: rgb(11, 88, 160);
     --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
   body.dark-theme {
-    --text-color: #eee;
-    --bkg-color: #212121;
+    --text-color: rgba(0, 0, 0, 0.902);
+    --store-card-radius: 0px;
     --bkg-card-color: #2D2D2D;
     --btn-txt-color: rgb(46, 43, 43);
-    --btn-bg-color: rgb(20, 211, 195);
+    --btn-bg-color: rgb(29, 82, 77);
     --btn-pill-color: rgb(11, 88, 160);
     --bkg-logo: url('/assets/images/izinga-logo.png')
   }
+  
+ 
 
 
 

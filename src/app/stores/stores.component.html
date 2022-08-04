@@ -1,7 +1,7 @@
 <div>
     <div class="my-3 mx-3 d-flex justify-content-center">
         <span class="address mr-5">{{address}}</span>
-        <a (click)="changeAddress()"><button class="btn btn-primary button-dark btn-small">Change</button></a>
+        <a (click)="changeAddress()"><button class="btn btn-primary button-dark btn-small"> <span class="material-icons locationIcon-color"> location_on</span></button></a>
     </div>
 
     <div *ngIf="hasOrders()" class="mb-3">
@@ -22,7 +22,7 @@
     </span>
 
 
-    <div class="container h5 mb-3 mt-3">Shops</div>
+    <div class="h5 mb-3 mt-3">Shops</div>
     <div class="container d-flex justify-content-center">
         <div class="row">
             <div *ngFor="let store of stores" class="col-md-6 col-xl-4 px-2 py-2 d-flex justify-content-center">
