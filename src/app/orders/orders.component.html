@@ -1,28 +1,24 @@
 <div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
-    <div class="page-header h5">Orders</div>
+    <div class="page-header h5">Current Orders</div>
 </div>
-<table *ngIf="orders != null" class="mt-3 table table-striped text-muted">
-    <thead>
-      <tr>
-        <th class="order-id" scope="col">#</th>
-        <th scope="col">Date</th>
-        <th scope="col">Price</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <th scope="row" class="order-id">{{order.id}}</th>
-        <td>{{order.date | date}}</td>
-        <td>{{order.totalAmount | currency:'R'}}</td>
-        <td class="status">
-          <a [routerLink]="'/order/' + order.id">
-          {{statusText(order.stage)}}
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div *ngIf="currentOrders != null" class="mt-3 d-flex justify-content-sm-center justify-content-md-start">
+  <div class="row d-flex justify-content-start">
+      <div *ngFor="let order of currentOrders" class="orders col-md-6 col-lg-6 col-xl-4 py-2 d-flex justify-content-start">
+          <app-order-card [order]="order"></app-order-card>
+      </div>
+  </div>
+</div>
+
+<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
+  <div class="page-header h5">Completed Orders</div>
+</div>
+<div *ngIf="completedOrders != null" class="mt-3 d-flex justify-content-sm-center justify-content-md-start">
+<div class="row d-flex justify-content-start">
+    <div *ngFor="let order of completedOrders" class="orders col-md-6 col-lg-6 col-xl-4 py-2 d-flex justify-content-start">
+        <app-order-card [order]="order"></app-order-card>
+    </div>
+</div>
+</div>
 
 <!--
   basket: Basket;

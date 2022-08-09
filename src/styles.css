@@ -139,7 +139,8 @@ body {
     background: var(--bkg-color);
     color: var(--text-color);
     margin: 0;
-    font-family: Catamaran
+    font-family: Catamaran;
+    --nav-bg-color: var(--bkg-card-color);
 }
 
 body {

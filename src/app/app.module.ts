@@ -17,7 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import {MatTabsModule} from '@angular/material/tabs';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -78,7 +80,9 @@ import { PromoSliderComponent } from './promotion/promo-slider/promo-slider.comp
     MatIconModule,
     MatButtonModule,
     MatBadgeModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    MatToolbarModule,
+    MatTabsModule
   ],
   providers: [
     IzingaOrderManagementService,
