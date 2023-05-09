@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {StoreProfile, Order, UserProfile, Promotion} from '../model/models'
+import {StoreProfile, Order, UserProfile, Promotion, Profile} from '../model/models'
 import { StorageService } from './storage-service.service';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
@@ -11,12 +11,13 @@ import { catchError } from 'rxjs/operators';
 })
 export class IzingaOrderManagementService {
 
+
   constructor(private http: HttpClient, private storage: StorageService) { }
 
   get headers(){ 
     return {
     "Content-type": "application/json",
-    "app-version": "2.0.0",
+    "app-version": environment.appVersion,
     };
   }
   
@@ -137,5 +138,15 @@ export class IzingaOrderManagementService {
             this.storage.errorMessage = error.error.message
             return throwError(error)
           }))
+  }
+
+  findNearbyMessangers(latitude: number, longitude: number, range: number): Observable<UserProfile[]> {
+    return this.http
+      .get<UserProfile[]>(`${environment.izingaUrl}/user?latitude=${latitude}&longitude=${longitude}&range=${range}&role=${Profile.RoleEnum.MESSENGER}`, {headers: this.headers})
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.storage.errorMessage = error.error.message
+          return throwError(error)
+        }))
   }
 }

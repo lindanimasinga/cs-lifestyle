@@ -2,6 +2,7 @@ import { StoreProfile } from '../app/model/models';
 
 export const environment = {
   production: true,
+  appVersion: "2.1.2",
   storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
   storeType: StoreProfile.StoreTypeEnum.FOOD,
   messengerId: "fd7b0957-2fb9-4e23-b940-51407d3c076f",

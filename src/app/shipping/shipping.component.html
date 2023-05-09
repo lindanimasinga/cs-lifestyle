@@ -93,7 +93,7 @@
 
                 <div class="mb-3">
                     <label for="address">Street Address *</label>
-                    <app-place-autocomplete [address]="userProfile.address" (addressChanged)="userProfile.address = $event"></app-place-autocomplete>
+                    <app-place-autocomplete [address]="userProfile.address" (addressChanged)="userProfile.address = $event" (latitudeChanged)="newAddressLatitude = $event" (longitudeChanged)="newAddressLongitude = $event"></app-place-autocomplete>
                 </div>
 
                 <!--<input ngx-google-places-autocomplete #placesRef="ngx-places" [options]='options' (onAddressChange)="AddressChange($event)"/> 

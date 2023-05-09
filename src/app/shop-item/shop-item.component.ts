@@ -25,7 +25,7 @@ export class ShopItemComponent implements OnInit {
   }
 
   get stockImage() {
-    return this.shopItem.images[0] != null && this.shopItem.images[0].trim().length != 0 && this.shopItem.images[0] != "https:null" ?
+    return this.shopItem.images != null && this.shopItem.images[0] != null && this.shopItem.images[0].trim().length != 0 && this.shopItem.images[0] != "https:null" ?
     this.shopItem.images[0] : this.shop.imageUrl
   }
 

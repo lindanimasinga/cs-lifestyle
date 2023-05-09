@@ -5,6 +5,7 @@ import { StoreProfile, Stock, Promotion } from '../model/models';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Utils } from '../utils/utils';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,10 @@ export class HomeComponent implements OnInit {
   promotions: Promotion[] = []
   categories: Set<String> = new Set<String>()
   shop: StoreProfile;
+  startOrder = false;
 
   constructor(private izingaService: IzingaOrderManagementService, private storage: StorageService, 
-    private activatedRoute: ActivatedRoute, private router: Router) {
+    private activatedRoute: ActivatedRoute, private router: Router, private sanitizer:DomSanitizer) {
   }
 
   ngOnInit() {
@@ -47,6 +49,11 @@ export class HomeComponent implements OnInit {
 
   get store(): StoreProfile {
     return this.shop
+  }
+
+  get cssImageUrl(): String {
+    var image = this.sanitizer.bypassSecurityTrustStyle(this.store.imageUrl)
+    return `url('${this.store.imageUrl}')`
   }
 
   shopItems(category?: string): Stock[] {

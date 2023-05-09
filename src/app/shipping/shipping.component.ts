@@ -26,6 +26,8 @@ export class ShippingComponent implements OnInit {
   shippingBuildingUnitNumber: string
   shippingBuildingName: string
   additionalInstructions: string
+  _newAddressLatitude: number
+  _newAddressLongitude: number
 
   userProfile: UserProfile = {
     imageUrl: "https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg",
@@ -35,6 +37,7 @@ export class ShippingComponent implements OnInit {
   userAlreadyRegistered: boolean;
   hasError: boolean;
   errorMessage: string;
+  messegers: UserProfile[];
 
   constructor(private izingaOrderManager: IzingaOrderManagementService,
     private storageService: StorageService,
@@ -61,6 +64,24 @@ export class ShippingComponent implements OnInit {
   set phoneNumber(phoneNumber: string) {
     this.userProfile.mobileNumber =  phoneNumber
   }
+
+  set newAddressLatitude(latitude: number) {
+    this._newAddressLatitude = latitude;
+    this.loadNearbyMessengers()
+  }
+
+  get newAddressLatitude() {
+    return this._newAddressLatitude;
+  } 
+
+  set newAddressLongitude(longitude: number) {
+    this._newAddressLongitude = longitude;
+    this.loadNearbyMessengers()
+  }
+
+  get newAddressLongitude() {
+    return this._newAddressLongitude;
+  } 
 
   validData() {
     return this.userProfile.address && this.userProfile.name
@@ -108,6 +129,7 @@ export class ShippingComponent implements OnInit {
     .subscribe(user => {
       this.userProfile = user
       this.storageService.userProfile = user;
+      this.loadNearbyMessengers()
     })
   }
 
@@ -123,6 +145,11 @@ export class ShippingComponent implements OnInit {
   startOrder() {
 
     if(!this.validData()) {
+      return
+    }
+
+    if(this.messegers == null || this.messegers.length == 0) {
+      this.storageService.errorMessage = "Messengers not available in your area at the moment."
       return
     }
 
@@ -155,6 +182,19 @@ export class ShippingComponent implements OnInit {
       this.order.description =  `ord-${this.order.id}`,
       this.storageService.order = order
       window.location.href = `${environment.izingaPayUrl}?Status=init&type=yoco&TransactionReference=${order.id}&callback=${environment.ozow_succeess_url}`
+    })
+  }
+
+  loadNearbyMessengers() {
+    var latitude = this._newAddressLatitude != null && this._newAddressLatitude != 0 ? this._newAddressLatitude 
+      : this.userProfile.latitude != null && this.userProfile.latitude != 0 ? this.userProfile.latitude: this.storageService.currentLocation.lat;
+    
+    var longitude = this._newAddressLongitude != null && this._newAddressLongitude != 0 ? this._newAddressLongitude
+      : this.userProfile.longitude != null && this.userProfile.longitude != 0 ? this.userProfile.longitude: this.storageService.currentLocation.long;
+
+    console.log(`latitude/longitude is ${latitude}/${longitude}`)// 0.09999 is 15km range
+    this.izingaOrderManager.findNearbyMessangers(latitude, longitude, 0.09999).subscribe(mess => {
+      this.messegers = mess
     })
   }
 

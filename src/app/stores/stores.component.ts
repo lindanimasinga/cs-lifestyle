@@ -18,6 +18,7 @@ import { StorageService } from '../service/storage-service.service';
 export class StoresComponent implements OnInit {
 
   stores: StoreProfile[] = []
+  storesClosed: StoreProfile[] = []
   promotions: Promotion[] = []
   currentOrders: Order[]
   tags = new Set<string>()
@@ -35,12 +36,10 @@ export class StoresComponent implements OnInit {
     this.storage.currentLocation = new CurrentLocation(lat, long, this.address)
     this.storage.shop = null
     this.izingaService.getAllStores(lat, long, 0.1)
-        .pipe(
-          map(stores => stores.filter(store => !store.storeOffline))
-        )
         .subscribe(resp => {
-          this.stores = resp
-          this.stores.forEach(item => item.tags.forEach(tag => this.tags.add(tag)))
+          this.stores = resp.filter(store => !store.storeOffline)
+          this.storesClosed = resp.filter(store => store.storeOffline)
+          resp.forEach(item => item.tags.forEach(tag => this.tags.add(tag)))
         })
     
     this.izingaService.getAllPromotions(lat, long, 0.1)

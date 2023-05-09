@@ -12,8 +12,18 @@
 }
 
 .promos {
-    margin-left: -15px;
-    margin-right: -15px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+@media (max-width: 576px) {
+    .promos {
+        width: auto;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
 }
 
 .badge {
@@ -38,4 +48,12 @@
 }
 .tag::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
+}
+
+.closed .row {
+    opacity: 0.4;
+}
+
+.closed .h5{
+    color: var(--footer-text-color);
 }
