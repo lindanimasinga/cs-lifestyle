@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order, StoreProfile } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
-import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { StorageService } from '../service/storage-service.service';
 
 @Component({
