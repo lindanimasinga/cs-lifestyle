@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
   shop: StoreProfile;
   startOrder = false;
 
-  constructor(private izingaService: IzingaOrderManagementService, private storage: StorageService, 
-    private activatedRoute: ActivatedRoute, private router: Router, private sanitizer:DomSanitizer) {
+  constructor(protected izingaService: IzingaOrderManagementService, protected storage: StorageService, 
+    protected activatedRoute: ActivatedRoute, private router: Router, private sanitizer:DomSanitizer) {
   }
 
   ngOnInit() {

@@ -13,6 +13,7 @@ import { MainComponent } from './main/main.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { IzingaHomeComponent } from './izinga-home/izinga-home.component';
 import { StoresComponent } from './stores/stores.component';
+import { PrintableMenuComponent } from './home/printable-menu/printable-menu.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
-      { path: 'stores', component: StoresComponent}
+      { path: 'stores', component: StoresComponent},
+      { path: 'printable', component: PrintableMenuComponent}
     ]
   },
   {
@@ -43,7 +45,8 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
-      { path: 'stores', component: StoresComponent}
+      { path: 'stores', component: StoresComponent},
+      { path: 'printable', component: PrintableMenuComponent}
     ]
   },
 ];

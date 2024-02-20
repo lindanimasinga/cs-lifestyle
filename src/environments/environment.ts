@@ -7,7 +7,7 @@ export const environment = {
   storeType: StoreProfile.StoreTypeEnum.FOOD,
   messengerId: "fd7b0957-2fb9-4e23-b940-51407d3c076f",
   izingaUrl: "https://api.izinga.co.za",
-  izingaPayUrl: "https://pay.izinga.co.za",
+  izingaPayUrl: "https://localhost:4200",
   izingaMasterpassUrl: "https://ellyw5af54.execute-api.af-south-1.amazonaws.com/prod/ukheshe-masterpass-code",
   ukhesheUrl: "https://api.ukheshe.co.za",
   ukhesheAppleUrl: "https://apps.apple.com/za/app/ukheshe/id1350353337",

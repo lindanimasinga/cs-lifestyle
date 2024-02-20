@@ -20,7 +20,8 @@
                     <div class="my-0">Shipping and Processing</div>
                     <small class="text-muted">Shipping to {{order.shippingData.toAddress}}</small>
                 </div>
-                <span class="text-muted">{{order.shippingData.fee + order.serviceFee | currency:'R'}}</span>
+                <span class="text-muted" *ngIf="order.freeDelivery">{{order.serviceFee | currency:'R'}}</span>
+                <span class="text-muted"*ngIf="!order.freeDelivery">{{order.shippingData.fee + order.serviceFee | currency:'R'}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between">
                 <span>Total (ZAR)</span>

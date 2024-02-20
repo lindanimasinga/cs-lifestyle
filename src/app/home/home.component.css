@@ -125,3 +125,9 @@ img.headline {
   background-color: #d69447 !important;
   font-weight: bold;
  }
+
+mat-icon.menu-download {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+ }
