@@ -18,7 +18,6 @@ export class ShippingComponent implements OnInit {
 
   //@ViewChild("placesRef") placesRef : GooglePlaceDirective;
   
-  isPhoneNumberVerified = false
   isVerificationRequested = false
   code: string
   shippingBuildingType: ShippingData.BuildingTypeEnum
@@ -46,6 +45,13 @@ export class ShippingComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if (this.storageService.userProfile) {
+      this.userProfile = this.storageService.userProfile
+    }
+  }
+
+  get isPhoneNumberVerified(): boolean {
+    return this.userProfile.id != null
   }
 
   ngAfterViewInit() {
@@ -105,7 +111,6 @@ export class ShippingComponent implements OnInit {
   confirmCode() {
     this.firebaseService.confirmCode(this.code)
       .subscribe(cred => {
-        this.isPhoneNumberVerified = true
         this.findCustomer()
         document.getElementsByName("scrollTo")[0].scrollIntoView();
         window.scrollBy(0, -76)

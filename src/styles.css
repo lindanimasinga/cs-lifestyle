@@ -14,7 +14,7 @@
     outline: none;
 }
 
-.page-header, a {
+.page-header, .shop-item {
     color: var(--text-color) !important;
 }
 
@@ -146,8 +146,8 @@ body {
 body {
     --text-color: #707070;
     --bkg-color: #F8F7F7;
-    --footer-bkg-color: #707070;
-    --footer-text-color: #eee;
+    --footer-bkg-color: #b1b1b1;
+    --footer-text-color: white;
     --bkg-card-color: white;
     --btn-txt-color: #707070;
     --btn-bg-color: #10A59F;
