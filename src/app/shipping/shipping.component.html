@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-5">
                     <label for="cellphone">Cellphone Number</label>
                     <div class="input-group">
                         <input type="text" class="form-control" [value]="phoneNumber" name="mobileNumber"
@@ -66,15 +66,72 @@
                     </div>
                 </div>
 
+                <div class="justify-content-sm-center justify-content-md-start mb-3">
+                    <div class="page-header h5">Schedule</div>
+                </div>
+
+                <div id="schedule" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active" [ngClass]="{'bg-selected': deliverySchedule == 'NOW', 'bg-not-selected': deliverySchedule != 'NOW'}">
+                    <input type="radio" name="deliverySchedule" value="NOW" (click)="deliverySchedule = 'NOW'"> Deliver Now
+                    </label>
+                    <label class="btn btn-secondary" [ngClass]="{'bg-selected': deliverySchedule == 'LATER', 'bg-not-selected': deliverySchedule != 'LATER'}">
+                    <input type="radio" name="deliverySchedule" value="LATER" (click)="deliverySchedule = 'LATER'"> Deliver Later
+                    </label>
+                </div>
+
+                <div *ngIf="deliverySchedule == 'LATER'">
+                    <mat-card class="demo-inline-calendar-card">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                      </mat-card>
+                      <p>Selected date: {{selected()}}</p>
+                </div>
+
+                <!-- Conditionally display 'From' address fields if shop does not deliver from a fixed address -->
+                <div *ngIf="!storageService.shop.deliversFromFixedAddress" class="mt-5 mb-5">
+
+                    <div class="justify-content-sm-center justify-content-md-start mb-3">
+                        <div class="page-header h5">From Address Details</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">From Street Address *</label>
+                        <app-place-autocomplete [address]="fromAddress" (addressChanged)="fromAddress = $event" 
+                        (latitudeChanged)="fromLatitude = $event" (longitudeChanged)="fromLongitude = $event"></app-place-autocomplete>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fromBuildingType">From Building Type *</label>
+                        <select [(ngModel)]="fromBuildingType" class="custom-select d-block w-100" name="fromBuildingType" required>
+                            <option [value]="enum.key" *ngFor="let enum of buildingTypeEnums | keyvalue">{{enum.key}}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fromUnitNumber">From Unit Number<span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="fromUnitNumber" name="fromUnitNumber" placeholder="12c">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fromBuildingName">From Building Name<span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="fromBuildingName" name="fromBuildingName" placeholder="Olive Estate">
+                    </div>
+                </div>
+
+
+                <div class="justify-content-sm-center justify-content-md-start mb-3">
+                    <div class="page-header h5">To Address Details</div>
+                </div>
+
+
                 <div class="mb-3">
-                    <label for="buildingType">Building Type *</label>
+                    <label for="buildingType">To Building Type *</label>
                     <select [(ngModel)]="shippingBuildingType" class="custom-select d-block w-100" name="BuildingType" id="BuildingType" required>
                         <option [value]="enum.key" *ngFor="let enum of buildingTypeEnums | keyvalue">{{enum.key}}</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label for="unitNumber">Unit Number<span class="text-muted">(Optional)</span></label>
+                    <label for="unitNumber">To Unit Number<span class="text-muted">(Optional)</span></label>
                     <input type="text" class="form-control" [(ngModel)]="shippingBuildingUnitNumber" name="unitNumber"
                         placeholder="12c">
                     <div class="invalid-feedback">
@@ -83,7 +140,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="unitNumber">Building Name <span class="text-muted">(Optional)</span></label>
+                    <label for="unitNumber">To Building Name <span class="text-muted">(Optional)</span></label>
                     <input type="text" class="form-control" [(ngModel)]="shippingBuildingName" name="shippingBuildingName"
                         placeholder="Olive Estate">
                     <div class="invalid-feedback">
@@ -92,17 +149,15 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="address">Street Address *</label>
+                    <label for="address">To Street Address *</label>
                     <app-place-autocomplete [address]="userProfile.address" (addressChanged)="userProfile.address = $event" (latitudeChanged)="newAddressLatitude = $event" (longitudeChanged)="newAddressLongitude = $event"></app-place-autocomplete>
                 </div>
 
-                <!--<input ngx-google-places-autocomplete #placesRef="ngx-places" [options]='options' (onAddressChange)="AddressChange($event)"/> 
-                
                 <div class="mb-3">
                     <label for="instructions">Additional Instructions<span class="text-muted">(Optional)</span></label>
                     <textarea [(ngModel)]="additionalInstructions" type="textarea" class="form-control" name="instructions"
                         placeholder="Enter additional instructions for the drivers"></textarea>
-                </div> -->
+                </div>
 
 
                 <hr class="mb-4">

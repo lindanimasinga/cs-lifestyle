@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+
 import { UserProfile, Order, ShippingData } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
@@ -28,6 +29,15 @@ export class ShippingComponent implements OnInit {
   _newAddressLatitude: number
   _newAddressLongitude: number
 
+  fromAddress: string
+  fromBuildingType: ShippingData.BuildingTypeEnum
+  fromUnitNumber: string
+  fromBuildingName: string
+  fromLatitude: string
+  fromLongitude: string
+
+  deliverySchedule = "NOW"
+
   userProfile: UserProfile = {
     imageUrl: "https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg",
     role: UserProfile.RoleEnum.CUSTOMER
@@ -47,6 +57,7 @@ export class ShippingComponent implements OnInit {
   ngOnInit(): void {
     if (this.storageService.userProfile) {
       this.userProfile = this.storageService.userProfile
+      this.isVerificationRequested = true
     }
   }
 
@@ -170,9 +181,12 @@ export class ShippingComponent implements OnInit {
           stage: Order.StageEnum._0CUSTOMERNOTPAID,
           description: `ord-${this.userProfile.mobileNumber}`,
           shippingData: {
-            fromAddress: `${this.storageService.shop?.name}`,
+            fromAddress: this.fromAddress ? this.fromAddress : `${this.storageService.shop?.name}`,
             toAddress: this.userProfile.address,
             messengerId: environment.messengerId,
+            fromBuildingType: this.fromBuildingType,
+            fromBuildingName: this.fromBuildingName,
+            fromUnitNumber: this.fromUnitNumber,
             buildingType: this.shippingBuildingType,
             unitNumber: this.shippingBuildingUnitNumber,
             buildingName: this.shippingBuildingName,
@@ -204,3 +218,4 @@ export class ShippingComponent implements OnInit {
   }
 
 }
+

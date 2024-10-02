@@ -47,6 +47,7 @@ export class StoreProfile {
     verificationCode?: string;
     yearsInService?: number;
     storeOffline?: boolean;
+    deliversFromFixedAddress?: boolean;
 }
 export namespace StoreProfile {
     export type RoleEnum = 'CUSTOMER' | 'STORE_ADMIN' | 'STORE' | 'MESSENGER';

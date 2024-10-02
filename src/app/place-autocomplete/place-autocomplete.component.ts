@@ -16,6 +16,8 @@ export class PlaceAutocompleteComponent implements OnInit {
   private addressString: string
   private _lat: number
   private _long: number
+  
+  formId = (Math.random() * 100000).toString()
 
   constructor() { }
 
@@ -23,7 +25,7 @@ export class PlaceAutocompleteComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    var input: HTMLInputElement = document.getElementById('searchTextField') as HTMLInputElement;
+    var input: HTMLInputElement = document.getElementById(this.formId) as HTMLInputElement;
     var options = {
       componentRestrictions: {
         country: ["ZA"]

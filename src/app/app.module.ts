@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCardModule} from '@angular/material/card';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -42,6 +44,9 @@ import { OrderCardComponent } from './order-card/order-card.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { PromoSliderComponent } from './promotion/promo-slider/promo-slider.component';
 import { PrintableMenuComponent } from './home/printable-menu/printable-menu.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +81,7 @@ import { PrintableMenuComponent } from './home/printable-menu/printable-menu.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -84,7 +90,11 @@ import { PrintableMenuComponent } from './home/printable-menu/printable-menu.com
     MatBadgeModule,
     NgxQRCodeModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatFormFieldModule
   ],
   providers: [
     IzingaOrderManagementService,
@@ -96,3 +106,5 @@ import { PrintableMenuComponent } from './home/printable-menu/printable-menu.com
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

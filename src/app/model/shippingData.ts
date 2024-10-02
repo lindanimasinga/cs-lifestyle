@@ -17,6 +17,9 @@ export interface ShippingData {
     buildingType?: ShippingData.BuildingTypeEnum;
     fee?: number;
     fromAddress: string;
+    fromBuildingType?: ShippingData.BuildingTypeEnum
+    fromUnitNumber?: String
+    fromBuildingName?: String
     id?: string;
     messengerId?: string;
     pickUpTime?: Date;
@@ -24,6 +27,7 @@ export interface ShippingData {
     type: ShippingData.TypeEnum;
     unitNumber?: string;
 }
+
 export namespace ShippingData {
     export type BuildingTypeEnum = 'HOUSE' | 'OFFICE' | 'APARTMENT';
     export const BuildingTypeEnum = {

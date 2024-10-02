@@ -1,3 +1,7 @@
 .resend a {
     color: blue !important;
 }
+
+#schedule .btn {
+    height: auto !important;
+}

@@ -1,4 +1,4 @@
-<input [(ngModel)]="address" type="text" class="form-control" id="searchTextField" name="addressModel"
+<input [(ngModel)]="address" type="text" class="form-control" [id]="formId" name="addressModel"
     placeholder="Street Address" #addressModel="ngModel">
     <div *ngIf="addressModel.invalid && (addressModel.dirty || addressModel.touched)">
         <div *ngIf="addressModel.errors.required" class="error">

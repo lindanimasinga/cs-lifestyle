@@ -44,17 +44,17 @@ export class PaymentService {
     }
 
      ozowPayment = { SiteCode: environment.ozow_site_code,
-CountryCode: "ZA",
-CurrencyCode: "ZAR",
-Amount: order.totalAmount,
-TransactionReference: order.description,
-BankReference: order.description,
-Customer: `${shopName} customer`,
-CancelUrl: environment.ozow_payment_cancel_url,
-ErrorUrl: environment.ozow_error_url,
-SuccessUrl: environment.ozow_succeess_url,
-NotifyUrl: environment.ozo_payment_notify_url,
-IsTest: environment.ozow_is_a_test
+      CountryCode: "ZA",
+      CurrencyCode: "ZAR",
+      Amount: order.totalAmount,
+      TransactionReference: order.description,
+      BankReference: order.description,
+      Customer: `${shopName} customer`,
+      CancelUrl: environment.ozow_payment_cancel_url,
+      ErrorUrl: environment.ozow_error_url,
+      SuccessUrl: environment.ozow_succeess_url,
+      NotifyUrl: environment.ozo_payment_notify_url,
+      IsTest: environment.ozow_is_a_test
     }
 
     ozowPayment.HashCheck = this.generateHash(ozowPayment);
