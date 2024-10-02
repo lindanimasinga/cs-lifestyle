@@ -2,6 +2,10 @@
 
 }
 
+.category {
+    background: var(--nav-bg-color);
+}
+
 .btn-checkout {
   color: #ffffff;
   background-color: #d69447;

@@ -46,6 +46,7 @@ import { PromoSliderComponent } from './promotion/promo-slider/promo-slider.comp
 import { PrintableMenuComponent } from './home/printable-menu/printable-menu.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ShopItemLargeComponent } from './shop-item-large/shop-item-large.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     OrderCardComponent,
     PromotionComponent,
     PromoSliderComponent,
-    PrintableMenuComponent
+    PrintableMenuComponent,
+    ShopItemLargeComponent
   ],
   imports: [
     BrowserModule,

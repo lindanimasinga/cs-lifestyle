@@ -34,7 +34,8 @@ export class HomeComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.shop = shop;
-      this.categories = new Set(this.shop.stockList.map(stk => stk.group))
+      this.categories = new Set(this.shop.stockList.sort((a, b) => this.isPromotion(a) ? -1 : 1).map(stk => stk.group))
+      
       //get promotions
       this.izingaService.getAllPromotionsByStoreId(this.shop.id)
           .subscribe(promotions => {
@@ -69,5 +70,20 @@ export class HomeComponent implements OnInit {
   get cartNumberOfItems() { 
     return this.storage.basket != null? this.storage.basket.items?.length : 0;
   }
+
+  isPromotion(stock: Stock): boolean {
+    return this.isPromotionCategory(stock.group)
+  }
+
+  isPromotionCategory(category: string): boolean {
+    var promoTags = ["deal", "special", "promotion", "promotions", "deals", "specials", "family meals", "featured items"]
+    return promoTags.includes(category?.toLowerCase())
+  }
+
+  replaceSpecialChars(input?: string): string {
+    return input?.replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  
 
 }
