@@ -35,9 +35,10 @@ export namespace ShippingData {
         OFFICE: 'OFFICE' as BuildingTypeEnum,
         APARTMENT: 'APARTMENT' as BuildingTypeEnum
     };
-    export type TypeEnum = 'COLLECTION' | 'DELIVERY';
+    export type TypeEnum = 'COLLECTION' | 'DELIVERY' | 'SCHEDULED_DELIVERY';
     export const TypeEnum = {
         COLLECTION: 'COLLECTION' as TypeEnum,
-        DELIVERY: 'DELIVERY' as TypeEnum
+        DELIVERY: 'DELIVERY' as TypeEnum,
+        SCHEDULED_DELIVERY: 'SCHEDULED_DELIVERY' as TypeEnum
     };
 }

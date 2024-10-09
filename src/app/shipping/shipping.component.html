@@ -3,7 +3,7 @@
     <div class="page-header h5">Shipping</div>
 </div>
 
-<div *ngIf="!isPhoneNumberVerified" class="container mt-3">
+<div *ngIf="!isPhoneNumberVerified" class="mt-3">
     <div class="mb-5 text-muted">We need to verify your cellphone number is correct and active before we process your order. Please
         enter your cellphone number below. </div>
     <div class="mb-3">
@@ -39,10 +39,9 @@
     <button *ngIf="isVerificationRequested" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit"
         (click)="confirmCode()">Confirm</button>
 </div>
-<div *ngIf="isPhoneNumberVerified" class="container mt-3">
+<div *ngIf="isPhoneNumberVerified" class="mt-3">
     <div class="row">
         <div class="col order-md-1">
-            <form class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
@@ -71,23 +70,28 @@
                 </div>
 
                 <div id="schedule" class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active" [ngClass]="{'bg-selected': deliverySchedule == 'NOW', 'bg-not-selected': deliverySchedule != 'NOW'}">
-                    <input type="radio" name="deliverySchedule" value="NOW" (click)="deliverySchedule = 'NOW'"> Now
+                    <label class="btn btn-secondary active" [ngClass]="{'bg-selected': deliverySchedule == NOW, 'bg-not-selected': deliverySchedule != NOW}">
+                    <input type="radio" name="deliverySchedule" value="NOW" (click)="deliverySchedule = NOW"> Now
                     </label>
-                    <label class="btn btn-secondary" [ngClass]="{'bg-selected': deliverySchedule == 'LATER', 'bg-not-selected': deliverySchedule != 'LATER'}">
-                    <input type="radio" name="deliverySchedule" value="LATER" (click)="deliverySchedule = 'LATER'"> Later
+                    <label class="btn btn-secondary" [ngClass]="{'bg-selected': deliverySchedule == LATER, 'bg-not-selected': deliverySchedule != LATER}">
+                    <input type="radio" name="deliverySchedule" value="LATER" (click)="deliverySchedule = LATER"> Later
                     </label>
                 </div>
 
-                <div *ngIf="deliverySchedule == 'LATER'">
-                    <mat-card class="demo-inline-calendar-card">
-                        <mat-calendar [(selected)]="selected"></mat-calendar>
-                      </mat-card>
-                      <p>Selected date: {{selected()}}</p>
+                <div *ngIf="deliverySchedule == LATER" class="mt-3">
+                    <div class="form-group">
+                        <label for="delivery-date">Select Delivery Date:</label>
+                        <input type="date" class="form-control" id="delivery-date" [(ngModel)]="selectedDate">
+                    </div>
+                
+                    <div class="form-group mt-3">
+                        <label for="delivery-time">Select Delivery Time:</label>
+                        <input type="time" class="form-control" id="delivery-time" [(ngModel)]="selectedTime">
+                    </div>
                 </div>
 
                 <!-- Conditionally display 'From' address fields if shop does not deliver from a fixed address -->
-                <div *ngIf="!storageService.shop.deliversFromFixedAddress" class="mt-5 mb-5">
+                <div *ngIf="!deliversFromFixedAddress" class="mt-5 mb-5">
 
                     <div class="justify-content-sm-center justify-content-md-start mb-3">
                         <div class="page-header h5">From Address Details</div>
@@ -165,7 +169,6 @@
                     your order at your doorstep. This information is stored safe, securely and will never be shared or sold to any third parties. For more information, please see our privacy policy.</div>
                 <button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm" type="submit" (click)="startOrder()" [disabled]="!validData()">Save
                     and Continue</button>
-            </form>
         </div>
     </div>
 </div>

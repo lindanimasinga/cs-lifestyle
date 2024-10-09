@@ -6,7 +6,7 @@ import { StorageService } from '../service/storage-service.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap, catchError, delay } from 'rxjs/operators';
 import { from, Observable, of, throwError } from 'rxjs';
 import { FirebaseService } from '../service/firebase.service';
 
@@ -36,7 +36,9 @@ export class ShippingComponent implements OnInit {
   fromLatitude: string
   fromLongitude: string
 
-  deliverySchedule = "NOW"
+  deliverySchedule = ShippingData.TypeEnum.DELIVERY
+  LATER = ShippingData.TypeEnum.SCHEDULED_DELIVERY
+  NOW = ShippingData.TypeEnum.DELIVERY
 
   userProfile: UserProfile = {
     imageUrl: "https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg",
@@ -47,6 +49,9 @@ export class ShippingComponent implements OnInit {
   hasError: boolean;
   errorMessage: string;
   messegers: UserProfile[];
+  selectedDate?: string
+  selectedTime?: string
+  pickUpDate?: Date
 
   constructor(private izingaOrderManager: IzingaOrderManagementService,
     private storageService: StorageService,
@@ -58,6 +63,7 @@ export class ShippingComponent implements OnInit {
     if (this.storageService.userProfile) {
       this.userProfile = this.storageService.userProfile
       this.isVerificationRequested = true
+      setTimeout(() => this.loadNearbyMessengers(), 5000)
     }
   }
 
@@ -169,6 +175,8 @@ export class ShippingComponent implements OnInit {
       return
     }
 
+    this.pickUpDate = this.deliverySchedule == this.LATER ? this.updateDateTime() : null
+
     console.log(`enum is ${JSON.stringify(this.shippingBuildingType)}`)
     var customerObsv = this.userProfile.id != null ? of(this.userProfile) : this.createCustomer()
     customerObsv.pipe(
@@ -190,8 +198,9 @@ export class ShippingComponent implements OnInit {
             buildingType: this.shippingBuildingType,
             unitNumber: this.shippingBuildingUnitNumber,
             buildingName: this.shippingBuildingName,
-            type: ShippingData.TypeEnum.DELIVERY,
-            additionalInstructions: this.additionalInstructions
+            type: this.deliverySchedule,
+            additionalInstructions: this.additionalInstructions,
+            pickUpTime: this.pickUpDate
           }
         }
         return this.izingaOrderManager.startOrder(this.order)
@@ -205,6 +214,15 @@ export class ShippingComponent implements OnInit {
   }
 
   loadNearbyMessengers() {
+
+    if (this.storageService.shop?.storeMessenger && this.storageService.shop?.storeMessenger?.length > 0) {
+      console.log("looking up store messangers")
+      this.izingaOrderManager.getCustomerById(this.storageService.shop?.storeMessenger[0].name).subscribe(mess => {
+        this.messegers = [mess]
+      })
+      return
+    }
+
     var latitude = this._newAddressLatitude != null && this._newAddressLatitude != 0 ? this._newAddressLatitude 
       : this.userProfile.latitude != null && this.userProfile.latitude != 0 ? this.userProfile.latitude: this.storageService.currentLocation.lat;
     
@@ -212,9 +230,23 @@ export class ShippingComponent implements OnInit {
       : this.userProfile.longitude != null && this.userProfile.longitude != 0 ? this.userProfile.longitude: this.storageService.currentLocation.long;
 
     console.log(`latitude/longitude is ${latitude}/${longitude}`)// 0.09999 is 15km range
+    console.log("looking nearby messangers")
     this.izingaOrderManager.findNearbyMessangers(latitude, longitude, 0.09999).subscribe(mess => {
       this.messegers = mess
     })
+  }
+
+  updateDateTime(): Date| null {
+    if (this.selectedDate && this.selectedTime) {
+      const dateTimeString = `${this.selectedDate}T${this.selectedTime}:00`; // ISO format string
+      const timestamp = Date.parse(dateTimeString);
+      return this.pickUpDate = new Date(timestamp);
+    }
+    return null
+  }
+
+  get deliversFromFixedAddress() {
+    return !this.storageService.shop?.deliversFromFixedAddress || this.storageService.shop?.deliversFromFixedAddress == true
   }
 
 }

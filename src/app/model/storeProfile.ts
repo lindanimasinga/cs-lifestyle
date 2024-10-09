@@ -48,6 +48,7 @@ export class StoreProfile {
     yearsInService?: number;
     storeOffline?: boolean;
     deliversFromFixedAddress?: boolean;
+    storeMessenger?: Array<StoreMessanger>
 }
 export namespace StoreProfile {
     export type RoleEnum = 'CUSTOMER' | 'STORE_ADMIN' | 'STORE' | 'MESSENGER';
@@ -64,4 +65,8 @@ export namespace StoreProfile {
         SALON: 'SALON' as StoreTypeEnum,
         CARWASH: 'CAR_WASH' as StoreTypeEnum
     };
+}
+
+export class StoreMessanger {
+    name?: string
 }
