@@ -1,11 +1,11 @@
 .shop-item-container {
-    width: 150px;
-    height: 170px;
+    width: 168px;
+    height: 222px;
 }
 
 .shop-item img {
-    width: 150px;
-    height: 120px;
+    width: 168px;
+    height: 150px;
     object-fit: cover;
 }
 
@@ -13,13 +13,13 @@
     margin-left: 16px;
     margin-right: 16px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     z-index: 3;
-    height: 50px;
+    height: 65px;
 }
 
 .item-name {
-    max-height: 50px;
+    max-height: 65px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

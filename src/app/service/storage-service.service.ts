@@ -127,4 +127,8 @@ export class StorageService {
     this.order = null
   }
 
+  logout() {
+    this.cache.clear()
+  }
+
 }

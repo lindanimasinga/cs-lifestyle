@@ -5,6 +5,7 @@ import {StoreProfile, Order, UserProfile, Promotion, Profile} from '../model/mod
 import { StorageService } from './storage-service.service';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
+import { ShoppingList } from '../model/shopping-list';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,28 @@ export class IzingaOrderManagementService {
             return throwError(error)
           })
         )
+  }
+
+  createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
+    return this.http
+        .post<ShoppingList>(`${environment.izingaUrl}/shopping-list`, shoppingList, {headers: this.headers})
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.storage.errorMessage = error.error.message
+            return throwError(error)
+          })
+        )
+  }
+
+  findShoppingLists(userId) : Observable<ShoppingList> {
+      return this.http
+          .get<ShoppingList>(`${environment.izingaUrl}/shopping-list?userId=${userId}`, {headers: this.headers})
+          .pipe(
+            catchError((error: HttpErrorResponse) => {
+              this.storage.errorMessage = error.error.message
+              return throwError(error)
+            })
+          )
   }
 
   finishOrder(order: Order) : Observable<Order> {

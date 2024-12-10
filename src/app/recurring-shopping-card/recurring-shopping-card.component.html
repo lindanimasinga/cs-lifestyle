@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="d-flex justify-content-between">
+        <div class="p-3">
+            <h5>{{list.name}}</h5>
+            <div class="mb-3">{{list.schedule}}</div>
+            <div>Starting:  {{list.startDate | date: 'YYY-MMM-dd'}}</div>
+            <div>Ending:  {{list.endDate | date: 'YYY-MMM-dd'}}</div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <button type="submit" class="btn bg-dark shadow-sm btn-list edit">Edit</button>
+            </div>
+            <div>
+                <button type="submit" class="btn bg-dark shadow-sm btn-list delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

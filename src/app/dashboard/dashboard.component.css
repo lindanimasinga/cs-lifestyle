@@ -1,0 +1,22 @@
+.square-button {
+    height: 150px; /* Fixed height to make it square */
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+@media(min-width: 768px) {
+    .square-button {
+        height: 200px;
+        height: 200px;
+    }
+}
+
+.square-button:hover {
+    background-color: #343a40; /* Slightly lighter shade for hover effect */
+    cursor: pointer;
+}

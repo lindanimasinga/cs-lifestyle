@@ -46,6 +46,19 @@
     margin-left: -15px;
     margin-right: -15px;
 }
+
+@media (min-width: 576px) {
+    .tag {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
 .tag::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }

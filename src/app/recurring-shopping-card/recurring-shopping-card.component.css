@@ -1,0 +1,16 @@
+.btn-list {
+    height: 165px; 
+    width: 79px !important;
+}
+
+.card {
+    height: 165px;
+}
+
+.delete {
+    background-color: #313131 !important;
+}
+
+.edit {
+    background-color: #575757 !important;
+}

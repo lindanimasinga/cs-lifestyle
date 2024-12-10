@@ -16,9 +16,11 @@
                 <span class="text-muted">{{orderItem.price * orderItem.quantity | currency:'R'}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <div class="my-0">Shipping and Processing</div>
-                    <small class="text-muted">Shipping to {{order.shippingData.toAddress}}</small>
+                <div class="processing">
+                    <div class="my-2">Processing Fees</div>
+                    <div class="mb-3 small-detail">From: {{order.shippingData.fromAddress}}</div>
+                    <div class="mb-3 small-detail">To: {{order.shippingData.toAddress}}</div>
+                    <div class="small-detail">Distance: {{order.shippingData.distance}}km</div>
                 </div>
                 <span class="text-muted" *ngIf="order.freeDelivery">{{order.serviceFee | currency:'R'}}</span>
                 <span class="text-muted"*ngIf="!order.freeDelivery">{{order.shippingData.fee + order.serviceFee | currency:'R'}}</span>

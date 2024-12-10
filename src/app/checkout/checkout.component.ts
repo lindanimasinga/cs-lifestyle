@@ -77,6 +77,8 @@ export class CheckoutComponent implements OnInit {
     this.storageService.removeFromCart(item.name)
   }
 
-  
+  loggedId() {
+    return this.storageService.userProfile != null
+  }
 
 }

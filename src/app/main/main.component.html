@@ -1,48 +1,49 @@
-<div name="scrollTo" class="container">
-  <a class="navbar-brand my-3" routerLink="/">
+<div class="container"> 
+
+<div name="scrollTo" class="d-flex justify-content-between mb-3">
+  <a class="navbar-brand" routerLink="/">
         <div class="logo" alt="" loading="lazy"></div>
   </a>
-</div>
-
- <div class="container mb-5"> 
-  <ul class="nav justify-content-center nav-tab rounded-pill shadow-sm">
-    <li class="nav-item">
-      <a class="nav-link d-flex justify-content-center" routerLink=".">
-        <mat-icon class="example-tab-icon text-muted">restaurant</mat-icon>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex justify-content-center" routerLink="cart">
-        <mat-icon class="example-tab-icon text-muted">shopping_cart</mat-icon>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex justify-content-center" routerLink="cart">
-        <mat-icon class="example-tab-icon text-muted">store_front</mat-icon>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex justify-content-center" routerLink="cart">
-        <mat-icon class="example-tab-icon text-muted">account_circle</mat-icon>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link d-flex justify-content-center" routerLink="contact">
-        <mat-icon class="example-tab-icon text-muted">contact_support</mat-icon>
-      </a>
-    </li>
-  </ul>
+  <a *ngIf="!loggedIn()" class ="login d-flex align-items-center" routerLink="/login">
+    <button class="btn btn-primary button-login">Login</button>
+  </a>
+  <div *ngIf="loggedIn()" class ="login d-flex align-items-center">
+    <button class="btn btn-primary button-login" (click)="logout()">Logout</button>
+  </div>
 </div>  
 
- <div class="container-fluid"> 
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
-<div *ngIf="hasError" class="alert alert-danger error alert-dismissible fade show fixed-top" role="alert">
-    <strong>{{errorMessage}}</strong>
-    <button type="button" class="close" aria-label="Close" (click)="clearError()">
-      <span aria-hidden="true">&times;</span>
+  <div *ngIf="hasError" class="alert alert-danger error alert-dismissible fade show fixed-top" role="alert">
+      <strong>{{errorMessage}}</strong>
+      <button type="button" class="close" aria-label="Close" (click)="clearError()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <div class="row fixed-bottom">
+    <!-- Add New Stock Item Button -->
+    <button type="button" class="col-4 btn bg-dark shadow-sm" routerLink="recurring">
+        <a class="nav-link d-flex justify-content-center">
+          <mat-icon class="example-tab-icon">density_small</mat-icon>
+        </a>
+        <div class="menu_label">Monthly/Weekly List</div>
     </button>
-</div>
+
+    <button type="button" class="col-4 btn bg-dark shadow-sm" style="background-color: #e0952d !important;" routerLink="cart">
+      <a class="d-flex justify-content-center">
+        <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn" class="example-tab-icon">shopping_cart</mat-icon>
+      </a>
+      <div class="menu_label">Cart</div>
+    </button>
+
+    <button class="col-4 btn btn-lg btn-block bg-dark shadow-sm" type="button" style="background-color: #D66247 !important;" routerLink="dashboard">
+      <div class="d-flex justify-content-center">
+        <mat-icon class="example-tab-icon">account_circle</mat-icon>
+      </div>
+      <div class="menu_label">More</div>
+    </button>
+</div>  
 
 </div>

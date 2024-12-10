@@ -71,22 +71,7 @@ export class ShippingComponent implements OnInit {
     return this.userProfile.id != null
   }
 
-  ngAfterViewInit() {
-    console.log("Capture created")
-    this.firebaseService.createCapture();
-  }
 
-  resend() {
-    this.isVerificationRequested = false
-  }
-
-  get phoneNumber(): string {
-    return this.userProfile.mobileNumber
-  }
-
-  set phoneNumber(phoneNumber: string) {
-    this.userProfile.mobileNumber =  phoneNumber
-  }
 
   set newAddressLatitude(latitude: number) {
     this._newAddressLatitude = latitude;
@@ -110,49 +95,6 @@ export class ShippingComponent implements OnInit {
     return this.userProfile.address && this.userProfile.name
       && this.userProfile.mobileNumber 
       && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
-  }
-
-  verify() {
-    this.phoneNumber = this.phoneNumber.startsWith("+27")? this.phoneNumber : this.phoneNumber.startsWith("0") ? 
-      this.phoneNumber.replace("0", "+27") : this.phoneNumber.startsWith("27") ? "+" + this.phoneNumber : "+27" +this.phoneNumber;
-    this.firebaseService.requestVerification(this.phoneNumber)
-      .subscribe(() => {
-        this.isVerificationRequested = true
-        this.hasError = false;
-      }, (error) => {
-        this.hasError = true;
-        this.errorMessage = error.message;
-      })
-  }
-
-  confirmCode() {
-    this.firebaseService.confirmCode(this.code)
-      .subscribe(cred => {
-        this.findCustomer()
-        document.getElementsByName("scrollTo")[0].scrollIntoView();
-        window.scrollBy(0, -76)
-      }, (error) => {
-        console.log(error)
-      })
-  }
-
-  findCustomer() {
-    this.izingaOrderManager.getCustomerByPhoneNumber(this.userProfile.mobileNumber)
-    .pipe(
-      catchError(error => {
-        if(error.status === 404) {
-          console.log("Not found user")
-          return of(this.userProfile)
-        } else {
-          return throwError(error); 
-        }
-      }),
-    )
-    .subscribe(user => {
-      this.userProfile = user
-      this.storageService.userProfile = user;
-      this.loadNearbyMessengers()
-    })
   }
 
   createCustomer(): Observable<UserProfile> {
@@ -238,15 +180,15 @@ export class ShippingComponent implements OnInit {
 
   updateDateTime(): Date| null {
     if (this.selectedDate && this.selectedTime) {
-      const dateTimeString = `${this.selectedDate}T${this.selectedTime}:00`; // ISO format string
+      const dateTimeString = `${this.selectedDate}T${this.selectedTime}:00.000+00:00`; // ISO format string
       const timestamp = Date.parse(dateTimeString);
       return this.pickUpDate = new Date(timestamp);
     }
     return null
   }
 
-  get deliversFromFixedAddress() {
-    return !this.storageService.shop?.deliversFromFixedAddress || this.storageService.shop?.deliversFromFixedAddress == true
+  get deliversFromMultipleAddresses() {
+    return this.storageService.shop?.deliversFromMultipleAddresses || this.storageService.shop?.deliversFromMultipleAddresses == true
   }
 
 }

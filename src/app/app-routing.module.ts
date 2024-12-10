@@ -14,18 +14,26 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
 import { IzingaHomeComponent } from './izinga-home/izinga-home.component';
 import { StoresComponent } from './stores/stores.component';
 import { PrintableMenuComponent } from './home/printable-menu/printable-menu.component';
+import { LoginComponent } from './login/login.component';
+import { RecurringShoppingComponent } from './recurring-shopping/recurring-shopping.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
 
 
 const routes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
+      {path : 'login', component: LoginComponent},
+      {path : 'recurring', component: RecurringShoppingComponent},
+      {path : 'recurring-form', component: RecurringShoppingFormComponent},
+      {path : 'dashboard', component: DashboardComponent},
       { path: '', component: IzingaHomeComponent },
       { path: 'item/:id', component: ShopItemDescrComponent },
       { path: 'cart', component: CheckoutComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'payment', component: PaymentComponent },
-      { path: 'store-orders', component: OrdersComponent },
+      { path: 'orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
@@ -36,12 +44,16 @@ const routes: Routes = [
   {
     path: ':shortname', component: MainComponent,
     children: [
+      {path : 'login', component: LoginComponent},
+      {path : 'recurring', component: RecurringShoppingComponent},
+      {path : 'recurring-form', component: RecurringShoppingFormComponent},
+      {path : 'dashboard', component: DashboardComponent},
       { path: '', component: HomeComponent },
       { path: 'item/:id', component: ShopItemDescrComponent },
       { path: 'cart', component: CheckoutComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'payment', component: PaymentComponent },
-      { path: 'store-orders', component: OrdersComponent },
+      { path: 'orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
@@ -52,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' ,  scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

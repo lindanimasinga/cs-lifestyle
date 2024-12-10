@@ -16,8 +16,8 @@ export class OrdersComponent implements OnInit {
   constructor(private izingaOrderManager: IzingaOrderManagementService, private storage: StorageService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    var shopId = this.activeRoute.parent.snapshot.paramMap.get('shortname')
-    this.izingaOrderManager.getAllOrdersByStoreId(shopId)
+    var customerId = this.activeRoute.parent.snapshot.queryParamMap.get('userId')
+    this.izingaOrderManager.getAllOrdersByCustomer(customerId)
       .subscribe(resp => this.orders= resp.filter(order => order.orderType == "ONLINE"))
   }
 

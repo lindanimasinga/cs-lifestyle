@@ -47,6 +47,13 @@ import { PrintableMenuComponent } from './home/printable-menu/printable-menu.com
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ShopItemLargeComponent } from './shop-item-large/shop-item-large.component';
+import { LoginComponent } from './login/login.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { RecurringShoppingComponent } from './recurring-shopping/recurring-shopping.component';
+import { RecurringShoppingCardComponent } from './recurring-shopping-card/recurring-shopping-card.component';
+import { RecurringShoppingItemComponent } from './recurring-shopping-item/recurring-shopping-item.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
 
 
 @NgModule({
@@ -77,7 +84,14 @@ import { ShopItemLargeComponent } from './shop-item-large/shop-item-large.compon
     PromotionComponent,
     PromoSliderComponent,
     PrintableMenuComponent,
-    ShopItemLargeComponent
+    ShopItemLargeComponent,
+    LoginComponent,
+    ShoppingListComponent,
+    RecurringShoppingComponent,
+    RecurringShoppingCardComponent,
+    RecurringShoppingItemComponent,
+    DashboardComponent,
+    RecurringShoppingFormComponent
   ],
   imports: [
     BrowserModule,

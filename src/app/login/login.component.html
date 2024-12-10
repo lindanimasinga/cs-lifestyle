@@ -1,0 +1,34 @@
+<div class="mb-5 text-muted">We need to verify your cellphone number is correct and active before we process your order. Please
+        enter your cellphone number below. </div>
+    <div class="mb-3">
+        <label for="cellphone">Cellphone Number</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">+27</span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="phoneNumber" name="mobileNumber"
+                placeholder="815551234" required [disabled]="isVerificationRequested">
+            <div class="invalid-feedback" style="width: 100%;">
+                Your cellphone number is required.
+            </div>
+        </div>
+    </div>
+    <div id="recaptcha-container" [style.visibility]="isVerificationRequested? 'hidden': 'visible'"></div>
+    <div *ngIf="hasError" class="error my-3">{{errorMessage}}</div>
+    <div *ngIf="isVerificationRequested" class="mb-3">
+        <div class="text-muted mb-3">We have sent you a verification code to you via sms. Please enter the code below. </div>
+        <label for="cellphone">Verification Code</label>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="code" name="code" placeholder="000000"
+                required>
+            <div class="invalid-feedback" style="width: 100%;">
+                Your cellphone number is required.
+            </div>
+        </div>
+        <div class="text-muted mb-3 mt-3 resend" (click)="resend()">To resend click <a>here</a></div>
+    </div>
+
+    <button *ngIf="!isVerificationRequested" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit"
+        (click)="verify()">Get Verification Code</button>
+    <button *ngIf="isVerificationRequested" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit"
+        (click)="confirmCode()">Confirm</button>

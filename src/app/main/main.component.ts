@@ -51,4 +51,18 @@ export class MainComponent implements OnInit {
     return this.storageService.errorMessage
   }
 
+  loggedIn() : boolean {
+    return this.storageService.userProfile != null
+  }
+
+  get cartNumberOfItems() { 
+    return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
+  }
+
+  logout() {
+    this.storageService.logout()
+    console.log("logged out")
+    window.location.href = '/'
+  }
+
 }

@@ -1,0 +1,14 @@
+<div class="description mb-5">
+    <h3>Plan and Organize Your Shopping List</h3>
+    <p>
+      Add items, set schedules, and share your list with others. Simplify your grocery shopping today! Get it delivered
+    </p>
+</div>
+
+<button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm" routerLink="../recurring-form" >Create New</button>
+
+<div *ngFor="let list of shoppingList" class="row mt-5">
+    <div class="col">
+        <app-recurring-shopping-card [list]="list"></app-recurring-shopping-card>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+  <!-- Shopping List Form -->
+  <form (ngSubmit)="onSubmit()" #shoppingListForm="ngForm" class="shopping-list-form">
+    <div class="form-group">
+      <label for="name">Shopping List Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        [(ngModel)]="shoppingList.name"
+        required
+        placeholder="e.g., Weekly Groceries"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="schedule">Schedule</label>
+      <select
+        id="schedule"
+        name="schedule"
+        class="form-control"
+        [(ngModel)]="shoppingList.schedule"
+        required
+      >
+        <option value="" disabled>Select schedule</option>
+        <option value="ONCE_OFF">Once-Off</option>
+        <option value="DAILY">Daily</option>
+        <option value="WEEKLY">Weekly</option>
+        <option value="MONTHLY">Monthly</option>
+        <option value="YEARLY">Yearly</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input
+        type="date"
+        id="startDate"
+        name="startDate"
+        class="form-control"
+        [(ngModel)]="shoppingList.startDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input
+        type="date"
+        id="endDate"
+        name="endDate"
+        class="form-control"
+        [(ngModel)]="shoppingList.endDate"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="userIds">User IDs (optional)</label>
+      <input
+        type="text"
+        id="userIds"
+        name="userIds"
+        class="form-control"
+        [(ngModel)]="userIds"
+        placeholder="Comma-separated user IDs"
+      />
+    </div>
+
+    <div class="shopping-item-section mt-4">
+        <h5>Add Shopping Item</h5>
+    
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input
+            type="text"
+            id="itemName"
+            name="itemName"
+            class="form-control"
+            [(ngModel)]="newShoppingItem"
+            placeholder="e.g., Milk"
+            required
+          />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm">Save</button>
+  </form>

@@ -47,7 +47,7 @@ export class StoreProfile {
     verificationCode?: string;
     yearsInService?: number;
     storeOffline?: boolean;
-    deliversFromFixedAddress?: boolean;
+    deliversFromMultipleAddresses?: boolean;
     storeMessenger?: Array<StoreMessanger>
 }
 export namespace StoreProfile {

@@ -2,3 +2,7 @@
     background-color: var(--bkg-card-color);;
     color: var(--text-color);
 }
+
+.small-detail {
+    font-size: 13px;
+}
