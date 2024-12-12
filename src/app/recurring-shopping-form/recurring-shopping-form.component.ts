@@ -35,10 +35,12 @@ export class RecurringShoppingFormComponent implements OnInit {
 
     this.activateRoute.params.subscribe(param => {
       var shoppingId = param["id"]
-      this.izingaService.findShoppingList(shoppingId)
-      .subscribe(shoppingList => {
-        this.shoppingList = shoppingList
-      })
+      if (shoppingId) {
+        this.izingaService.findShoppingList(shoppingId)
+        .subscribe(shoppingList => {
+          this.shoppingList = shoppingList
+        })
+      }
     })
     
 
