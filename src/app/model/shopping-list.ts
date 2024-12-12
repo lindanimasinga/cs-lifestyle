@@ -2,11 +2,13 @@ export class ShoppingItem {
     name: string;
     shopName?: string;
     shopId: string;
+    imageUrl: string;
     quality: number;
     priceRange: string;
   }
   
   export class ShoppingList {
+    id?: string
     name?: string
     items?: ShoppingItem[] = [];
     schedule?: Schedule;

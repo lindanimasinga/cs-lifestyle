@@ -54,6 +54,7 @@ import { RecurringShoppingCardComponent } from './recurring-shopping-card/recurr
 import { RecurringShoppingItemComponent } from './recurring-shopping-item/recurring-shopping-item.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurr
     StorageService,
     PaymentService,
     UkhesheService,
-    FirebaseService
+    FirebaseService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

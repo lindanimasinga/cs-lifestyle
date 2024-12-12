@@ -30,6 +30,10 @@ export class IzingaOrderManagementService {
     return this.http.get<Array<StoreProfile>>(`${environment.izingaUrl}/store?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}&size=20`);
   }
 
+  getAllShopsStock(lat: number, long: number, range: number) : Observable<Array<string>> {
+    return this.http.get<Array<string>>(`${environment.izingaUrl}/store/stock-flattened?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}&size=20`);
+  }
+
   startOrder(order: Order) : Observable<Order> {
     return this.http
         .post<Order>(`${environment.izingaUrl}/order`, order, {headers: this.headers})
@@ -55,6 +59,17 @@ export class IzingaOrderManagementService {
   findShoppingLists(userId) : Observable<ShoppingList> {
       return this.http
           .get<ShoppingList>(`${environment.izingaUrl}/shopping-list?userId=${userId}`, {headers: this.headers})
+          .pipe(
+            catchError((error: HttpErrorResponse) => {
+              this.storage.errorMessage = error.error.message
+              return throwError(error)
+            })
+          )
+  }
+
+  findShoppingList(id: any) {
+    return this.http
+          .get<ShoppingList>(`${environment.izingaUrl}/shopping-list/${id}`, {headers: this.headers})
           .pipe(
             catchError((error: HttpErrorResponse) => {
               this.storage.errorMessage = error.error.message

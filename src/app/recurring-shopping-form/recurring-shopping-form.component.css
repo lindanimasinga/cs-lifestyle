@@ -1,0 +1,12 @@
+.search-result {
+    height: 100px;
+    border: 1px;
+    border-color: var(--footer-bkg-color);
+    margin: 4px;
+}
+
+.stockImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}

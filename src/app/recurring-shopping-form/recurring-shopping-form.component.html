@@ -38,7 +38,7 @@
         id="startDate"
         name="startDate"
         class="form-control"
-        [(ngModel)]="shoppingList.startDate"
+        [(ngModel)]="startDate"
         required
       />
     </div>
@@ -50,11 +50,11 @@
         id="endDate"
         name="endDate"
         class="form-control"
-        [(ngModel)]="shoppingList.endDate"
+        [(ngModel)]="endDate"
       />
     </div>
 
-    <div class="form-group">
+    <div class="form-group" hidden>
       <label for="userIds">User IDs (optional)</label>
       <input
         type="text"
@@ -67,19 +67,40 @@
     </div>
 
     <div class="shopping-item-section mt-4">
+      <div *ngFor="let shoppingItem of shoppingList.items;" tappable class="row p-1 shoppingItems">
+        <img class="stockImage col-3" [src]="shoppingItem.imageUrl"> 
+        <div class="col-9">{{shoppingItem.name}}</div>
+      </div>     
+    </div>
+
+    <div class="shopping-item-section mt-4">
         <h5>Add Shopping Item</h5>
     
         <div class="form-group">
           <label for="itemName">Item Name</label>
           <input
+            id="stockSelection"
+            autocomplete="off"
             type="text"
             id="itemName"
             name="itemName"
             class="form-control"
             [(ngModel)]="newShoppingItem"
-            placeholder="e.g., Milk"
+            placeholder="Search item name e.g., Milk"
             required
           />
+        
+          <!--  DropDown Starts  -->
+          <div class="card" [hidden]="!showSearches">
+            <div class="search">
+              <div *ngFor="let stock of filteredStock;" tappable (click)="selectedStock(stock)" class="row search-result">
+                <img class="stockImage col-3" [src]="stock.imageUrl"> 
+                <div class="col-9">{{stock.name}}</div>
+              </div>     
+            </div>
+            <p class="search" *ngIf="filteredStock && filteredStock.length <= 0 && !isSearching">No items found</p>
+          </div>
+          <!--  DropDown Ends  -->
         </div>
     </div>
 
