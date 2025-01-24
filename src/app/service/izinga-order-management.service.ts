@@ -163,7 +163,8 @@ export class IzingaOrderManagementService {
         .get<UserProfile>(`${environment.izingaUrl}/user/${mobileNumber}`, {headers: this.headers})
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.storage.errorMessage = error.error.message
+            console.log(error)
+            this.storage.errorMessage = error.message
             return throwError(error)
           }))
   }

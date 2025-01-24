@@ -56,6 +56,8 @@ export class LoginComponent {
     this.firebaseService.confirmCode(this.code)
       .subscribe(cred => {
         this.findCustomer()
+        this.storageService.phoneVerified = true
+        this.storageService.phoneNumber = this.phoneNumber
         document.getElementsByName("scrollTo")[0].scrollIntoView();
         window.scrollBy(0, -76)
       }, (error) => {
@@ -68,16 +70,18 @@ export class LoginComponent {
     .pipe(
       catchError(error => {
         if(error.status === 404) {
-          console.log("Not found user")
-          return of(this.userProfile)
+          console.log("User not found")
+          return of(null)
         } else {
           return throwError(error); 
         }
       }),
     )
     .subscribe(user => {
-      this.userProfile = user
-      this.storageService.userProfile = user;
+      if (user) {
+        this.userProfile = user
+        this.storageService.userProfile = user;
+      }
       location.href = document.referrer
     })
   }

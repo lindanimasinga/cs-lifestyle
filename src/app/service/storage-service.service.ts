@@ -12,6 +12,8 @@ export class StorageService {
   ORDER_KEY = "fuiwerfbsk";
   CUURENT_LOCATION_KEY = "kfjhdyrbvsl"
   TOKEN_KEY = "vm1xcnvfoiwerw"
+  PHONE_VERIFIED_KEY = "lkjhsdbvskd"
+  PHONE_NUMBER_KEY = "knsdevwruweildkf"
   jwt: string;
   ukhesheUser: UkhesheUser;
   shop: StoreProfile;
@@ -23,8 +25,34 @@ export class StorageService {
   _currentLocation: CurrentLocation
   errorMessage: String;
   _fcmToken: string
+  _phoneVerified: boolean;
+  _phoneNumber: string
 
   constructor() { }
+
+  get phoneNumber() {
+    if(this._phoneNumber == null) {
+      this._phoneNumber = this.cache.getItem(this.PHONE_NUMBER_KEY)
+    }
+    return this._phoneNumber;
+  }
+
+  set phoneNumber(phoneNumber: string) {
+    this._phoneNumber = phoneNumber
+    this.cache.setItem(this.PHONE_NUMBER_KEY, this._phoneNumber)
+  }
+
+  get phoneVerified() {
+    if(this._phoneVerified == null) {
+      this._phoneVerified = JSON.parse(this.cache.getItem(this.PHONE_VERIFIED_KEY))
+    }
+    return this._phoneVerified;
+  }
+
+  set phoneVerified(phoneVerified: boolean) {
+    this._phoneVerified = phoneVerified
+    this.cache.setItem(this.PHONE_VERIFIED_KEY, JSON.stringify(this._phoneVerified))
+  }
 
   get userProfile() {
     if(this._userProfile == null) {

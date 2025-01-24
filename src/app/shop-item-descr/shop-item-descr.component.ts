@@ -33,7 +33,7 @@ export class ShopItemDescrComponent implements OnInit {
         const stockId = this.route.snapshot.paramMap.get('id');
         this.store = this.storageService.shop
         this.shopItem = this.store.stockList.find(item => item.id == stockId)
-        this.imageSelected = this.shopItem.images[0]
+        this.imageSelected = this.shopItem.images ? this.shopItem.images[0] : undefined
       }
     });
   }
@@ -51,7 +51,7 @@ export class ShopItemDescrComponent implements OnInit {
       discountPerc: this.shopItem.discountPerc,
       options: this.shopItem.mandatorySelection,
       quantity: this.quantity,
-      image: this.shopItem.images[0]
+      image: this.shopItem.images ? this.shopItem.images[0] : undefined
     }
     this.storageService.addToCart(this.basketItem);
   }

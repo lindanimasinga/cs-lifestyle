@@ -60,17 +60,22 @@ export class ShippingComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (this.storageService.userProfile) {
+    if (this.storageService.userProfile && this.isPhoneNumberVerified) {
       this.userProfile = this.storageService.userProfile
       this.isVerificationRequested = true
       setTimeout(() => this.loadNearbyMessengers(), 5000)
+    } else {
+      this.userProfile.mobileNumber = this.storageService.phoneNumber
     }
   }
 
   get isPhoneNumberVerified(): boolean {
-    return this.userProfile.id != null
+    return this.storageService.phoneVerified
   }
 
+  get phoneNumber() {
+    return this.storageService.phoneNumber
+  }
 
 
   set newAddressLatitude(latitude: number) {

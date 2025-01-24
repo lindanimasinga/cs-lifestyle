@@ -24,7 +24,7 @@
 
 <div *ngIf="startOrder || promotions.length <= 0" class="">
 
-<div class="mb-3 mt-5 py-3 d-flex justify-content-center">
+<div class="mb-1 mt-1 py-3 d-flex justify-content-center">
   <div>
     <div class="h5 page-header">{{shop?.name}} Menu</div>
   </div>
@@ -32,7 +32,7 @@
 
 <div *ngFor="let cat of categories" class="categories">
   <div class="accordion" id="accordionExample">
-            <div class="category my-3 p-1" type="button" data-toggle="collapse" [attr.data-target]="'#'+replaceSpecialChars(cat)" aria-expanded="true" aria-controls="collapseOne">
+            <div class="category my-1 p-1" type="button" data-toggle="collapse" [attr.data-target]="'#'+replaceSpecialChars(cat)" aria-expanded="true" aria-controls="collapseOne">
               {{cat}}
             </div>
 
