@@ -49,6 +49,7 @@ export class StoreProfile {
     storeOffline?: boolean;
     deliversFromMultipleAddresses?: boolean;
     storeMessenger?: Array<StoreMessanger>
+    storeId?: string;
 }
 export namespace StoreProfile {
     export type RoleEnum = 'CUSTOMER' | 'STORE_ADMIN' | 'STORE' | 'MESSENGER';

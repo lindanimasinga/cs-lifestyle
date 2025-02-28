@@ -22,7 +22,7 @@
       </button>
   </div>
 
-  <div class="row fixed-bottom">
+  <div *ngIf="isVisible" class="row fixed-bottom">
     <!-- Add New Stock Item Button -->
     <button type="button" class="col-4 btn bg-dark shadow-sm" routerLink="recurring">
         <a class="nav-link d-flex justify-content-center">

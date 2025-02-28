@@ -38,7 +38,7 @@
 }
 
 #app-root {
-    min-height: calc(100vh - 176px);
+    min-height: calc(100vh - 150px);
 }
 
 .bg-dark {

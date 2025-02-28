@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreProfile } from '../model/models';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
@@ -18,17 +18,20 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
-    if(shortName == null) {
-      var url = window.location.origin
-      var urlParts = url.split("\.")
-      shortName = urlParts.length == 3 ? urlParts[1] : urlParts[0]
+    if (this.storageService.shop == null) {
+      var shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
+      if(shortName == null) {
+        var url = window.location.origin
+        var urlParts = url.split("\\")
+        shortName = urlParts.length > 1 ? urlParts[1] : urlParts[0]
+        console.log(`url parts is ${urlParts}`)
+      }
+      console.log("shortname is " + shortName)
+      this.izingaService.getStoreById(shortName)
+      .subscribe(shop => {
+        this.storageService.shop = shop;
+      })
     }
-    console.log("shortname is " + shortName)
-    this.izingaService.getStoreById(shortName)
-    .subscribe(shop => {
-      this.storageService.shop = shop;
-    })
 
     if(this.hasError) {
       this.storageService.errorMessage = null
@@ -63,6 +66,26 @@ export class MainComponent implements OnInit {
     this.storageService.logout()
     console.log("logged out")
     window.location.href = '/'
+  }
+
+  isVisible = false; // Controls the visibility of the div
+  lastScrollTop = 0; // Tracks the last scroll position
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop > this.lastScrollTop) {
+      // Scrolling Down
+      this.isVisible = true;
+    } else if (currentScrollTop < this.lastScrollTop) {
+      // Scrolling Up
+      this.isVisible = true;
+    } else {
+      this.isVisible = false;
+    }
+
+    this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Avoid negative values
   }
 
 }

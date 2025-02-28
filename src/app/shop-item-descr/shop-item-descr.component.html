@@ -1,10 +1,10 @@
 <div class="">
-<div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
+<div class="mt-3 d-flex justify-content-sm-center justify-content-md-start">
     <div class="page-header h5">{{shopItem?.name}}</div>
 </div>
 <div class="mt-3 row d-flex justify-content-center">
 
-    <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-5">
+    <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-3">
         <div class="d-inline-flex">
             <span class="item-descr mr-md-1">
                 <div *ngFor="let img of shopItem?.images" class="mb-1" (click)="imageSelected = img">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm mb-3" (click)="addToCart()" [disabled]="!hasValidSeletion()">
+        <button class="btn btn-lg btn-block bg-dark mt-3 shadow-sm mb-3" (click)="addToCart()" [disabled]="!hasValidSeletion()">
             Add to Cart
         </button>
 
@@ -55,15 +55,5 @@
 <div class="mt-5">
     <app-other-items></app-other-items>
 </div>
-
-<div *ngIf="hasItemsInCart()" class="fixed-bottom">
-  
-    <a routerLink="../../cart">
-      <button class="btn btn-checkout shadow-sm">
-        <mat-icon matBadge="{{cartNumberOfItems}}" matBadgeColor="warn">shopping_cart</mat-icon>
-        CHECKOUT
-      </button>
-    </a>
-  </div>
 
   </div>

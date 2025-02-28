@@ -8,6 +8,7 @@ import { UkhesheUser } from '../model/ukheshe-user';
 export class StorageService {
 
   USER_PROFILE_KEY = "sdfwefdsfsd";
+  STORE_PROFILE_KEY = "mbasdrtyw";
   BASKET_KEY = "sdfsdfljsdf";
   ORDER_KEY = "fuiwerfbsk";
   CUURENT_LOCATION_KEY = "kfjhdyrbvsl"
@@ -16,7 +17,7 @@ export class StorageService {
   PHONE_NUMBER_KEY = "knsdevwruweildkf"
   jwt: string;
   ukhesheUser: UkhesheUser;
-  shop: StoreProfile;
+  _shop: StoreProfile;
   orders: Array<Order>;
   cache: Storage = window.localStorage
   _order: Order // = {"basket":{"items":[{"name":"Skirt","price":499,"discountPerc":0,"options":[{"name":"Size","values":["30","32","34","38","40"],"selected":"30","price":0},{"name":"Colours","values":["White","Blue","Black","Yellow"],"selected":"White","price":0}],"quantity":1,"image":"https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/original.jpg"},{"name":"Skirt","price":499,"discountPerc":0,"options":[{"name":"Size","values":["30","32","34","38","40"],"selected":"30","price":0},{"name":"Colours","values":["White","Blue","Black","Yellow"],"selected":"White","price":0}],"quantity":1,"image":"https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/original.jpg"},{"name":"Skirt","price":499,"discountPerc":0,"options":[{"name":"Size","values":["30","32","34","38","40"],"selected":"30","price":0},{"name":"Colours","values":["White","Blue","Black","Yellow"],"selected":"White","price":0}],"quantity":1,"image":"https://izinga-aut.s3.af-south-1.amazonaws.com/cs-lifestlye/original.jpg"}]},"customerId":"ffd4c856-644f-4453-a5ed-84689801a747","shopId":"d4bf58f4-44eb-4402-8ee9-b457c263833e","orderType":"ONLINE","stage":"STAGE_0_CUSTOMER_NOT_PAID","description":"CS order 0812815707","shippingData":{"fromAddress":"45 CS lifestyle street","toAddress":"41 Sheffield Cl, Milnerton Rural, Cape Town, 7441, South Africa","messengerId":"ffd4c856-644f-4453-a5ed-84689801a747","buildingType":"HOUSE","type":"DELIVERY","additionalInstructions":"call me at 10111"}};
@@ -29,6 +30,18 @@ export class StorageService {
   _phoneNumber: string
 
   constructor() { }
+
+  get shop() {
+    if(this._shop == null) {
+      this._shop = JSON.parse(this.cache.getItem(this.STORE_PROFILE_KEY))
+    }
+    return this._shop;
+  }
+
+  set shop(shop: StoreProfile) {
+    this._shop = shop
+    this.cache.setItem(this.STORE_PROFILE_KEY, JSON.stringify(this._shop))
+  }
 
   get phoneNumber() {
     if(this._phoneNumber == null) {
