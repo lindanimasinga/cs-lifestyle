@@ -164,8 +164,11 @@ export class ShippingComponent implements OnInit {
 
     if (this.storageService.shop?.storeMessenger && this.storageService.shop?.storeMessenger?.length > 0) {
       console.log("looking up store messangers")
-      this.izingaOrderManager.getCustomerById(this.storageService.shop?.storeMessenger[0].name).subscribe(mess => {
-        this.messegers = [mess]
+      var lat = this.storageService.currentLocation.lat
+      var long = this.storageService.currentLocation.long
+      this.izingaOrderManager.findNearbyMessangers(lat, long, environment.range)
+      .subscribe(mess => {
+        this.messegers = mess
       })
       return
     }
@@ -178,7 +181,8 @@ export class ShippingComponent implements OnInit {
 
     console.log(`latitude/longitude is ${latitude}/${longitude}`)// 0.09999 is 15km range
     console.log("looking nearby messangers")
-    this.izingaOrderManager.findNearbyMessangers(latitude, longitude, 0.09999).subscribe(mess => {
+    this.izingaOrderManager.findNearbyMessangers(latitude, longitude, environment.range)
+    .subscribe(mess => {
       this.messegers = mess
     })
   }

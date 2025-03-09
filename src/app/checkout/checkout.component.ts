@@ -78,7 +78,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   loggedId() {
-    return this.storageService.userProfile != null
+    return this.storageService.userProfile != null && this.storageService.phoneVerified
   }
 
 }

@@ -6,6 +6,7 @@ export const environment = {
   storeId: "d4bf58f4-44eb-4402-8ee9-b457c263833e",
   storeType: StoreProfile.StoreTypeEnum.FOOD,
   messengerId: "fd7b0957-2fb9-4e23-b940-51407d3c076f",
+  range: 0.09999,
   izingaUrl: "https://api.izinga.co.za",
   izingaPayUrl: "https://pay.izinga.co.za",
   izingaMasterpassUrl: "https://ellyw5af54.execute-api.af-south-1.amazonaws.com/prod/ukheshe-masterpass-code",

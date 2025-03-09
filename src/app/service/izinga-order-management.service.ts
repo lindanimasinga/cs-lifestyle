@@ -27,11 +27,15 @@ export class IzingaOrderManagementService {
   }
 
   getAllStores(lat: number, long: number, range: number): Observable<Array<StoreProfile>> {
-    return this.http.get<Array<StoreProfile>>(`${environment.izingaUrl}/store?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}&size=20`);
+    return this.http.get<Array<StoreProfile>>(`${environment.izingaUrl}/store?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}`);
+  }
+
+  getAllStoresNamesAndLogos(lat: number, long: number, range: number): Observable<Array<StoreProfile>> {
+    return this.http.get<Array<StoreProfile>>(`${environment.izingaUrl}/store/names?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}`);
   }
 
   getAllShopsStock(lat: number, long: number, range: number) : Observable<Array<string>> {
-    return this.http.get<Array<string>>(`${environment.izingaUrl}/store/stock-flattened?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}&size=20`);
+    return this.http.get<Array<string>>(`${environment.izingaUrl}/store/stock-flattened?storeType=FOOD&range=${range}&latitude=${lat}&longitude=${long}`);
   }
 
   startOrder(order: Order) : Observable<Order> {

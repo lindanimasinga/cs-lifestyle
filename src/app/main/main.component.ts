@@ -55,7 +55,7 @@ export class MainComponent implements OnInit {
   }
 
   loggedIn() : boolean {
-    return this.storageService.userProfile != null
+    return this.storageService.userProfile != null && this.storageService.phoneVerified
   }
 
   get cartNumberOfItems() { 

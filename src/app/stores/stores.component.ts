@@ -35,14 +35,14 @@ export class StoresComponent implements OnInit {
     this.address = queryParamMap['address'] 
     this.storage.currentLocation = new CurrentLocation(lat, long, this.address)
     this.storage.shop = null
-    this.izingaService.getAllStores(lat, long, 0.1)
+    this.izingaService.getAllStoresNamesAndLogos(lat, long, environment.range)
         .subscribe(resp => {
           this.stores = resp.filter(store => !store.storeOffline)
           this.storesClosed = resp.filter(store => store.storeOffline)
-          resp.forEach(item => item.tags.forEach(tag => this.tags.add(tag)))
+          resp.forEach(item => item.tags?.forEach(tag => this.tags.add(tag)))
         })
     
-    this.izingaService.getAllPromotions(lat, long, 0.1)
+    this.izingaService.getAllPromotions(lat, long, environment.range)
         .subscribe(resp => {
           this.promotions = resp
         })

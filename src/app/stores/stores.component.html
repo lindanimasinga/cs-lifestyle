@@ -34,8 +34,7 @@
     </div>
 
     <div *ngIf="storesClosed.length > 0">
-        <div class=" h5 mb-3 mt-3">Closed For Now</div>
-        <div class="d-flex justify-content-center closed">
+        <div class="d-flex justify-content-center">
             <div class="row">
                 <div *ngFor="let store of storesClosed" class="col-md-6 col-lg-6 col-xl-4 px-2 py-2 d-flex justify-content-center">
                     <app-store-card [store]="store"></app-store-card>

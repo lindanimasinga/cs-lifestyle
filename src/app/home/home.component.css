@@ -4,6 +4,7 @@
 
 .category {
     background: var(--nav-bg-color);
+    font-size: large;
 }
 
 .btn-checkout {

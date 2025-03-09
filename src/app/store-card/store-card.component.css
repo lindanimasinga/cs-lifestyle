@@ -1,7 +1,17 @@
+.ribbon-closed {
+    position: absolute;
+    background-color: var(--btn-red-color);
+    padding: 8px;
+    color: white;
+    bottom: 0px;
+    right: 0px;
+
+}
 .card {
     background: var(--bkg-card-color);
     outline: none;
     border: none;
+    position: relative;
 }
 
 .card img {
