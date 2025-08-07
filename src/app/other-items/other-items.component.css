@@ -53,3 +53,8 @@
     position: absolute;
     z-index: 2;
 }
+
+.category {
+    background: var(--nav-bg-color);
+    font-size: large;
+}

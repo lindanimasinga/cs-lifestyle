@@ -1,11 +1,23 @@
 .basket-item {
     background-color: var(--bkg-card-color); 
+    width: 168px !important;
+    height: 240px;
 }
 
 .basket-item img {
-    width: 150px;
+    width: 168px;
     height: 110px;
     object-fit: cover;
+}
+
+.basket-item .info {
+    font-size: small;
+}
+
+.info .description {
+    max-lines: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media(max-width: 370px) {

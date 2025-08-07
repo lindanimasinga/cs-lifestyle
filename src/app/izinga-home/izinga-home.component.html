@@ -1,11 +1,16 @@
 
 <div class="container d-flex align-items-center">
     <div class="w-100">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold" style="font-family: Catamaran, Calibri, sans-serif;">Fiend the best food in town</h2>
+            <div class="text-muted" style="font-size: 1.1rem;">
+                Find the best food in your town. Simple download iZinga, place an order and get your food delivered at your door.
+            </div>
+        </div>
         <form class="needs-validation" novalidate>
             <div class="mb-3">
-                <label class="mb-3" for="address">Enter your location to find nearby stores</label>
                 <app-place-autocomplete (addressChanged)="address = $event" (latitudeChanged)="lat = $event" (longitudeChanged)="long = $event"></app-place-autocomplete>
-                <button (click)="findStores()" class="btn btn-primary button-dark mt-5">Find Stores</button>
+                <button (click)="findStores()" class="btn btn-primary button-dark mt-5">Start</button>
             </div>
         </form>
     </div>

@@ -1,28 +1,5 @@
 
-<div *ngIf="promotions.length > 0 && !startOrder" class="sticky-top promo-container">
-  <div class="promo-blurr" [ngStyle]="{'background-image': cssImageUrl}">
-  </div>
-  <div class="promo-shop h2 d-flex justify-content-center p-3 shadow-sm">{{shop.name}}</div>
-  <div class="carousel carousel-promo slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li *ngFor="let promo of promotions; let number = index;" data-target="#carouselExampleIndicators" 
-      data-slide-to="{{index}}" [ngClass]="number == 0? 'active' : ''"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div *ngFor="let promo of promotions ; let number = index;" class="carousel-item" [ngClass]="{'active': number === 0}">
-        <img [src]="promo.imageUrl" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <div class="button-menu d-flex justify-content-center">
-        <button id="start-order-btn" class="btn btn-lg btn-block bg-dark mt-5 shadow-sm mb-3" 
-        (click)="startOrder = true">
-          Start Order
-      </button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="startOrder || promotions.length <= 0" class="">
+<div class="">
 
 <div class="mb-1 mt-1 py-3 d-flex justify-content-center">
   <div>

@@ -1,11 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
-import { ShoppingList } from '../model/shopping-list';
+import { ShoppingItem, ShoppingList } from '../model/shopping-list';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '../service/storage-service.service';
 import { debounceTime, distinctUntilChanged, flatMap, map, switchMap, tap } from 'rxjs/operators';
 import { fromEvent, of } from 'rxjs';
 import { DatePipe } from '@angular/common';
+import { StoreProfile } from '../model/storeProfile';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-recurring-shopping-form',
@@ -16,6 +18,7 @@ export class RecurringShoppingFormComponent implements OnInit {
   
   isSearching = false
   showSearches = false
+  shops: StoreProfile[] = [];
   shoppingList: ShoppingList = {
     items: []
   };
@@ -23,6 +26,8 @@ export class RecurringShoppingFormComponent implements OnInit {
   _newShoppingItem: string
   allStockAvailable: Array<DropDownSelectableStock>
   filteredStock: Array<DropDownSelectableStock>
+  lastAddedItemId: string | undefined;
+  quantity = 1;
 
   constructor(private izingaService: IzingaOrderManagementService, 
     private router: Router, 
@@ -39,28 +44,22 @@ export class RecurringShoppingFormComponent implements OnInit {
         this.izingaService.findShoppingList(shoppingId)
         .subscribe(shoppingList => {
           this.shoppingList = shoppingList
+          this.shopId = shoppingList.shopId
         })
       }
     })
-    
 
     this.userIds = this.storageService.userProfile.id
     var latitude = this.storageService.currentLocation.lat
     var longitude = this.storageService.currentLocation.long
     var range = 0.1
-    this.izingaService.getAllShopsStock(latitude, longitude, range)
-    .subscribe(stock => {
-      console.log("received all stock for shops...")
-      this.allStockAvailable = stock.map(item => {
-        var itemsElements = item.split("#!#")
-        var dropD: DropDownSelectableStock = {
-          name: itemsElements[0],
-          storeId: itemsElements[1],
-          imageUrl: itemsElements[2]
-        }
-        return dropD
-      })
-    })
+    this.izingaService.getAllStores(latitude, longitude, range)
+          .subscribe(resp => {
+            this.shops = resp
+            .filter(store => store.tags?.includes("groceries") 
+                      && (store.id == this.shoppingList.shopId || this.shoppingList.shopId == null))
+            this.shopId = this.shoppingList.shopId || this.shops[0]?.id
+          })
   }
 
   get startDate() {
@@ -90,6 +89,26 @@ export class RecurringShoppingFormComponent implements OnInit {
     this.filteredStock = this.filterStock(this._newShoppingItem)
   }
 
+  get shopId() {
+    return this.shoppingList.shopId;
+  }
+
+  set shopId(shopId : string) {
+    this.shoppingList.shopId = shopId
+    console.log(`setting shop id to ${shopId}`)
+    this.shops = this.shops.filter(shop => shop.id == shopId)
+    this.allStockAvailable = this.shops
+    .filter(shop => shop.id == shopId)[0]
+    .stockList.map(stk => {
+            return {
+              name: stk.name,
+              imageUrl: stk.images?.[0],
+              storeId: ""
+            } as DropDownSelectableStock
+          })
+  }
+
+
   onSubmit() {
     this.shoppingList.userIds = this.userIds.split(",")
     this.izingaService.createShoppingList(this.shoppingList).subscribe(respo => {
@@ -98,7 +117,9 @@ export class RecurringShoppingFormComponent implements OnInit {
   }
 
   filterStock(filter: string) : Array<DropDownSelectableStock> {
-    return filter == null ? [] : this.allStockAvailable.filter(stock => stock.name.toLowerCase().includes(filter.toLowerCase()))
+    console.log(`filtering stock with filter ${this.shoppingList.shopId}`)
+    return filter == null ? [] : this.allStockAvailable
+    .filter(stock => stock.name.toLowerCase().includes(filter.toLowerCase()))
   }
 
   selectedStock(stockSelected: DropDownSelectableStock) {
@@ -107,15 +128,44 @@ export class RecurringShoppingFormComponent implements OnInit {
       name: stockSelected.name,
       shopId: stockSelected.storeId,
       imageUrl: stockSelected.imageUrl,
-      quality: 1,
+      quantity: 1,
       priceRange: "100, 200",
       shopName: stockSelected.storeId
     })
     this.newShoppingItem = null
   }
 
-  trackById(index,item):void{
-    return item.name;
+  addShoppingItem(item: any) {
+    // ...your logic to add item...
+    this.lastAddedItemId = item.id; // or whatever unique identifier you use
+    setTimeout(() => this.lastAddedItemId = undefined, 2000); // Remove highlight after 2s
+  }
+
+  increaseQuantity(i: number) {
+    console.log(`increasing quantity of item ${this.shoppingList.items[i].name} to ${this.shoppingList.items[i].quantity}`)
+    if (this.shoppingList.items[i].quantity < 100) {
+      this.shoppingList.items[i].quantity += 1
+    }
+    this.quantity += 1
+  }
+
+  decreaseQuantity(i: number) {
+    console.log(`decreasing quantity of item ${this.shoppingList.items[i].name} to ${this.shoppingList.items[i].quantity}`)
+    if (this.shoppingList.items[i].quantity > 1) {
+      this.shoppingList.items[i].quantity -= 1
+    } else {
+      this.shoppingList.items.splice(i, 1);
+    }
+    this.quantity -= 1
+  }
+
+  trackByQuantity(index: number, item: ShoppingItem): string {
+    return item.name + item.quantity;
+  }
+
+  checkout() {
+    console.log(`checking out shopping list ${this.shoppingList.name}`)
+   
   }
 
 }

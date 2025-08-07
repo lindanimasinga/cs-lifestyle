@@ -14,7 +14,7 @@ declare var ScrollMagic: any;
 export class OtherItemsComponent implements OnInit {
 
   store: StoreProfile;
-  shopItems: Stock[];
+  categories: Set<String> = new Set<String>()
   
   constructor(private storageService: StorageService, 
     private izingaService: IzingaOrderManagementService) {
@@ -22,7 +22,7 @@ export class OtherItemsComponent implements OnInit {
 
   ngOnInit(): void {
       this.store = this.storageService.shop
-      this.shopItems = this.store.stockList;
+      this.categories = new Set(this.store.stockList.map(stk => stk.group))
       setTimeout(() => {
         this.initScrollMagic()
       }, 100);
@@ -40,6 +40,14 @@ export class OtherItemsComponent implements OnInit {
        // .addIndicators() // add indicators (requires plugin)
         .addTo(controller);
     }
+  }
+
+  replaceSpecialChars(input?: string): string {
+    return input?.replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  shopItems(category?: string): Stock[] {
+    return this.store?.stockList.filter(item => item.group?.toLowerCase() == category?.toLowerCase())
   }
 
 }

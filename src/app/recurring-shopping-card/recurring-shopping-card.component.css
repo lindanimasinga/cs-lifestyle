@@ -14,3 +14,12 @@
 .edit {
     background-color: #575757 !important;
 }
+
+.actions {
+    height: 82.5px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}

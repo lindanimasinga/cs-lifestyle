@@ -1,12 +1,17 @@
 .search-result {
     height: 100px;
+    width: 100%;
     border: 1px;
     border-color: var(--footer-bkg-color);
-    margin: 4px;
+    background-color: var(--footer-bkg-color);
 }
 
 .stockImage {
     width: 80px;
     height: 80px;
     object-fit: cover;
+}
+
+.checkout-item .btn {
+    width: 112px !important;
 }

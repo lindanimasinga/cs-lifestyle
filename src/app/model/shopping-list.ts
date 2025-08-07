@@ -3,11 +3,12 @@ export class ShoppingItem {
     shopName?: string;
     shopId: string;
     imageUrl: string;
-    quality: number;
+    quantity: number;
     priceRange: string;
   }
   
   export class ShoppingList {
+    shopId?: string;
     id?: string
     name?: string
     items?: ShoppingItem[] = [];
