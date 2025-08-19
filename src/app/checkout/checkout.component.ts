@@ -81,4 +81,12 @@ export class CheckoutComponent implements OnInit {
     return this.storageService.userProfile != null && this.storageService.phoneVerified
   }
 
+  totalPrice(): number {
+    return this.basket.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
+  totalItems(): number {
+    return this.basket.items.reduce((total, item) => total + item.quantity, 0);
+  }
+
 }

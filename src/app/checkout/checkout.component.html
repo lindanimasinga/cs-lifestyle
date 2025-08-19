@@ -2,9 +2,16 @@
 <div class="mt-5 d-flex justify-content-sm-center justify-content-md-start">
     <div class="page-header h3">Checkout</div>
 </div>
-<div class="mt-3 row">
-    <div *ngFor="let item of basket.items" class="col-2 col-md-4 m-1 shadow-sm d-flex align-items-center">
-        <div class="basket-item">
+
+<!-- display total price and number of items -->
+<div class="mt-3">
+    <div class="h5">Total excl delivery: {{totalPrice() | currency:'R'}}</div>
+    <div class="h5">Items: {{basket.items.length}}</div>
+</div>
+
+<div class="mt-5 row">
+    <div *ngFor="let item of basket.items" class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center">
+        <div class="basket-item m-1">
             <img [src]="item.image" class="">
             <div class="info mt-3 p-2">
                 <div class="description">{{item.name}}</div>
@@ -18,11 +25,11 @@
 </div>
     <a *ngIf="loggedId()" routerLink="../shipping">
         <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm align-middle">
-        Continue
+        Continue ({{totalPrice() | currency:'R'}})
     </button></a>
 
     <a *ngIf="!loggedId()" routerLink="../login">
         <button class="btn btn-lg btn-block btn-primary bg-dark mt-5 shadow-sm align-middle">
-        Continue
+        Continue ({{totalPrice() | currency:'R'}})
     </button></a>
 </div>

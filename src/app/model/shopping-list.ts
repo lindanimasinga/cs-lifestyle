@@ -4,7 +4,7 @@ export class ShoppingItem {
     shopId: string;
     imageUrl: string;
     quantity: number;
-    priceRange: string;
+    price: number;
   }
   
   export class ShoppingList {
@@ -15,6 +15,7 @@ export class ShoppingItem {
     schedule?: Schedule;
     startDate?: Date;
     endDate?: Date;
+    nextRunDate?: Date;
     userIds?: string[];
   }
   

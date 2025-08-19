@@ -12,6 +12,8 @@ import {Utils} from '../utils/utils'
 })
 export class MainComponent implements OnInit {
 
+  shortName?: string;
+
   constructor(private storageService: StorageService,
     private izingaService: IzingaOrderManagementService,
     private activatedRoute: ActivatedRoute) {
@@ -19,15 +21,16 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.storageService.shop == null) {
-      var shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
-      if(shortName == null) {
+      this.shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
+      if(this.shortName == null) {
         var url = window.location.origin
         var urlParts = url.split("\\")
-        shortName = urlParts.length > 1 ? urlParts[1] : urlParts[0]
+        this.shortName = urlParts.length > 1 ? urlParts[1] : urlParts[0]
         console.log(`url parts is ${urlParts}`)
       }
-      console.log("shortname is " + shortName)
-      this.izingaService.getStoreById(shortName)
+      console.log(`path is ${window.location.pathname}`)
+      console.log("shortname is " + this.shortName)
+      this.izingaService.getStoreById(this.shortName)
       .subscribe(shop => {
         this.storageService.shop = shop;
       })
@@ -76,16 +79,22 @@ export class MainComponent implements OnInit {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScrollTop > this.lastScrollTop) {
-      // Scrolling Down
       this.isVisible = true;
     } else if (currentScrollTop < this.lastScrollTop) {
-      // Scrolling Up
       this.isVisible = true;
     } else {
       this.isVisible = false;
     }
 
+    const supportedPaths = this.supportedPaths.includes(window.location.pathname);
+    this.isVisible = this.isVisible && supportedPaths
     this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Avoid negative values
+  }
+
+  //return a list on supported url paths
+  get supportedPaths(): string[] {
+    var path = window.location.pathname.startsWith(`/${this.shortName}/item`) ?  window.location.pathname :  null;
+    return ['/stores', `/${this.shortName}`, path];
   }
 
 }

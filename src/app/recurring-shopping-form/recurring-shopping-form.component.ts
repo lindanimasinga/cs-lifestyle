@@ -103,7 +103,8 @@ export class RecurringShoppingFormComponent implements OnInit {
             return {
               name: stk.name,
               imageUrl: stk.images?.[0],
-              storeId: ""
+              storeId: "",
+              price: stk.price
             } as DropDownSelectableStock
           })
   }
@@ -129,7 +130,7 @@ export class RecurringShoppingFormComponent implements OnInit {
       shopId: stockSelected.storeId,
       imageUrl: stockSelected.imageUrl,
       quantity: 1,
-      priceRange: "100, 200",
+      price: stockSelected.price,
       shopName: stockSelected.storeId
     })
     this.newShoppingItem = null
@@ -165,7 +166,31 @@ export class RecurringShoppingFormComponent implements OnInit {
 
   checkout() {
     console.log(`checking out shopping list ${this.shoppingList.name}`)
-   
+    this.storageService.clearOrder()
+    this.storageService.basket = {
+      storeName: this.shops.find(shop => shop.id == this.shoppingList.shopId)?.name,
+      items: this.shoppingList.items.map(item => {
+        return {
+          name: item.name,
+          price: 100, // Default price, can be updated later
+          quantity: item.quantity,
+          image: item.imageUrl,
+          options: []
+        }
+      })
+    }
+    this.storageService.basket.storeId = this.shoppingList.shopId
+    this.storageService.shop = this.shops[0];
+    this.router.navigate(['/cart']);
+  }
+
+  get isVisible() {
+    const today = new Date();
+    const runDate = new Date(this.shoppingList.nextRunDate);
+    return this.shoppingList.nextRunDate &&
+      today.getFullYear() === runDate.getFullYear() &&
+      today.getMonth() === runDate.getMonth() &&
+      today.getDate() === runDate.getDate();
   }
 
 }
@@ -174,4 +199,5 @@ export class DropDownSelectableStock {
   name: string
   imageUrl: string
   storeId: string
+  price: number
 }

@@ -27,13 +27,13 @@ export class ShopItemDescrComponent implements OnInit {
     private storageService: StorageService) { }
 
   ngOnInit() {
-
     this.route.params.subscribe(param => {
       if (param["id"]) {
         const stockId = this.route.snapshot.paramMap.get('id');
         this.store = this.storageService.shop
         this.shopItem = this.store.stockList.find(item => item.id == stockId)
         this.imageSelected = this.shopItem.images ? this.shopItem.images[0] : undefined
+        this.quantity = 1;
       }
     });
   }
@@ -47,7 +47,7 @@ export class ShopItemDescrComponent implements OnInit {
 
     this.basketItem = {
       name: this.shopItem.name,
-      price: this.shopItem.price,
+      price: this.shopItem.price * this.quantity,
       discountPerc: this.shopItem.discountPerc,
       options: this.shopItem.mandatorySelection,
       quantity: this.quantity,
@@ -72,6 +72,18 @@ export class ShopItemDescrComponent implements OnInit {
 
   get cartNumberOfItems() { 
     return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+
+  increaseQuantity() {
+    if (this.quantity < 100) {
+      this.quantity++;
+    }
   }
 
 }
