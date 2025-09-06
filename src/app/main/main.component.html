@@ -26,7 +26,7 @@
     <!-- Add New Stock Item Button -->
     <button type="button" class="col-4 btn bg-dark shadow-sm" routerLink="recurring">
         <a class="nav-link d-flex justify-content-center">
-          <mat-icon class="example-tab-icon">density_small</mat-icon>
+          <mat-icon matBadge="{{shoppingListNumberOfItems}}" matBadgeColor="warn" class="example-tab-icon">density_small</mat-icon>
         </a>
         <div class="menu_label">Shopping List</div>
     </button>

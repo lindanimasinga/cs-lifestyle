@@ -65,6 +65,10 @@ export class MainComponent implements OnInit {
     return this.storageService.basket != null? this.storageService.basket.items?.length : 0;
   }
 
+  get shoppingListNumberOfItems() { 
+    return this.storageService.shoppingList != null? this.storageService.shoppingList.items?.length : 0;
+  }
+
   logout() {
     this.storageService.logout()
     console.log("logged out")

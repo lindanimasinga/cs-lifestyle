@@ -44,7 +44,6 @@ export class ShopItemDescrComponent implements OnInit {
         } else {
           this.shoppingList = this.storageService.shoppingList;
         }
-        this.shoppingList.shopId = this.store.id
       }
     });
   }
@@ -72,7 +71,9 @@ export class ShopItemDescrComponent implements OnInit {
       return
     } 
 
-    if (this.shoppingList.shopId != this.store.id) {
+    if (this.storageService.shoppingList.shopId != this.store.id) {
+      console.log("Clearing shopping list as store is different")
+      this.storageService.clearShoppingList()
       this.storageService.shoppingList = {
         items: [],
         shopId: this.store.id,
