@@ -50,9 +50,17 @@
             </div>
             <button type="button" class="btn btn-sm btn-light" (click)="increaseQuantity()">+</button>
         </div>
-        <button class="btn btn-lg btn-block bg-dark mt-3 shadow-sm mb-3" (click)="addToCart()" [disabled]="!hasValidSeletion()">
-            Add to Cart
-        </button>
+        <div class="d-flex justify-content-between mt-3 mb-3">
+            <button class="btn btn-lg btn-block bg-dark  shadow-sm mr-1" (click)="addToCart()" [disabled]="!hasValidSeletion()">
+                Add to Cart
+            </button>
+            <button type="button" class="btn bg-dark" (click)="addToShoppingList()" id="addToListButton">
+                <div class="d-flex flex-column align-items-center text-white">
+                    <mat-icon class="example-tab-icon">favorite</mat-icon>
+                    <div class="menu_label">Favorites</div>
+                </div>
+            </button>
+        </div>
 
     </div>
 </div>

@@ -8,6 +8,20 @@
     src: url("/assets/fonts/Catamaran-Medium.ttf") format("opentype");
 }
 
+.material-icons {
+    font-size: 26px;
+    height: 26px;
+    color: #ffffff !important;
+}
+
+.mat-badge-content {
+    font-size: 18px !important;
+}
+
+.menu_label {
+    font-size: 12px;
+}
+
 .form-control, .form-control:disabled {
     background-color: var(--bkg-card-color);
     color: var(--text-color);

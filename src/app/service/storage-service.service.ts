@@ -15,6 +15,7 @@ export class StorageService {
   TOKEN_KEY = "vm1xcnvfoiwerw"
   PHONE_VERIFIED_KEY = "lkjhsdbvskd"
   PHONE_NUMBER_KEY = "knsdevwruweildkf"
+  SHOPPINGLIST_KEY = "knsdev34w4ei5ldkf"
   jwt: string;
   ukhesheUser: UkhesheUser;
   _shop: StoreProfile;
@@ -28,8 +29,25 @@ export class StorageService {
   _fcmToken: string
   _phoneVerified: boolean;
   _phoneNumber: string
+  _shoppingList: any;
 
   constructor() { }
+
+  get shoppingList() {
+    if(this._shoppingList == null) {
+      this._shoppingList = JSON.parse(this.cache.getItem(this.SHOPPINGLIST_KEY))
+    }
+    return this._shoppingList;
+  }
+
+  set shoppingList(shoppingList: any) {
+    this._shoppingList = shoppingList
+    if(shoppingList == null) {
+      this.cache.removeItem(this.SHOPPINGLIST_KEY)
+      return
+    }
+    this.cache.setItem(this.SHOPPINGLIST_KEY, JSON.stringify(this._shoppingList))
+  }
 
   get shop() {
     if(this._shop == null) {
@@ -139,6 +157,16 @@ export class StorageService {
     this.basket = this.basket
   }
 
+  addToShoppingList(item: any) {
+    if(this.shoppingList == null) {
+      this.shoppingList = {
+        items: []
+      }
+    }
+    this.shoppingList.items.push(item)
+    this.shoppingList = this.shoppingList
+  }
+
   get currentLocation() {
     if(this._currentLocation == null) {
       this._currentLocation = JSON.parse(this.cache.getItem(this.CUURENT_LOCATION_KEY))
@@ -166,6 +194,10 @@ export class StorageService {
   clearOrder() {
     this.basket = null
     this.order = null
+  }
+
+  clearShoppingList() {
+    this.shoppingList = null
   }
 
   logout() {

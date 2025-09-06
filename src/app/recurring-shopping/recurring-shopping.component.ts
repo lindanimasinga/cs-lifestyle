@@ -27,6 +27,11 @@ export class RecurringShoppingComponent {
       return
     }
 
+    if(this.storageService.shoppingList) {
+      this.router.navigate(['../recurring-form'])
+      return
+    }
+
     this.izingaService.findShoppingLists(this.userProfile.id).subscribe(respo => this.shoppingList = respo)
   }
 

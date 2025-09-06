@@ -46,6 +46,9 @@ export class RecurringShoppingFormComponent implements OnInit {
           this.shoppingList = shoppingList
           this.shopId = shoppingList.shopId
         })
+      } else {
+        this.shoppingList = this.storageService.shoppingList || { items: [] }
+        this.shopId = this.shoppingList.shopId
       }
     })
 
@@ -56,9 +59,8 @@ export class RecurringShoppingFormComponent implements OnInit {
     this.izingaService.getAllStores(latitude, longitude, range)
           .subscribe(resp => {
             this.shops = resp
-            .filter(store => store.tags?.includes("groceries") 
-                      && (store.id == this.shoppingList.shopId || this.shoppingList.shopId == null))
-            this.shopId = this.shoppingList.shopId || this.shops[0]?.id
+            .filter(store => (store.id == this.shoppingList.shopId || this.shoppingList.shopId == null))
+            this.shopId = this.shoppingList.shopId
           })
   }
 
@@ -94,11 +96,14 @@ export class RecurringShoppingFormComponent implements OnInit {
   }
 
   set shopId(shopId : string) {
+    if (shopId == null) {
+      return
+    }
     this.shoppingList.shopId = shopId
     console.log(`setting shop id to ${shopId}`)
-    this.shops = this.shops.filter(shop => shop.id == shopId)
+    this.shops = this.shops.filter(shop => !shop || shop.id == shopId)
     this.allStockAvailable = this.shops
-    .filter(shop => shop.id == shopId)[0]
+    .filter(shop => !shop || shop.id == shopId)[0]
     .stockList.map(stk => {
             return {
               name: stk.name,
@@ -113,7 +118,8 @@ export class RecurringShoppingFormComponent implements OnInit {
   onSubmit() {
     this.shoppingList.userIds = this.userIds.split(",")
     this.izingaService.createShoppingList(this.shoppingList).subscribe(respo => {
-      document.location.href = document.referrer
+      this.router.navigate(['../recurring'])
+      this.storageService.clearShoppingList()
     })
   }
 
