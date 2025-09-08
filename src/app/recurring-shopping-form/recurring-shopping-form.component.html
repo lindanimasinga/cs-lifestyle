@@ -118,6 +118,10 @@
       <button type="submit" class="btn bg-dark">Save</button>
     </div>
 
+    <div *ngIf="shoppingList.nextRunDate" class="my-3">
+      <span class="text-secondary">Your next shopping run will be on </span> <span class="fw-bold">{{shoppingList.nextRunDate | date: 'yyyy-MMM-dd'}}</span>
+    </div>
+
     <div class="shopping-item-section mt-4">
       <div *ngFor="let shoppingItem of shoppingList.items; let i = index; trackBy: trackByQuantity" tappable class="row p-1 shoppingItems align-items-center">
         <img class="stockImage col-3" [src]="shoppingItem.imageUrl">
