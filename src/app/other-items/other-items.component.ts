@@ -15,6 +15,7 @@ export class OtherItemsComponent implements OnInit {
 
   store: StoreProfile;
   categories: Set<String> = new Set<String>()
+  searchItems: Stock[];
   
   constructor(private storageService: StorageService, 
     private izingaService: IzingaOrderManagementService) {
@@ -40,6 +41,10 @@ export class OtherItemsComponent implements OnInit {
        // .addIndicators() // add indicators (requires plugin)
         .addTo(controller);
     }
+  }
+
+  shopItemsByName(name?: string) {
+    this.searchItems = name ? this.store?.stockList.filter(item => item.name?.toLowerCase().includes(name?.toLowerCase())) : []
   }
 
   replaceSpecialChars(input?: string): string {

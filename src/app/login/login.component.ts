@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { FirebaseService } from '../service/firebase.service';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 import { StorageService } from '../service/storage-service.service';
@@ -19,7 +19,10 @@ export class LoginComponent {
   hasError: boolean
   errorMessage: string
   code: string
-  userProfile: UserProfile
+    userProfile: UserProfile = {
+    imageUrl: "https://pbs.twimg.com/media/C1OKE9QXgAAArDp.jpg",
+    role: UserProfile.RoleEnum.CUSTOMER
+  };
 
   constructor(private izingaOrderManager: IzingaOrderManagementService,
     private storageService: StorageService,
@@ -71,7 +74,8 @@ export class LoginComponent {
       catchError(error => {
         if(error.status === 404) {
           console.log("User not found")
-          return of(null)
+          this.userProfile.mobileNumber = this.phoneNumber
+          return this.createCustomer()
         } else {
           return throwError(error); 
         }
@@ -85,5 +89,14 @@ export class LoginComponent {
       location.href = document.referrer
     })
   }
+
+    createCustomer(): Observable<UserProfile> {
+      return this.izingaOrderManager.registerCustomer(this.userProfile)
+      .pipe(map(user => {
+        this.userProfile = user
+        this.storageService.userProfile = user;
+        return user;
+      }))
+    }
 
 }

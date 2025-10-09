@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BasketItem, Basket, Order, UserProfile, StoreProfile, CurrentLocation } from '../model/models';
 import { UkhesheUser } from '../model/ukheshe-user';
+import { ShoppingList } from '../model/shopping-list';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class StorageService {
   _fcmToken: string
   _phoneVerified: boolean;
   _phoneNumber: string
-  _shoppingList: any;
+  _shoppingList: ShoppingList;
 
   constructor() { }
 
@@ -40,7 +41,7 @@ export class StorageService {
     return this._shoppingList;
   }
 
-  set shoppingList(shoppingList: any) {
+  set shoppingList(shoppingList: ShoppingList) {
     this._shoppingList = shoppingList
     if(shoppingList == null) {
       this.cache.removeItem(this.SHOPPINGLIST_KEY)

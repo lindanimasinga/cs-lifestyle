@@ -168,7 +168,6 @@ export class IzingaOrderManagementService {
         .pipe(
           catchError((error: HttpErrorResponse) => {
             console.log(error)
-            this.storage.errorMessage = error.message
             return throwError(error)
           }))
   }

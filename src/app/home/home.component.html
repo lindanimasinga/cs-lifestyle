@@ -1,11 +1,28 @@
-
+<div class="">
 <div class="">
 
-<div class="mb-1 mt-1 py-3 d-flex justify-content-center">
+<div class="mb-1 mt-1 py-3">
   <div>
     <div class="h5 page-header">{{shop?.name}} Menu</div>
   </div>
 </div>
+
+  <!-- Search bar -->
+  <div class="mb-3">
+    <input
+      type="search"
+      class="form-control"
+      placeholder="Search items by name..."
+      (input)="shopItemsByName($event.target.value)"
+      aria-label="Search items"
+    />
+  </div>
+
+  <div class="d-flex align-items-center row">
+      <div [id]="'item'+number" *ngFor="let item of searchItems; let number = index"  class="col-6 col-md-4 col-lg-3 col-xl-2">
+        <app-shop-item [shop]="shop" [shopItem]="item" [themeDark]="number%2 == 0"></app-shop-item>
+      </div>
+  </div>
 
 <div *ngFor="let cat of categories" class="categories">
   <div class="accordion" id="accordionExample">

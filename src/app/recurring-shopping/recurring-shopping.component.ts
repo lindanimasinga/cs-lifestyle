@@ -27,7 +27,7 @@ export class RecurringShoppingComponent {
       return
     }
 
-    if(this.storageService.shoppingList) {
+    if(this.storageService.shoppingList && this.storageService.shoppingList.items.length > 0) {
       this.router.navigate(['../recurring-form'])
       return
     }

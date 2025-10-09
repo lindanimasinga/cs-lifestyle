@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   categories: Set<String> = new Set<String>()
   shop: StoreProfile;
   startOrder = false;
+  searchItems: Stock[];
 
   constructor(protected izingaService: IzingaOrderManagementService, protected storage: StorageService, 
     protected activatedRoute: ActivatedRoute, private router: Router, private sanitizer:DomSanitizer) {
@@ -59,6 +60,10 @@ export class HomeComponent implements OnInit {
 
   shopItems(category?: string): Stock[] {
     return this.shop?.stockList.filter(item => item.group?.toLowerCase() == category?.toLowerCase())
+  }
+
+  shopItemsByName(name?: string) {
+    this.searchItems = name ? this.shop?.stockList.filter(item => item.name?.toLowerCase().includes(name?.toLowerCase())) : []
   }
 
   hasItemsInCart(): boolean {
