@@ -97,6 +97,36 @@ export class ShippingComponent implements OnInit {
   } 
 
   validData() {
+    if (this.userProfile.name == null || this.userProfile.name.trim() == '') {
+      this.storageService.errorMessage = "Please provide your name"
+      return false
+    }
+    if (this.userProfile.address == null || this.userProfile.address.trim() == '') {
+      this.storageService.errorMessage = "Please provide your delivery address"
+      return false
+    }
+    if (this.userProfile.mobileNumber == null || this.userProfile.mobileNumber.trim() == '') {
+      this.storageService.errorMessage = "Please provide your mobile number"
+      return false
+    }
+    if (this.shippingBuildingType == null) {
+      this.storageService.errorMessage = "Please select your building type"
+      return false
+    }
+    if (this.shippingBuildingType != ShippingData.BuildingTypeEnum.HOUSE && 
+      (this.shippingBuildingUnitNumber == null || this.shippingBuildingUnitNumber.trim() == '')) {
+        this.storageService.errorMessage = "Please provide your unit number"
+        return false
+    }
+    if (this.shippingBuildingType != ShippingData.BuildingTypeEnum.HOUSE && 
+      (this.shippingBuildingName == null || this.shippingBuildingName.trim() == '')) {
+        this.storageService.errorMessage = "Please provide your building name"
+        return false
+    }
+    if (this.deliverySchedule == this.LATER && (this.selectedDate == null || this.selectedTime == null)) {
+      this.storageService.errorMessage = "Please provide your delivery date and time"
+      return false
+    }
     return this.userProfile.address && this.userProfile.name
       && this.userProfile.mobileNumber 
       && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
@@ -118,7 +148,7 @@ export class ShippingComponent implements OnInit {
     }
 
     if(this.messegers == null || this.messegers.length == 0) {
-      this.storageService.errorMessage = "Messengers not available in your area at the moment."
+      this.storageService.errorMessage = "Drivers are not available in your area at the moment."
       return
     }
 

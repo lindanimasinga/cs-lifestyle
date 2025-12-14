@@ -10,7 +10,7 @@
         </a>
         <div class="d-flex flex-column align-items-end">
             <button routerLink="../recurring-form/{{list.id}}" class="btn btn-sm bg-dark text-white actions">Edit</button>
-            <button type="submit" class="btn btn-sm text-white actions" style="background-color: var(--btn-red-color);">Delete</button>
+            <button (click)="deleteList(list.id)" class="btn btn-sm text-white actions" style="background-color: var(--btn-red-color);">Delete</button>
         </div>
     </div>
 </div>

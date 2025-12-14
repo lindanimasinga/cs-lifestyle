@@ -1,0 +1,54 @@
+<div class="">
+    <div class="row">
+        <div class="col order-md-1">
+            <form class="needs-validation mb-3" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" [(ngModel)]="userProfile.name" name="name" value="" #name="ngModel" required>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cellphone">Cellphone Number</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" [value]="phoneNumber" name="mobileNumber"
+                            placeholder="cellphone" disabled>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Your cellphone number is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cellphone">Email Address</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="userProfile.emailAddress" name="emailAddress"
+                            placeholder="Optional Email Address">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cellphone">Address</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" [(ngModel)]="userProfile.address" name="address"
+                            placeholder="Your Address">
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <div class="">
+                    Your contact information will be stored securely to enable communication. Be assured that your details will be kept safe and will never be shared or sold to any third parties. For additional information, please refer to our privacy policy.
+                    <a href="https://www.izinga.co.za/privacy.html" target="_blank">Privacy Policy</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <button *ngIf="!userExist" class="col btn btn-lg btn-block bg-dark mt-5 shadow-sm" type="submit" (click)="createCustomer()">Register</button>
+    <button *ngIf="userExist" class="col btn btn-lg btn-block bg-dark mt-5 shadow-sm sendCode" type="submit" (click)="updateCustomer()">Update</button>
+</div>

@@ -20,7 +20,6 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.storageService.shop == null) {
       this.shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
       if(this.shortName == null) {
         var url = window.location.origin
@@ -30,11 +29,13 @@ export class MainComponent implements OnInit {
       }
       console.log(`path is ${window.location.pathname}`)
       console.log("shortname is " + this.shortName)
-      this.izingaService.getStoreById(this.shortName)
-      .subscribe(shop => {
-        this.storageService.shop = shop;
-      })
-    }
+      localStorage.setItem('currentStoreId', this.shortName!);
+      if (this.storageService.shop == null || this.storageService.shop?.id != this.shortName) {
+        this.izingaService.getStoreById(this.shortName)
+        .subscribe(shop => {
+          this.storageService.shop = shop;
+        })
+      }
 
     if(this.hasError) {
       this.storageService.errorMessage = null
@@ -91,14 +92,26 @@ export class MainComponent implements OnInit {
     }
 
     const supportedPaths = this.supportedPaths.includes(window.location.pathname);
-    this.isVisible = this.isVisible && supportedPaths
+    this.isVisible = supportedPaths
     this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Avoid negative values
   }
 
   //return a list on supported url paths
   get supportedPaths(): string[] {
-    var path = window.location.pathname.startsWith(`/${this.shortName}/item`) ?  window.location.pathname :  null;
-    return ['/stores', `/${this.shortName}`, path];
+    var shortName = localStorage.getItem('currentStoreId')
+    var path = window.location.pathname.match(`.+\/item\/.+`) ?  window.location.pathname :  null;
+    console.log(`supported path is ${path} and shortname is ${shortName}`)
+    return ['/stores', `/${shortName}`, path];
   }
 
 }
+function getShortNameFromUrl(pathname: string): string {
+      var url = window.location.origin
+      var urlParts = url.split("\\")
+      var shortName = urlParts.length > 1 ? urlParts[1] : urlParts[0]
+      console.log(`url parts is ${urlParts}`)
+      console.log(`path is ${window.location.pathname}`)
+      console.log("shortname is " + shortName)
+      return shortName!;
+}
+

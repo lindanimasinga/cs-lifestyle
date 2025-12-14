@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RecurringShoppingComponent } from './recurring-shopping/recurring-shopping.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path : 'recurring-form', component: RecurringShoppingFormComponent},
       {path : 'recurring-form/:id', component: RecurringShoppingFormComponent},
       {path : 'dashboard', component: DashboardComponent},
+      {path : 'user/:id', component: UserProfileComponent},
       { path: '', component: IzingaHomeComponent },
       { path: 'item/:id', component: ShopItemDescrComponent },
       { path: 'cart', component: CheckoutComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
       {path : 'recurring-form', component: RecurringShoppingFormComponent},
       {path : 'recurring-form/:id', component: RecurringShoppingFormComponent},
       {path : 'dashboard', component: DashboardComponent},
+      {path : 'user/:id', component: UserProfileComponent},
       { path: '', component: HomeComponent },
       { path: 'item/:id', component: ShopItemDescrComponent },
       { path: 'cart', component: CheckoutComponent },

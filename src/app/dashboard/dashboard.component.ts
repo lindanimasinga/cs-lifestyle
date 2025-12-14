@@ -25,4 +25,9 @@ export class DashboardComponent {
     return this.storageService.userProfile.id
   }
 
+  logout() {
+    this.storageService.logout()
+    this.router.navigate(['login'])
+  }
+
 }

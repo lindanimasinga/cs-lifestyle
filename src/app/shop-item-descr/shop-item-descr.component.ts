@@ -91,7 +91,8 @@ export class ShopItemDescrComponent implements OnInit {
       shopName: this.store.name
     });
     this.storageService.shoppingList = this.shoppingList;
-    console.log("Added item to Shopping List: ", this.shopItem.name)
+    console.log("Added item to Shopping List: ", this.shopItem.name);
+    alert(`${this.shopItem.name} has been added to your shopping list!`);
   }
 
   hasValidSeletion(): boolean {

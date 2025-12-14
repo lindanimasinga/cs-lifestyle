@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.izingaService.getStoreById(shortName)
     .subscribe(shop => {
       this.shop = shop;
+      this.storage.shop = shop
       this.categories = new Set(this.shop.stockList.sort((a, b) => this.isPromotion(a) ? -1 : 1).map(stk => stk.group))
       
       //get promotions

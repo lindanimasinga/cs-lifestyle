@@ -55,6 +55,7 @@ import { RecurringShoppingItemComponent } from './recurring-shopping-item/recurr
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
 import { DatePipe } from '@angular/common';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { DatePipe } from '@angular/common';
     RecurringShoppingCardComponent,
     RecurringShoppingItemComponent,
     DashboardComponent,
-    RecurringShoppingFormComponent
+    RecurringShoppingFormComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

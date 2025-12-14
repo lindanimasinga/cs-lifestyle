@@ -34,7 +34,6 @@ export class StoresComponent implements OnInit {
     var long: number = queryParamMap['long']
     this.address = queryParamMap['address'] 
     this.storage.currentLocation = new CurrentLocation(lat, long, this.address)
-    this.storage.shop = null
     this.izingaService.getAllStoresNamesAndLogos(lat, long, environment.range)
         .subscribe(resp => {
           this.stores = resp.filter(store => !store.storeOffline)
