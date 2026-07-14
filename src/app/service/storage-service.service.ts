@@ -10,6 +10,7 @@ export class StorageService {
   USER_PROFILE_KEY = "sdfwefdsfsd";
   BASKET_KEY = "sdfsdfljsdf";
   ORDER_KEY = "fuiwerfbsk";
+  REFERRAL_CODE_KEY = "rp_ref_code";
   jwt: string;
   ukhesheUser: UkhesheUser;
   shop: StoreProfile;
@@ -74,6 +75,20 @@ export class StorageService {
       this.basket.items.splice(index, 1);
    }
    this.basket = this.basket
+  }
+
+  get referralCode(): string | null {
+    return this.cache.getItem(this.REFERRAL_CODE_KEY);
+  }
+
+  set referralCode(code: string) {
+    if (code) {
+      this.cache.setItem(this.REFERRAL_CODE_KEY, code);
+    }
+  }
+
+  clearReferralCode() {
+    this.cache.removeItem(this.REFERRAL_CODE_KEY);
   }
 
   clearOrder() {
