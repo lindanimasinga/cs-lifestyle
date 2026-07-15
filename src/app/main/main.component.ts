@@ -19,6 +19,11 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const refCode = this.activatedRoute.snapshot.queryParamMap.get('ref');
+    if (refCode && !this.storageService.referralCode) {
+      this.storageService.referralCode = refCode;
+    }
+
     var shortName =  this.activatedRoute.snapshot.paramMap.get('shortname')
     if(shortName == null) {
       var url = window.location.origin

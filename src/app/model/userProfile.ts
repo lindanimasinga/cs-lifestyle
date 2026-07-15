@@ -34,6 +34,7 @@ export class UserProfile {
     servicesCompleted?: number;
     verificationCode?: string;
     yearsInService?: number;
+    referralCode?: string;
 }
 export namespace UserProfile {
     export type RoleEnum = 'CUSTOMER' | 'STORE_ADMIN' | 'STORE' | 'MESSENGER' | 'AMBASSADOR' | 'MESSENGER_ADMIN' | 'REFERRAL_PARTNER';

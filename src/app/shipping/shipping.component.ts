@@ -112,10 +112,15 @@ export class ShippingComponent implements OnInit {
   }
 
   createCustomer(): Observable<UserProfile> {
+    const refCode = this.storageService.referralCode;
+    if (refCode) {
+      this.userProfile.referralCode = refCode;
+    }
     return this.izingaOrderManager.registerCustomer(this.userProfile)
     .pipe(map(user => {
       this.userProfile = user
       this.storageService.userProfile = user;
+      this.storageService.clearReferralCode();
       return user;
     }))
   }
