@@ -7,6 +7,8 @@ import { MainComponent } from './main.component';
 import { StorageService } from '../service/storage-service.service';
 import { IzingaOrderManagementService } from '../service/izinga-order-management.service';
 
+let storageService: StorageService;
+
 function buildTestBed(queryParams: { [key: string]: string }) {
   TestBed.configureTestingModule({
     imports: [RouterTestingModule],
@@ -31,8 +33,6 @@ function buildTestBed(queryParams: { [key: string]: string }) {
 }
 
 describe('MainComponent — referral code capture (RP-004b)', () => {
-  let storageService: StorageService;
-
   beforeEach(() => {
     localStorage.clear();
   });

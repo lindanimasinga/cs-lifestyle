@@ -50,11 +50,11 @@ describe('ShippingComponent — referral code attachment (RP-004b)', () => {
   });
 
   it('should attach the stored referral code to the user profile before calling registerCustomer', () => {
-    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     storageService.referralCode = 'RP-PARTNER01';
     orderManagementService.registerCustomer.and.returnValue(of(mockUser));
 
-    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     component.createCustomer().subscribe();
 
     const registrationPayload: UserProfile = orderManagementService.registerCustomer.calls.mostRecent().args[0];
@@ -62,21 +62,21 @@ describe('ShippingComponent — referral code attachment (RP-004b)', () => {
   });
 
   it('should clear the stored referral code after successful registration', () => {
-    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     storageService.referralCode = 'RP-PARTNER01';
     orderManagementService.registerCustomer.and.returnValue(of(mockUser));
 
-    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     component.createCustomer().subscribe();
 
     expect(storageService.referralCode).toBeNull();
   });
 
   it('should not attach referralCode when no referral code is stored', () => {
-    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    const mockUser: UserProfile = { id: 'new-user-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     orderManagementService.registerCustomer.and.returnValue(of(mockUser));
 
-    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    component.userProfile = { mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     component.createCustomer().subscribe();
 
     const registrationPayload: UserProfile = orderManagementService.registerCustomer.calls.mostRecent().args[0];
@@ -87,7 +87,7 @@ describe('ShippingComponent — referral code attachment (RP-004b)', () => {
     // createCustomer is only called when userProfile.id == null; this test confirms
     // the guard in startOrder() prevents double-registration for returning users.
     storageService.referralCode = 'RP-PARTNER01';
-    component.userProfile = { id: 'existing-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER };
+    component.userProfile = { id: 'existing-id', mobileNumber: '0812345678', role: UserProfile.RoleEnum.CUSTOMER, imageUrl: '' };
     // registerCustomer should not be called at all when id is present
     expect(orderManagementService.registerCustomer).not.toHaveBeenCalled();
   });
