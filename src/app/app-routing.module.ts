@@ -11,6 +11,7 @@ import { OrderItemHistoryComponent } from './order-item-history/order-item-histo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'store-orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
-      { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'terms-conditions', component: TermsConditionsComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
     ]
   },
   {
@@ -39,7 +41,8 @@ const routes: Routes = [
       { path: 'store-orders', component: OrdersComponent },
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
-      { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'terms-conditions', component: TermsConditionsComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
     ]
   },
 ];

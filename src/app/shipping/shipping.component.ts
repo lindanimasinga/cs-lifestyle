@@ -20,6 +20,7 @@ export class ShippingComponent implements OnInit {
   
   isPhoneNumberVerified = false
   isVerificationRequested = false
+  termsAccepted = false
   code: string
   shippingBuildingType: ShippingData.BuildingTypeEnum
   buildingTypeEnums = ShippingData.BuildingTypeEnum
@@ -64,8 +65,9 @@ export class ShippingComponent implements OnInit {
 
   validData() {
     return this.userProfile.address && this.userProfile.name && this.userProfile.surname
-      && this.userProfile.mobileNumber 
+      && this.userProfile.mobileNumber
       && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
+      && this.termsAccepted
   }
 
   verify() {
