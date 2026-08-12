@@ -33,6 +33,7 @@ import { PayfastComponent } from './payfast/payfast.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MainComponent } from './main/main.component';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { TermsConditionsComponent } from './terms-conditions/terms-conditions.co
     PayfastComponent,
     ContactUsComponent,
     MainComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

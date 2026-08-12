@@ -1,0 +1,35 @@
+.legal-document {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.legal-title {
+  font-size: 1.75rem;
+  color: #494949;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #494949;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #494949;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-table {
+  font-size: 0.9rem;
+}
