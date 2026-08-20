@@ -129,9 +129,20 @@
 
 
                 <hr class="mb-4">
-                <div class="text-muted">Your contact information will be saved for us to be able to contact you to get
-                    your order at your doorstep. This information is stored safe, securely and will never be shared or sold to any third parties. For more information, please see our privacy policy.</div>
-                <button class="btn btn-lg btn-block bg-dark mt-5 shadow-sm" type="submit" (click)="startOrder()" [disabled]="!validData()">Save
+                <div class="text-muted mb-3">Your contact information will be saved for us to be able to contact you to get
+                    your order at your doorstep. This information is stored safe, securely and will never be shared or sold to any third parties.
+                    For more information, please see our <a routerLink="../privacy-policy">Privacy Policy</a>.</div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="termsAccepted" name="termsAccepted"
+                        [(ngModel)]="termsAccepted">
+                    <label class="form-check-label" for="termsAccepted">
+                        I have read and agree to the
+                        <a routerLink="../terms-conditions" target="_blank">Terms and Conditions</a>.
+                    </label>
+                </div>
+
+                <button class="btn btn-lg btn-block bg-dark mt-3 shadow-sm" type="submit" (click)="startOrder()" [disabled]="!validData()">Save
                     and Continue</button>
         </div>
     </div>

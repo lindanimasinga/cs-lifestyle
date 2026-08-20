@@ -19,6 +19,7 @@ import { RecurringShoppingComponent } from './recurring-shopping/recurring-shopp
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecurringShoppingFormComponent } from './recurring-shopping-form/recurring-shopping-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
       { path: 'stores', component: StoresComponent},
       { path: 'printable', component: PrintableMenuComponent}
     ]
@@ -62,6 +64,7 @@ const routes: Routes = [
       { path: 'order/:id', component: OrderItemHistoryComponent },
       { path: 'contact', component: ContactUsComponent },
       { path: 'terms-conditions', component: TermsConditionsComponent},
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
       { path: 'stores', component: StoresComponent},
       { path: 'printable', component: PrintableMenuComponent}
     ]
