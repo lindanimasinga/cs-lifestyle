@@ -20,6 +20,7 @@ export class ShippingComponent implements OnInit {
   //@ViewChild("placesRef") placesRef : GooglePlaceDirective;
   
   isVerificationRequested = false
+  termsAccepted = false
   code: string
   shippingBuildingType: ShippingData.BuildingTypeEnum
   buildingTypeEnums = ShippingData.BuildingTypeEnum
@@ -127,9 +128,14 @@ export class ShippingComponent implements OnInit {
       this.storageService.errorMessage = "Please provide your delivery date and time"
       return false
     }
+    if (!this.termsAccepted) {
+      this.storageService.errorMessage = "Please accept the Terms and Conditions to continue"
+      return false
+    }
     return this.userProfile.address && this.userProfile.name
-      && this.userProfile.mobileNumber 
+      && this.userProfile.mobileNumber
       && (this.shippingBuildingType == ShippingData.BuildingTypeEnum.HOUSE || (this.shippingBuildingUnitNumber && this.shippingBuildingName))
+      && this.termsAccepted
   }
 
   createCustomer(): Observable<UserProfile> {
