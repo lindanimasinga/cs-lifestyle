@@ -30,7 +30,7 @@ export var environment = {
   payFastUrl: "https://sandbox.payfast.co.za/eng/process",
   payfast_merchant_id: "10020746",
   payfast_merchant_key: "cix8odfanpfra",
-  firebase_apiKey: "AIzaSyB1KhGf_VDF8VDUT0pNddLXB1Hls_dtR0U",
+  firebase_apiKey: "AIzaSyBCn6HQH1UKJMPImXFFBl7fGc2jT8amb0Q",
   authDomain: "ijudi-d19bd.firebaseapp.com",
   databaseURL: "https://ijudi-d19bd.firebaseio.com",
   projectId: "ijudi-d19bd",
